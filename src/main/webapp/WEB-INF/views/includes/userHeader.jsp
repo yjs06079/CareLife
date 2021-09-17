@@ -49,7 +49,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="top-box">
                         <ul class="sociel_link">
-                        	<li><a></a></li>
+                           <li><a></a></li>
                         </ul>
                     </div>
                    </div>
@@ -69,12 +69,33 @@
                </div>
                <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9" style="padding-right: 150px">
                   <div class="menu-area">
-                     <div class="limit-box">
-                        <nav class="main-menu">
-                           <ul class="menu-area-main" style="float: left">
-                              <li><a href="#" style="font-size: 20px; font-weight: bolder">소개</a></li>
-                              <li><a href="#" style="font-size: 20px; font-weight: bolder">예약</a></li>
-                              <li><a href="#" style="font-size: 20px; font-weight: bolder">선생님 지원</a></li>
+                     <div class="limit-box" >
+                        <nav class="main-menu" >
+                           <ul class="dropdown" style="float: left;  height: 256px; overflow-y: auto; text-align: center; font-weight: bolder; ">
+                             <li>
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 소개 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#"> 선생님 소개  </a></li>
+                              <li><a href="#"> 이용요금 안내 </a></li>
+                              <br>
+                            </ul>
+                              </li>
+                             <li>
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 예약 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#"> 예약하기 </a></li>
+                              <li><a href="#"> 예약 조회 </a></li>
+                              <br>
+                            </ul>
+                              </li>
+                             <li>
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 선생님 지원 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#" > 선생님 지원 </a></li>
+                              <li><a href="#"> 합격조회 </a></li>
+                              <br>
+                            </ul>
+                              </li>
                            </ul>
                         </nav>
                      </div>
