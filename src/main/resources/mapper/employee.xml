@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.employee.mapper.EmployeeMapper">
+<!-- 	<insert id="teacherApply" parameterType="com.care.employee.dto.EmployeeDTO">
+		insert into employee_g4(e_name, e_file, e_pass)
+		values(#{e_name}, #{e_file}, 0)
+	</insert> -->
+</mapper>

@@ -1,29 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 
-<label for="name"> 이름 </label>
-<input type="text" id="name" name="name" >
+<form action="bookingParentsResult" method="post">
 
-<label for="phone"> 연락처 </label>
-<input type="text" id="phone" name="phone">
-<input type="button" value="인증번호받기">
+	<label for="boName"> 이름 </label>
+	<input type="text" id="boName" name="boName"  >
+	
+	<label for="boPhone"> 연락처 </label>
+	<input type="text" id="boPhone" name="boPhone">
+	<button id="sendPhoneNumber" name="sendPhoneNumber">인증번호 발송</button>
+	
+	<label for="confirm"> 인증번호 </label>
+	<input type="text" id="confirm" name="confirm">
+	
+	<button id="checkBtn" name="checkBtn" >인증번호 확인</button>
+	
+	
+	
+	 
+	<label for="boSubPhone"> 보조연락처 </label>
+	<input type="text" id="boSubPhone" name="boSubPhone">
+	
+	<input type="submit"  value="다음" id="resultVal" />
+</form>
 
-<label for="confirm"> 인증번호 </label>
-<input type="text" id="confirm" name="confirm">
-<input type="button" value="확인">
+<script src="${pageContext.servletContext.contextPath}/resources/js/bookingSMSSend.js"></script>      
 
-<label for="subPhone"> 보조연락처 </label>
-<input type="text" id="subPhone" name="subPhone">
 
-<input type="button" value="<">
-<input type="button" value=">">
 
 </body>
 </html>

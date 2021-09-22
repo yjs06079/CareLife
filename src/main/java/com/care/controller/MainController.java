@@ -1,4 +1,4 @@
-package com.care.common.controller;
+package com.care.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

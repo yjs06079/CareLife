@@ -62,7 +62,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
+                        <div class="logo"> <a href="usermain"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
                         style="width: 225px; height: 100px; padding-bottom: 30px" /></a> </div>
                      </div>
                   </div>
@@ -83,7 +83,7 @@
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 예약 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#"> 예약하기 </a></li>
+                              <li><a href="usermain/bookingparents"> 예약하기 </a></li>
                               <li><a href="#"> 예약 조회 </a></li>
                               <br>
                             </ul>
@@ -91,7 +91,7 @@
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 선생님 지원 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#" > 선생님 지원 </a></li>
+                              <li><a href="usermain/apply" > 선생님 지원 </a></li>
                               <li><a href="#"> 합격조회 </a></li>
                               <br>
                             </ul>

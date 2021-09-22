@@ -1,4 +1,4 @@
-package com.care.common.config;
+package com.care.config;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -18,7 +18,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 public class DBConfig {
 	
-	@Bean(name = "oracledb", destroyMethod = "close")
+	@Bean(name = "mydb", destroyMethod = "close")
 	public HikariDataSource getDataSource() throws IOException {
 		ClassPathResource resource = new ClassPathResource("db.properties");
 		Properties prop = new Properties();
@@ -30,16 +30,16 @@ public class DBConfig {
 		return ds;
 	}
 	
-//	@Bean(name = "sqlsession")
-//	public SqlSessionFactory getSessionFactory() throws Exception {
-//		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-//		factory.setDataSource(getDataSource());
-//		Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml");
-//		
-//		factory.setMapperLocations(resources);
-//		
-//		return (SqlSessionFactory)factory.getObject();
-//	}
+	@Bean(name = "sqlsession")
+	public SqlSessionFactory getSessionFactory() throws Exception {
+		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+		factory.setDataSource(getDataSource());
+		Resource[] resources = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml");
+		
+		factory.setMapperLocations(resources);
+		
+		return (SqlSessionFactory)factory.getObject();
+	}
 	
 	@Bean(name = "txManager")
 	public DataSourceTransactionManager txManager() throws IOException {
