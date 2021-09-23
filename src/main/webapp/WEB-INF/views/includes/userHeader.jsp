@@ -58,6 +58,8 @@
             </div>
          </div>
          <div class="container">
+         
+         
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
@@ -71,7 +73,7 @@
                   <div class="menu-area">
                      <div class="limit-box" >
                         <nav class="main-menu" >
-                           <ul class="dropdown" style="float: left;  height: 256px; overflow-y: auto; text-align: center; font-weight: bolder; ">
+                           <ul class="dropdown" style="float: left;  height: 256px; overflow-y: auto; text-align: center; font-weight: bolder; width: 600px; left: 50px">
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 소개 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -102,6 +104,8 @@
                   </div>
                </div>
             </div>
+            
+            
          </div>
          <!-- end header inner --> 
       </header>

@@ -1045,7 +1045,7 @@ nav.main-menu {
 }
 
 .main-menu ul>li a {
-   padding: 30px 23px 0 23px;
+   padding: 30px 40px 0 23px;
    line-height: 20px;
    font-size: 20px;
    display: block;
@@ -1053,6 +1053,7 @@ nav.main-menu {
    color: #010005;
    text-transform: uppercase;
    font-weight: bolder;
+   position: relative;
 }
 
 .main-menu ul li:last-child a {
