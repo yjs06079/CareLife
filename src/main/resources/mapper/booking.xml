@@ -7,9 +7,14 @@
 <mapper namespace="com.care.user.mapper.BookingMapper">
 
 <insert id="parentsInsert" parameterType="com.care.user.dto.BookingDTO">
-	
-	insert into parents_g4 (p_name, p_phone, p_sub_phone)
+
+    <selectKey resultType="int" keyProperty="pNo" order="AFTER">
+       select max(p_no) from parents_g4
+    </selectKey>
+    
+    	insert into parents_g4 (p_name, p_phone, p_sub_phone)
 	values(#{pName} , #{pPhone}, #{pSubPhone} )
+
 	
 </insert>
 

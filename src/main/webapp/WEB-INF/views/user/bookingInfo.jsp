@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+${pno}
+
+<form action="bookingteacher" method="post">
 
 <label> 예약지역 </label>
 <select name="boAddr">
@@ -20,7 +24,7 @@
 	<option value="노원구"> 노원구 </option>
 	<option value="도봉구"> 도봉구 </option>
 	<option value="동대문구"> 동대문구 </option>
-	<option value="동작"> 동작 </option>
+	<option value="동작구"> 동작구 </option>
 	<option value="마포구"> 마포구 </option>
 	<option value="서대문구"> 서대문구 </option>
 	<option value="서초구"> 서초구 </option>
@@ -71,7 +75,11 @@
 <input type="button"  value="이전" onclick="location=''" />
 <input type="button"  value="다음" id="resultVal" />
 
+</form>
 
+
+
+<script src="${pageContext.servletContext.contextPath}/resources/js/bookingInfo.js"></script> 
 
 </body>
 </html>
