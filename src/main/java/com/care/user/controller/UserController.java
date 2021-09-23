@@ -29,23 +29,25 @@ public class UserController {
 		return "user/bookingParents";
 	} 
 	
-	@PostMapping("/bookingparentsresult")
+	@PostMapping("usermain/bookingparentsresult")
 	public String bookingParentsResult(HttpServletRequest request, UserParentsDTO dto ) {
 		
-		String boPhone = request.getParameter("boPhone");
+		String pPhone = request.getParameter("pPhone");
 		
-		System.out.println("boPhone >  " + boPhone);
+		System.out.println("pPhone >  " + pPhone);
 		
 		HttpSession session =request.getSession();//세션정보를 가지고와서 id를 묶어주기
 		
-		session.setAttribute("boPhone", boPhone); 
+		session.setAttribute("pPhone", pPhone); 
 		session.setMaxInactiveInterval(60*30); //로그인유지 시간 30분 
 		
-		System.out.println(dto.getBoName());
+		System.out.println(dto.getPName());
 		
 		int result = service.parentsInsert(dto);
 		
-		return "user/bookinginfo";
+		System.out.println(result);
+		
+		return "user/bookingInfo";
 		
 	}
 	

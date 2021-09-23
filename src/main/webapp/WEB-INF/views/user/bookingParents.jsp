@@ -11,27 +11,28 @@
 </head>
 <body>
 
-<form action="bookingParentsResult" method="post">
+<form action="bookingparentsresult" method="post">
 
-	<label for="boName"> 이름 </label>
-	<input type="text" id="boName" name="boName"  >
+	<label for="pName"> 이름 </label>
+	<input type="text" id="pName" name="pName"  >
 	
-	<label for="boPhone"> 연락처 </label>
-	<input type="text" id="boPhone" name="boPhone">
-	<button id="sendPhoneNumber" name="sendPhoneNumber">인증번호 발송</button>
+	<label for="pPhone"> 연락처 </label>
+	<input type="text" id="pPhone" name="pPhone">
+	<button  type="button" id="sendPhoneNumber" name="sendPhoneNumber">인증번호 발송</button>
 	
 	<label for="confirm"> 인증번호 </label>
 	<input type="text" id="confirm" name="confirm">
 	
-	<button id="checkBtn" name="checkBtn" >인증번호 확인</button>
+	<button type="button" id="checkBtn" name="checkBtn" >인증번호 확인</button>
 	
 	
 	
 	 
-	<label for="boSubPhone"> 보조연락처 </label>
-	<input type="text" id="boSubPhone" name="boSubPhone">
+	<label for="pSubPhone"> 보조연락처 </label>
+	<input type="text" id="pSubPhone" name="pSubPhone">
 	
-	<input type="submit"  value="다음" id="resultVal" />
+	<button  type="submit" id="resultVal" name="resultVal">다음</button>
+	
 </form>
 
 <script src="${pageContext.servletContext.contextPath}/resources/js/bookingSMSSend.js"></script>      
