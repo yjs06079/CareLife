@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.care.config.DBConfig;
 import com.care.config.UserConfig;
+import com.care.user.dto.BookingDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.mapper.BookingMapper;
 
@@ -29,5 +30,12 @@ public class UserMapperTest {
 		mapper.parentsInsert(dto);
 		log.info(mapper.parentsInsert(dto));
 				
+	}
+	
+	
+	
+	@Test
+	public void teacherTest() {
+	//				
 	}
 }

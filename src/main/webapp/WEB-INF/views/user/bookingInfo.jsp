@@ -25,7 +25,7 @@ System.out.print(pPhone +" 	여기!!! 	");
 
 <span>2222     SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
 
-
+${list }
 
 
 <label> 예약지역 </label>

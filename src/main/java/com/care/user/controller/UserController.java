@@ -1,5 +1,10 @@
 package com.care.user.controller;
 
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,7 +24,6 @@ import com.care.user.dto.BookingDTO;
 import com.care.user.dto.TeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.service.BookingService;
-
 
 @SessionAttributes("pPhone")
 @Controller
@@ -46,8 +50,7 @@ public class UserController {
 		session.setAttribute("pPhone", pPhone); 
 		session.setMaxInactiveInterval(60*30); //로그인유지 시간 30분 
 		
-		System.out.println(dto.getPName());
-		System.out.println("pno-->"+dto.getPNo());
+	
 
 		if(dto.getPName()==null || dto.getPName().equals("")) {
 
@@ -61,7 +64,7 @@ public class UserController {
 			
 			model.addAttribute("pno", dto.getPNo());
 			
-			System.out.println("????");
+			System.out.println("bookingparentsresult page");
 			
 			return "user/bookingInfo";
 			
@@ -74,6 +77,7 @@ public class UserController {
 	public String bookingInfo(HttpServletRequest request) {
 		
 		//도로명주소  api
+
 		
 		return "user/bookingInfo";
 	}
@@ -90,22 +94,45 @@ public class UserController {
 	
 	//@PostMapping("usermain/bookingteacher")
 	@RequestMapping(value="usermain/bookingteacher", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingTeacher(HttpServletRequest request, TeacherDTO tDTO,  BookingDTO bDTO, Model model ) {
-
-		List<BookingDTO> list  = service.selectTeacher(bDTO);
+	public String bookingTeacher(HttpServletRequest request, TeacherDTO tDTO,  BookingDTO bDTO, Model model ) throws ParseException {
+	
+			String addr = request.getParameter("boAddr");
+//			Date date=new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("boDate"));
+	
+			Date date=new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("boDate"));
+			
+			//get the parameter convert it to a data type Date.
+			int time = Integer.parseInt(request.getParameter("boTime"));
+			bDTO.setBoAddr(addr);
+			bDTO.setBoDate(date);
+			bDTO.setBoTime(time);
+			
 		
+			System.out.println("date-->"+bDTO.getBoDate());
+		List<BookingDTO> list  = service.selectTeacher(bDTO);
+ 
+		
+	
+		model.addAttribute("list",list);
+		System.out.println("list size" + list.size());
+	
+		for(int i =0; i<=list.size();i++) {
+			System.out.println(list.get(i));
+		}
+		
+		
+
 		return "user/bookingTeacher";
 	}
 	
 	@RequestMapping(value="usermain/bookingteacherresult", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
-		String boAddr1 = request.getParameter("boAddr");
-		bDTO.getBoAddr();
-		//int result = service.bookingInsert(bDTO);
+		String addr = request.getParameter("addr");
+		System.out.println("teacher result addr"+addr);
+		model.addAttribute("addr",addr);
 		
-		System.out.println("bookingPay 페이지"+boAddr1);
-		System.out.println("bookingPay 페이지2"+bDTO.getBoAddr());
+
 		
 		return "user/bookingPay";
 	}
@@ -114,7 +141,7 @@ public class UserController {
 	public String bookingpay(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
 	   System.out.println("bookingPay insert");
-		String boAddr1 = request.getParameter("boAddr");
+		String boAddr1 = request.getParameter("addr");
 		
 		//int result = service.bookingInsert(bDTO);
 		System.out.println("bookingPay 페이지"+boAddr1);
