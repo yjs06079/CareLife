@@ -11,12 +11,34 @@
     <selectKey resultType="int" keyProperty="pNo" order="AFTER">
        select max(p_no) from parents_g4
     </selectKey>
-    
+     
     	insert into parents_g4 (p_name, p_phone, p_sub_phone)
 	values(#{pName} , #{pPhone}, #{pSubPhone} )
 
 	
 </insert>
+
+ 
+ <select id="selectTeacher" resultType="com.care.user.dto.BookingDTO">
+ 	select 
+ 		t_addr , bo_date, bo_time
+    from teacher_g4 
+    join booking_g4 
+    on booking_g4.t_no = teacher_g4.t_no
+		where t_addr = #{boAddr}
+		and bo_date =#{boDate}
+		and bo_time not in (#{boTime});
+ </select>
+
+
+<insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
+	   
+     insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
+   		values((select max(p_no) from parents_g4 ), 3 , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, #{boRoadName},
+  		  	#{boRemarks}, 0 , 0)
+
+</insert>
+
 
 
 

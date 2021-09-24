@@ -13,6 +13,9 @@
 
 <form action="bookingparentsresult" method="post">
 
+
+<span>SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
+
 	<label for="pName"> 이름 </label>
 	<input type="text" id="pName" name="pName"  >
 	
@@ -24,14 +27,11 @@
 	<input type="text" id="confirm" name="confirm">
 	
 	<button type="button" id="checkBtn" name="checkBtn" >인증번호 확인</button>
-	
-	
-	
 	 
 	<label for="pSubPhone"> 보조연락처 </label>
 	<input type="text" id="pSubPhone" name="pSubPhone">
 	
-	<button  type="submit" id="resultVal" name="resultVal">다음</button>
+	<button  type="submit" id="resultVal" name="resultVal" value="pPhone">다음</button>
 	
 </form>
 

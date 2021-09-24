@@ -10,7 +10,23 @@
 <body>
 ${pno}
 
+<%-- <%
+// 세션값 가져오기
+String pPhone = (String) session.getAttribute("pPhone"); // Object 타입이므로 다운캐스팅
+
+System.out.print(pPhone +" 	여기!!! 	"); 
+
+%>   --%>
+
+
+
 <form action="bookingteacher" method="post">
+
+
+<span>2222     SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
+
+
+
 
 <label> 예약지역 </label>
 <select name="boAddr">
@@ -73,7 +89,7 @@ ${pno}
 
 
 <input type="button"  value="이전" onclick="location=''" />
-<input type="button"  value="다음" id="resultVal" />
+<input type="submit"  value="다음" id="resultVal" />
 
 </form>
 
