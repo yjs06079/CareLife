@@ -40,7 +40,7 @@
       </div>
       <!-- end loader --> 
       <!-- header -->
-      <header>
+      <header style="height: 230px">
          <!-- header inner -->
          <div class="header">
             <div class="head_top">
@@ -58,8 +58,6 @@
             </div>
          </div>
          <div class="container">
-         
-         
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
@@ -85,7 +83,7 @@
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 예약 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="usermain/bookingparents"> 예약하기 </a></li>
+                              <li><a href="http://localhost:8080/carelife/usermain/bookingparents"> 예약하기 </a></li>
                               <li><a href="#"> 예약 조회 </a></li>
                               <br>
                             </ul>
@@ -93,7 +91,7 @@
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 선생님 지원 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="usermain/apply" > 선생님 지원 </a></li>
+                              <li><a href="http://localhost:8080/carelife/usermain/apply" > 선생님 지원 </a></li>
                               <li><a href="#"> 합격조회 </a></li>
                               <br>
                             </ul>
@@ -104,8 +102,6 @@
                   </div>
                </div>
             </div>
-            
-            
          </div>
          <!-- end header inner --> 
       </header>
