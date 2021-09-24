@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        
     
 <!DOCTYPE html>
 <html>
@@ -18,11 +20,10 @@
 
   <br>
   
-  ${list}
-  
 <c:forEach var="item" items="${list }">
-   <c:out value="${item.bo_addr }"></c:out>
-   <c:out value="${item.boDate }"></c:out> <br>
+   <c:out value="${item.boAddr }"></c:out> <br>
+   <fmt:formatDate var="boDate" value="${item.boDate}" pattern="yyyy-MM-dd" />
+   <c:out value="${boDate }"/> <br>
    <c:out value="${item.boTime }"></c:out> <br>
 </c:forEach>
   

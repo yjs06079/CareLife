@@ -21,7 +21,7 @@
  
  <select id="selectTeacher" resultType="com.care.user.dto.BookingDTO">
  	select 
- 		t_addr , bo_date, bo_time
+ 	t_addr as  boAddr , bo_date as boDate , bo_time as boTime
     from teacher_g4 
     join booking_g4 
     on booking_g4.t_no = teacher_g4.t_no

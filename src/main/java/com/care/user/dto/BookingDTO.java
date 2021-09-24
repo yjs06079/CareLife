@@ -31,6 +31,7 @@ public class BookingDTO {
    private int boCancel;
    private int boPayment;
    
+   
 
 
 }
