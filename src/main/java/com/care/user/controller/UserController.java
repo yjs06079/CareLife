@@ -69,18 +69,25 @@ public class UserController {
 	
 	@RequestMapping(value="usermain/bookinginfo", method = {RequestMethod.GET, RequestMethod.POST})
 	//@PostMapping("usermain/bookinginfo")
-	public String bookingInfo(HttpServletRequest request) {
-		
-		//도로명주소  api
-
+	public String bookingInfo(HttpServletRequest request,  BookingDTO bDTO, Model model ){
 		
 		return "user/bookingInfo";
 	}
 
 	//@PostMapping("usermain/bookingteacher")
 	@RequestMapping(value="usermain/bookingteacher", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingTeacher(HttpServletRequest request,   BookingDTO bDTO, Model model ) throws ParseException {
+	public String bookingTeacher(HttpServletRequest request,   BookingDTO bDTO, Model model ){
 	
+		System.out.println("dto>>" +bDTO.getBoAddr());
+		System.out.println("dto>>" +bDTO.getBoDate());
+		System.out.println("dto>>" +bDTO.getBoTime());
+		System.out.println("dto>>" +bDTO.getBoHour());
+		System.out.println("dto>>" +bDTO.getBoRoadName());
+		System.out.println("dto>>" +bDTO.getBoRoadNameDetail());
+		System.out.println("dto>>" +bDTO.getBoRemarks());
+		
+		model.addAttribute("bDTO", bDTO);
+
 		List<BookingDTO> list  = service.selectTeacher(bDTO);
  
 		model.addAttribute("list",list);
@@ -92,6 +99,8 @@ public class UserController {
 	@RequestMapping(value="usermain/bookingteacherresult", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
+		model.addAttribute("bDTO", bDTO);
+		
 		return "user/bookingPay";
 	}
 
@@ -100,6 +109,7 @@ public class UserController {
 		
 		//사이다페이 api 
 		
+		model.addAttribute("bDTO", bDTO);
 		
 		return "user/bookingPay";
 	}
@@ -107,9 +117,7 @@ public class UserController {
 	@RequestMapping(value="usermain/bookingpayresult", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingpayresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
-		//bDTO 값 받아오기... 
-		
-		//String boAddr1 = request.getParameter("boAddr");
+		model.addAttribute("bDTO", bDTO);
 		
 		int result = service.bookingInsert(bDTO);
 		

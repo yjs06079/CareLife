@@ -62,7 +62,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="usermain"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
+                        <div class="logo"> <a href="http://localhost:8080/carelife/usermain"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
                         style="width: 225px; height: 100px; padding-bottom: 30px" /></a> </div>
                      </div>
                   </div>

@@ -14,9 +14,9 @@
    
    #form {
       padding: 20px;
-      width: 450px;
+      width: 500px;
       margin: 0px auto;
-      text-align: left;
+      text-align: center;
    }
    
    #sendPhoneNumber, #checkBtn {
@@ -36,7 +36,12 @@
       padding: 10px 50px;
       border: none;
       border-radius: 12px;
+      width: 400px;
    }
+   
+   #namediv {
+		margin-bottom: 10px;
+	}
    
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -49,7 +54,8 @@
 <div class="all">
 
    <form action="bookingparentsresult" method="post">
-
+		
+		<!-- 테스트 후 삭제예정  -->
       <span>SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
       
       <h1> 보호자의 정보를 입력해주세요. </h1>
@@ -58,40 +64,38 @@
       
       <br>
       
-      <p> 입력하신 정보로 예약 조회가 가능합니다. </p>
-      
       <div id="form">
          <div id="namediv">
-            <label for="pName"> 이름 </label>
-            <input type="text" id="pName" name="pName"  >
+            <label for="pName"> 보호자이름 </label>
+            <input type="text" id="pName" name="pName"style="width: 70%">
          </div>
          
          <br>
          
          <div id="namediv">
-            <label for="pPhone"> 연락처 </label>
-            <input type="text" id="pPhone" name="pPhone">
-            <button  type="button" id="sendPhoneNumber" name="sendPhoneNumber">인증번호 발송</button>
+            <label for="pPhone"> 핸드폰번호 </label>
+            <input type="text" id="pPhone" name="pPhone"  style="width: 40%">
+            <button  type="button" id="sendPhoneNumber" name="sendPhoneNumber"  style="width: 28%">인증번호 발송</button>
          </div>
          
          <br>
          
          <div id="namediv">
             <label for="confirm"> 인증번호 </label>
-            <input type="text" id="confirm" name="confirm">
-            <button type="button" id="checkBtn" name="checkBtn" >인증번호 확인</button>
+            <input type="text" id="confirm" name="confirm"  style="width: 40%">
+            <button type="button" id="checkBtn" name="checkBtn"  style="width: 28%">인증번호 확인</button>
          </div>
                    
          <br>
          
          <div id="namediv">
             <label for="pSubPhone"> 보조연락처 </label>
-            <input type="text" id="pSubPhone" name="pSubPhone">
+            <input type="text" id="pSubPhone" name="pSubPhone"  style="width: 70%">
          </div>
          
          <br>
          
-         <button  type="submit" id="resultVal" name="resultVal" value="pPhone">다음</button>
+         <button  type="submit" id="resultVal" name="resultVal">다음</button>
       </div>
    </form>
 </div>
