@@ -92,7 +92,7 @@
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 선생님 지원 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                               <li><a href="http://localhost:8080/carelife/usermain/apply" > 선생님 지원 </a></li>
-                              <li><a href="#"> 합격조회 </a></li>
+                              <li><a href="http://localhost:8080/carelife/usermain/passcheck"> 합격조회 </a></li>
                               <br>
                             </ul>
                               </li>
