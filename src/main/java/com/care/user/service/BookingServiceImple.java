@@ -36,6 +36,14 @@ public class BookingServiceImple implements BookingService {
 		return mapper.selectTeacher(dto);
 	}
 
+	@Override
+	public BookingDTO payment(BookingDTO bDTO) {
+		
+		
+		return mapper.payment(bDTO);
+		
+	}
+
 	
 	
 	

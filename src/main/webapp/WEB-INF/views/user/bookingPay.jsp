@@ -33,6 +33,12 @@
       width: 400px;
    }
 </style>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
 </head>
 <body>
 
@@ -60,6 +66,10 @@
 				<c:out value="${bDTO.boRoadName }"></c:out> <br>
 				<c:out value="${bDTO.boRoadNameDetail }"></c:out> <br>
 				<c:out value="${bDTO.boRemarks }"></c:out> <br>
+				<c:out value="${bDTO.boPayment }"></c:out> <br>
+				
+				
+				
 				
 				<div style="background-color: yellow;">
 					<input type="text" value="${bDTO.boAddr }" name="boAddr">
@@ -76,6 +86,8 @@
 		</div>
 	</form>
 </div>
+
+<script src="${pageContext.servletContext.contextPath}/resources/js/bookingpay.js"></script>
 <%@ include file="../includes/footer.jsp"%>
 
 </body>

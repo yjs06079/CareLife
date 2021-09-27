@@ -99,17 +99,24 @@ public class UserController {
 	@RequestMapping(value="usermain/bookingteacherresult", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
+		BookingDTO pay= service.payment(bDTO);
+		//시간 시간요금 나머지
+		
+		bDTO.setBoPayment(pay.getBoPayment());
+	   
 		model.addAttribute("bDTO", bDTO);
+		
+		System.out.println("pay" + bDTO.getBoPayment());
+		
 		
 		return "user/bookingPay";
 	}
 
 	@RequestMapping(value="usermain/bookingpay", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingpay(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
-		
-		//사이다페이 api 
-		
+			
 		model.addAttribute("bDTO", bDTO);
+			
 		
 		return "user/bookingPay";
 	}
@@ -120,10 +127,12 @@ public class UserController {
 		model.addAttribute("bDTO", bDTO);
 		
 		int result = service.bookingInsert(bDTO);
+	
 		
 		return "user/bookingCompletion";
 	}
 	
-	
+
+
 	
 }

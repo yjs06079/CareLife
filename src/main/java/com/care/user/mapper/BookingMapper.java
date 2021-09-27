@@ -17,4 +17,6 @@ public interface BookingMapper {
 
 	List<BookingDTO> selectTeacher(BookingDTO dto);
 
+	BookingDTO payment(BookingDTO bDTO);
+
 }

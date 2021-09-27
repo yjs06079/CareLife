@@ -40,6 +40,36 @@
 </insert>
 
 
+<select id="payment" parameterType="com.care.user.dto.BookingDTO" resultType="com.care.user.dto.BookingDTO">
+
+
+	select bo_payment as boPayment 
+	from booking_g4 
+	
+
+
+<![CDATA[
+
+<if test='boHour ==0'>
+    bo_payment = 10000
+</if>
+<if test='boHour ==1'>
+    bo_payment = 20000
+</if>
+<if test='boHour ==2'>
+    bo_payment = 30000
+</if>
+<if test='boHour ==3'>
+    bo_payment = 40000
+</if>
+
+      ]]>  
+
+
+
+
+</select>
+
 
 
 </mapper>

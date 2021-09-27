@@ -13,6 +13,8 @@ public interface BookingService {
 	public int bookingInsert(BookingDTO dto);
 
 	public List<BookingDTO> selectTeacher(BookingDTO dto);
+
+	public BookingDTO payment(BookingDTO bDTO);
  
 	
 	
