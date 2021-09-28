@@ -48,6 +48,11 @@
 
 	<form action="bookingpayresult" method="post">
 	
+		<input type="hidden" name="pno" value="${pno }" id="pno">
+		<input type="hidden" name="pName" value="${pName }" id="pName">
+		<input type="hidden" name="pPhone" value="${pPhone}" id="pPhone">
+	
+	
 		<div id="form">
 			<h1> 예약확정을 위해 결제해주세요. </h1>
 	        <p> 결제 진행 후 담당선생님에게 예약정보가 안내됩니다. </p>
@@ -67,17 +72,18 @@
 				<c:out value="${bDTO.boRoadNameDetail }"></c:out> <br>
 				<c:out value="${bDTO.boRemarks }"></c:out> <br>
 				<c:out value="${bDTO.boPayment }"></c:out> <br>
+				<input type="hidden" name="pay" id="pay" value="${bDTO.boPayment }"><br>
 				
 				
 				
 				
 				<div style="background-color: yellow;">
-					<input type="text" value="${bDTO.boAddr }" name="boAddr">
-					<input type="text" value="${boDate }" name="boDate">
-					<input type="text" value="${bDTO.boTime }" name="boTime">
-					<input type="text" value="${bDTO.boHour }" name="boHour">
-					<input type="text" value="${bDTO.boRoadName }" name="boRoadName">
-					<input type="text" value="${bDTO.boRoadNameDetail }" name="boRoadNameDetail">
+					<input type="text" value="${bDTO.boAddr }" name="boAddr" id="addr">
+					<input type="text" value="${boDate }" name="boDate" id="date">
+					<input type="text" value="${bDTO.boTime }" name="boTime" id="time" >
+					<input type="text" value="${bDTO.boHour }" name="boHour" id="hour">
+					<input type="text" value="${bDTO.boRoadName }" name="boRoadName" id="">
+					<input type="text" value="${bDTO.boRoadNameDetail }" name="boRoadNameDetail" id="roadNameDetail">
 					<input type="text" value="${bDTO.boRemarks }" name="boRemarks">
 				</div>
 				
@@ -87,7 +93,7 @@
 	</form>
 </div>
 
-<script src="${pageContext.servletContext.contextPath}/resources/js/bookingpay.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/js/bookingPay.js"></script>
 <%@ include file="../includes/footer.jsp"%>
 
 </body>

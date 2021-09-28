@@ -60,6 +60,9 @@ public class UserController {
 			int result = service.parentsInsert(dto);
 			
 			model.addAttribute("pno", dto.getPNo());
+			model.addAttribute("pPhone", dto.getPPhone());
+			model.addAttribute("pName", dto.getPName());
+			
 			
 			System.out.println("bookingparentsresult page");
 			
@@ -80,19 +83,20 @@ public class UserController {
 	@RequestMapping(value="usermain/bookingteacher", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingTeacher(HttpServletRequest request,   BookingDTO bDTO, Model model ){
 	
-		System.out.println("dto>>" +bDTO.getBoAddr());
-		System.out.println("dto>>" +bDTO.getBoDate());
-		System.out.println("dto>>" +bDTO.getBoTime());
-		System.out.println("dto>>" +bDTO.getBoHour());
-		System.out.println("dto>>" +bDTO.getBoRoadName());
-		System.out.println("dto>>" +bDTO.getBoRoadNameDetail());
-		System.out.println("dto>>" +bDTO.getBoRemarks());
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String pName = request.getParameter("pName");
+		String pPhone = request.getParameter("pPhone");
+		String boAddr = request.getParameter("boAddr");
+		
+		bDTO.setPno(pno);
 		
 		model.addAttribute("bDTO", bDTO);
 
 		List<BookingDTO> list  = service.selectTeacher(bDTO);
  
 		model.addAttribute("list",list);
+		model.addAttribute("pName",pName);
+		model.addAttribute("pPhone",pPhone);
 		
 
 		return "user/bookingTeacher";
@@ -101,15 +105,12 @@ public class UserController {
 	@RequestMapping(value="usermain/bookingteacherresult", method = {RequestMethod.GET, RequestMethod.POST})
 	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
 		
-		BookingDTO pay= service.payment(bDTO);
-		//시간 시간요금 나머지
-		
-		bDTO.setBoPayment(pay.getBoPayment());
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String pName = request.getParameter("pName");
+		String pPhone = request.getParameter("pPhone");	
 	   
 		model.addAttribute("bDTO", bDTO);
-		
-		System.out.println("pay" + bDTO.getBoPayment());
-		
+				
 		
 		return "user/bookingPay";
 	}

@@ -34,13 +34,5 @@ public class UserMapperTest {
 	
 	
 	
-	@Test
-	public void payTest() {
-		
-		BookingDTO dto = BookingDTO.builder().boHour(1).build();
 
-		 mapper.payment(dto);
-		 log.info("payyyyyy"+dto.getBoHour());
-			log.info("payyyyyy"+dto.getBoPayment());
-	}
 }

@@ -47,6 +47,10 @@
 <div class="all">
 
 	<form action="bookingteacherresult" method="post">
+	
+	<input type="hidden" name="pno" value="${bDTO.pno }">
+	<input type="hidden" name="pName" value="${pName }">
+	<input type="hidden" name="pPhone" value="${pPhone}">
 		
 		<h1> 담당선생님을 선택해주세요. </h1>
 	    <p> 사랑과 정성으로 아이와 함께하는 선생님 </p>

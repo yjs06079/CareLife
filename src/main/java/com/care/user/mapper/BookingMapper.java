@@ -18,8 +18,6 @@ public interface BookingMapper {
 
 	List<BookingDTO> selectTeacher(BookingDTO dto);
 
-	BookingDTO payment(BookingDTO DTO);
-
 	List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO);
 
 	int bookingDelete(BookingParentsDTO DTO);

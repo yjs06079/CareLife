@@ -30,6 +30,7 @@ public class BookingDTO {
    private String boRemarks;
    private int boCancel;
    private int boPayment;
+   private int pno;
    
    
 

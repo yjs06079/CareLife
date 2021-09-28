@@ -40,13 +40,6 @@
 </insert>
 
 
-<select id="payment" parameterType="com.care.user.dto.BookingDTO" resultType="com.care.user.dto.BookingDTO">
-	select 
-		bo_payment as boPayment , bo_Hour as boHour
-	from booking_g4 
-	where
-		 bo_Hour = #{boHour}
-</select>
 
 <select id="bookingCheck" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="com.care.user.dto.BookingParentsDTO">
  <![CDATA[	select   *                              			

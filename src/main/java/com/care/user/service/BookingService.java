@@ -15,8 +15,6 @@ public interface BookingService {
 
 	public List<BookingDTO> selectTeacher(BookingDTO dto);
 
-	public BookingDTO payment(BookingDTO bDTO);
-
 	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO);
 
 	public int bookingDelete(BookingParentsDTO DTO);

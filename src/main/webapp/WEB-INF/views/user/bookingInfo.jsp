@@ -64,6 +64,10 @@ System.out.print(pPhone +"    여기!!!    ");
 <div class="all">
 
 	<form action="bookingteacher" method="post">
+	
+		<input type="hidden" name ="pno" id="pno" value="${pno}">
+	    <input type="hidden" name ="pName" id="pName" value="${pName}">
+	    <input type="hidden" name ="pPhone" id="pPhone" value="${pPhone}">
 		
 		<!-- 테스트 후 삭제예정  -->
 		<span> SessionAttributes로 넘어온 pPhone값 : ${pPhone} pno : ${pno}</span>
