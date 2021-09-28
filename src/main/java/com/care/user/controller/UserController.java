@@ -189,7 +189,7 @@ public class UserController {
 		model.addAttribute("endblock", endblock);
 		model.addAttribute("totalpage", totalpage);
 		
-		System.out.println("size => " + list.size());
+		System.out.println("size => " + list.size()); //사이즈이상함..
 //		
 //		for(int i=0; i<=list.size(); i++) {
 //			System.out.println(list.get(i).getPname());
@@ -200,12 +200,12 @@ public class UserController {
 	}
 
 	@RequestMapping(value="usermain/bookingDelete", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingDelete(HttpServletRequest request,  BookingParentsDTO DTO, Model model, @PathVariable int currpage ){
+	public String bookingDelete(HttpServletRequest request,  BookingParentsDTO DTO, Model model ){
 		
 		System.out.println(DTO.getPno());
 		
 		int result = service.bookingDelete(DTO);
-		return "redirect:/usermain/bookingCheckResult?currpage=\" + currpage;";
+		return "user/bookingCheck";  //list로 돌아가야함..
 	}
 	
 	

@@ -61,7 +61,6 @@
  <%@ include file="../includes/userHeader.jsp"%>
 
 <div class="all">
-
 		<h1> 예약조회 </h1>
 		
 		<c:forEach var="item" items="${list }" begin="0" end="0">
@@ -110,9 +109,42 @@
 				</c:if>
 			</tbody>
 		</table>
-         
-         
-	</form>
+		
+		<!-- 페이징처리...확인해주세요... -->
+		<ul class="pagination justify-content-center">
+			<div class="page1">
+			 <c:if test="${startblock>1 }">
+			    <a href="usermain/bookingCheckResult?curr=${currpage-1}&pname=${pname }&pphone=${pphone }"><<</a>
+			 </c:if>
+			</div>
+			
+			<div class="page2">
+			<c:forEach var="index" begin="${startblock }" end="${endblock }">
+			  <c:if test="${currpage==index }">
+			     <c:out value="${index }"></c:out>
+			  </c:if>
+			  <c:if test="${currpage!=index }">
+			  		 <a href="usermain/bookingCheckResult?curr=${index}&pname=${pname }&pphone=${pphone }"><<</a>
+			  </c:if>
+			</c:forEach>
+			</div>
+			
+			<div class="page3">
+			<c:if test="${endblock<totalpage}">
+			  <a href="usermain/bookingCheckResult?curr=${currpage+1}&pname=${pname }&pphone=${pphone }"><<</a>
+			</c:if>
+			</div>
+		</ul>
+		
+	
+	
+	
+		<div>
+			<c:forEach var="item" items="${list }" begin="0" end="0">
+				<input type="text" value="${item.pname }" name="pname">
+				<input type="text" value="${item.pphone }" name="pphone">
+			</c:forEach>
+         </div>
 </div>
 
 <%@ include file="../includes/footer.jsp"%>
