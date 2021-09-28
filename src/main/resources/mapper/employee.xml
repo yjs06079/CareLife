@@ -4,8 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.care.employee.mapper.EmployeeMapper">
-<!-- 	<insert id="teacherApply" parameterType="com.care.employee.dto.EmployeeDTO">
-		insert into employee_g4(e_name, e_file, e_pass)
-		values(#{e_name}, #{e_file}, 0)
-	</insert> -->
+
+	<!-- 지원자 insert -->
+ 	<insert id="teacherApply" parameterType="com.care.employee.dto.EmployeeDTO">
+		insert into employee_g4(e_photo, e_name, e_birth, e_phone, e_addr, e_edu, e_career, e_license, e_info, e_pass)
+		values(#{ephoto}, #{ename}, #{ebirth}, #{ephone}, #{eaddr}, #{eedu}, #{ecareer}, #{elicense}, #{einfo}, 0)
+	</insert>
+	
+	<!-- 지원자 합격 조회 -->
+	<select id="applyPassResult" parameterType="com.care.employee.dto.ApplyCheckDTO" resultType="com.care.employee.dto.ApplyCheckDTO">
+		select e_name as ename
+			 , e_birth as ebirth
+			 , e_phone as ephone
+			 , e_pass as epass
+		from employee_g4
+		where e_name = #{ename}
+		and e_birth = #{ebirth}
+		and e_phone = #{ephone}
+	</select>
+	
+	<!-- 중복 지원 체크 -->
+ 	<select id="checkInfo" parameterType="java.util.Map" resultType="int">
+		select count(*)
+		from employee_g4
+		where e_name = #{ename}
+		and e_birth = #{ebirth}
+	</select>
 </mapper>
