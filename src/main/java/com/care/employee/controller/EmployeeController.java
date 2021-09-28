@@ -1,17 +1,20 @@
 package com.care.employee.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.care.employee.dto.ApplyCheckDTO;
 import com.care.employee.dto.EmployeeDTO;
 import com.care.employee.service.EmployeeService;
 
@@ -21,42 +24,55 @@ public class EmployeeController {
 	@Autowired //service 주입
 	private EmployeeService service;
 	
-	@RequestMapping("usermain/apply")
-	public String apply() {
+	//////////////////////////////// 선생님 지원 /////////////////////////////////////////
+	
+	@GetMapping("usermain/apply")
+	public String applyTeacher() {
 		
 		return "employee/applyTeacher";
 	}
 	
-	@GetMapping("usermain/download")
-	public void download(HttpServletResponse response) throws Exception {
-        try {
-        	String path = "C:\\msa\\form.hwp"; // 이력서 양식 파일 경로
-        	
-        	File file = new File(path);
-        	response.setHeader("Content-Disposition", "attachment;filename=" + file.getName()); // 다운로드 되거나 로컬에 저장되는 용도로 쓰이는지를 알려주는 헤더
-        	
-        	FileInputStream fileInputStream = new FileInputStream(path); // 파일 읽어오기 
-        	OutputStream out = response.getOutputStream();
-        	
-        	int read = 0;
-            byte[] buffer = new byte[1024]; //크기가 1024인 바이트 배열 객체 생성
-            while ((read = fileInputStream.read(buffer)) != -1) { // 1024바이트씩 계속 읽으면서 outputStream에 저장, -1이 나오면 더이상 읽을 파일이 없음
-                out.write(buffer, 0, read);
-            }
-                
-        } catch (Exception e) {
-            System.out.println(e);
-            
-        }
-    }
-	
 	@PostMapping("usermain/applyresult")
-	public String applyresult(EmployeeDTO dto, Model model) {
-		int result = service.teacherApply(dto);
+	public String applyResult(EmployeeDTO dto, Model model) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ename", dto.getEname());
+		map.put("ebirth", dto.getEbirth());
 		
-		model.addAttribute("result", result);
+		int cnt = service.checkInfo(map);
 		
-		return "employee/applyResult";
+		//System.out.println("cnt........" + cnt);
+		
+		if (cnt == 0) { //cnt가 0이라면 db에 없는 것 -> 지원 가능
+			int result = service.teacherApply(dto);
+			model.addAttribute("result", result);
+			
+			return "employee/applyResult";
+		
+		} else {
+			model.addAttribute("result", cnt);
+			
+			return "employee/applyFail";
+		}
+	}
+	
+	//////////////////////////////// 합격 조회 //////////////////////////////////////////
+	
+	@GetMapping("usermain/passcheck")
+	public String applyPassCheck() {
+		
+		return "employee/applyPassCheck";
+	}
+	
+	@PostMapping("usermain/passresult")
+	public String applyPassCheckResult(ApplyCheckDTO dto, Model model) {
+		
+		//select한 컬럼 수를 view에 뿌려주기 위해 ArrayList로 사용
+		ArrayList<ApplyCheckDTO> list = service.applyPassResult(dto);
+		
+		model.addAttribute("dto", list);
+		model.addAttribute("size", list.size());
+		
+		return "employee/applyPassResult";
 	}
 	
 }

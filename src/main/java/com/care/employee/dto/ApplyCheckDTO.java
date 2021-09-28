@@ -8,14 +8,9 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDTO {
-	private String ephoto;
+public class ApplyCheckDTO {
 	private String ename;
 	private String ebirth;
 	private String ephone;
-	private String eaddr;
-	private String eedu;
-	private String ecareer;
-	private String elicense;
-	private String einfo;
+	private int epass;
 }
