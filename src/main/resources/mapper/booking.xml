@@ -34,42 +34,69 @@
 <insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
 	   
      insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
-   		values((select max(p_no) from parents_g4 ), 3 , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, #{boRoadName},
+   		values((select max(p_no) from parents_g4 ), 3 , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName} , #{boRoadNameDetail}),
   		  	#{boRemarks}, 0 , 0)
 
 </insert>
 
 
 <select id="payment" parameterType="com.care.user.dto.BookingDTO" resultType="com.care.user.dto.BookingDTO">
-
-
-	select bo_payment as boPayment 
+	select 
+		bo_payment as boPayment , bo_Hour as boHour
 	from booking_g4 
-	
-
-
-<![CDATA[
-
-<if test='boHour ==0'>
-    bo_payment = 10000
-</if>
-<if test='boHour ==1'>
-    bo_payment = 20000
-</if>
-<if test='boHour ==2'>
-    bo_payment = 30000
-</if>
-<if test='boHour ==3'>
-    bo_payment = 40000
-</if>
-
-      ]]>  
-
-
-
-
+	where
+		 bo_Hour = #{boHour}
 </select>
 
+<select id="bookingCheck" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="com.care.user.dto.BookingParentsDTO">
+ <![CDATA[	select   *                              			
+			from (                                  			
+	       select @rownum:=@rownum+1 as rnum, A.*      
+		       from (                          			
+					select 
+					booking_g4.p_no as pno 
+					, p_name as pname
+					, p_phone as pphone
+					, t_no as tNo 
+					, bo_addr as boAddr 
+					, bo_date as boDate 
+					, bo_time as boTime 
+					, bo_hour as boHour
+					, bo_road_name as boRoadName
+					, bo_remarks as boRemarks
+					, bo_cancel as boCancel 
+					, bo_payment as boPayment
+				from booking_g4
+				join parents_g4 
+				on booking_g4.p_no = parents_g4.p_no
+				where 
+					p_name = #{pname}
+					and p_phone=#{pphone}
+					order by pno
+	               )A, (select @rownum:=0) R  
+	       ) B                                
+	 where rnum>=1  and rnum<=5
+ ]]>
+	 
+</select>
 
+<delete id="bookingDelete" parameterType="com.care.user.dto.BookingParentsDTO">
+	delete booking_g4
+	from booking_g4
+	join parents_g4 
+	on booking_g4.p_no = parents_g4.p_no
+	where booking_g4.p_no = #{pno}
+	 
+</delete>
+
+<select id="getMyTotalCount" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="int">
+	select count(*) 
+	from  booking_g4
+	join parents_g4 
+	on booking_g4.p_no = parents_g4.p_no
+	where 
+		p_name = #{pname}
+	and p_phone=#{pphone}
+</select>
 
 </mapper>

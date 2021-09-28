@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.care.user.dto.BookingDTO;
+import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.TeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 
@@ -17,6 +18,12 @@ public interface BookingMapper {
 
 	List<BookingDTO> selectTeacher(BookingDTO dto);
 
-	BookingDTO payment(BookingDTO bDTO);
+	BookingDTO payment(BookingDTO DTO);
+
+	List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO);
+
+	int bookingDelete(BookingParentsDTO DTO);
+
+	int getMyTotalCount(BookingParentsDTO DTO);
 
 }

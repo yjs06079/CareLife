@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.care.user.dto.BookingDTO;
+import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.TeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.mapper.BookingMapper;
@@ -42,6 +43,21 @@ public class BookingServiceImple implements BookingService {
 		
 		return mapper.payment(bDTO);
 		
+	}
+
+	@Override
+	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO) {
+		return mapper.bookingCheck(DTO);
+	}
+
+	@Override
+	public int bookingDelete(BookingParentsDTO DTO) {
+		return mapper.bookingDelete(DTO);
+	}
+
+	@Override
+	public int getMyTotalCount(BookingParentsDTO DTO) {
+		return mapper.getMyTotalCount(DTO);
 	}
 
 	
