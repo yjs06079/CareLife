@@ -67,12 +67,12 @@ System.out.print(pPhone +"    여기!!!    ");
 	<form action="bookingteacher" method="post">
 	
 	<input type="hidden" name="pno" id="pno" value="${userDTO.pno}">	
-	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
-	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+	<input type="hidden" name="pname" value="${userDTO.pname}">
+	<input type="hidden" name="pphone" value="${userDTO.pphone}">
 		    
 		<!-- 테스트 후 삭제예정  -->
 		<span> SessionAttributes로 넘어온 pPhone값 : ${userDTO.pphone} pno의 값  : ${userDTO.pno}</span>
-
+		<span>  pname의 값  : ${userDTO.pname}</span>
 	
 		<br>
 		

@@ -57,20 +57,27 @@
    
 <div class="all">
 
-<form method="post" action="bookingpayresult"></form>
+
+
+	<input type="hidden" name="pno" id="pno" value="${pno}">	
+	<input type="hidden" name="pname" id="pname" value="${pname}">
  
-  <h1> ${tname }과 매칭이 완료되었습니다. </h1>
-  <h1> 슬기로운 돌봄생활과 함께해 주셔서 감사합니다. </h1>
+   <h1>${pname} 과 매칭이 완료되었습니다. </h1>
+   <h1> 슬기로운 돌봄생활과 함께해 주셔서 감사합니다. </h1>
+  
+  	<input type="hidden" name="pno" id="pno" value="${pno}">
   
   
   		       <div style="background-color: yellow;">
-					<input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="addr">
-					<input type="text" value="${bookingDTO.boDate }" name="boDate" id="date">
-					<input type="text" value="${bookingDTO.boTime }" name="boTime" id="time" >
-					<input type="text" value="${bookingDTO.boHour }" name="boHour" id="hour">
-					<input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="">
-					<input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="roadNameDetail">
-					<input type="text" value="${bookingDTO.boRemarks }" name="boRemarks">
+               <input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
+			   <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
+			   <input type="hidden" value="${boDate }" name="boDate" id="boDate">
+               <input type="text" value="${bookingDTO.boTime }" name="boTime" id="boTime" >
+               <input type="text" value="${bookingDTO.boHour }" name="boHour" id="boHour">
+               <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
+               <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
+               <input type="text" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
+               <input type="hidden" name="pay"  id="pay" value="${bookingDTO.boPayment }"><br>
 				</div>
  
   <input type="button" id="resultVal" name="resultVal" value="예약조회하기" onclick="location.href='#'">

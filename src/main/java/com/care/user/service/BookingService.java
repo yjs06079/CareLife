@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
-import com.care.user.dto.TeacherDTO;
+import com.care.user.dto.BookingTeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 
 public interface BookingService {
@@ -13,7 +13,7 @@ public interface BookingService {
 
 	public int bookingInsert(BookingDTO bookingDTO);
 
-	public List<BookingDTO> selectTeacher(BookingDTO bookingDTO);
+	public List<BookingTeacherDTO> selectTeacher(BookingTeacherDTO bookingTeacherDTO);
 
 	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO);
 
@@ -21,6 +21,7 @@ public interface BookingService {
 
 	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 
+	
 
  
 	

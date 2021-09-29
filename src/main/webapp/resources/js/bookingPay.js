@@ -2,12 +2,10 @@
  * 
 */
 
+  function payment(){
 
-
-    function payment(){
-
-        let hour = document.getElementById('hour').value;
-		let pay = document.getElementById('pay');
+        let hour = document.getElementById('boHour').value;
+		let pay = document.getElementById('boPayment');
 	
 
 
@@ -26,8 +24,8 @@
      }
      
 
-        console.log('PAY',pay.value);
-  
+  console.log(hour)
+  console.log(pay.value)
 }
 
 payment();
@@ -37,17 +35,36 @@ payment();
 
  
 
-   function impootPay(){
+   function importPay(){
 	
+
+
 	
-	var pay = document.getElementById('pay').value;
-	var name = document.getElementById('pname').value;
+
+
+
+	
+	  console.log(pname)
+ console.log(boAddr)
+
+	  console.log(pno)
+
+	var boAddr = document.getElementById('boAddr').value;
+	var boDate = document.getElementById('boDate').value;
+	var boTime = document.getElementById('boTime').value;
+	var boHour = document.getElementById('boHour').value;
+	var boRoadName = document.getElementById('boRoadName').value;
+	var boPayment = document.getElementById('boPayment').value;
+	var pname = document.getElementById('pname').value;
 	var pno = document.getElementById('pno').value;
-	var pPhone = document.getElementById('pphone').value;
-	var roadNameDetail = document.getElementById('roadNameDetail').value;
+	var pphone = document.getElementById('pphone').value;
+	var boRoadNameDetail = document.getElementById('boRoadNameDetail').value;
+	var boRemarks = document.getElementById('boRemarks').value;
+	
+	
         IMP.init('imp13670706'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
-        
+ 
         IMP.request_pay({
             pg : 'kakaopay',
             pay_method : 'card',
@@ -55,9 +72,9 @@ payment();
             name : '슬기로운 돌봄생활',
             amount : pay,
             buyer_email : 'a@aa',
-            buyer_name : name,
+            buyer_name : pname,
             buyer_tel : pphone,
-            buyer_addr : roadNameDetail,
+            buyer_addr : boRoadNameDetail,
             buyer_postcode : '123-456',
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
@@ -68,8 +85,22 @@ payment();
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        imp_uid : rsp.imp_uid
+                        imp_uid : rsp.imp_uid,
                         //기타 필요한 데이터가 있으면 추가 전달
+/*					   'boAddr':boAddr,
+		               'boDate':boDate,
+					   'boTime':boTime,
+		               'boHour':boHour,
+					   'boRoadName':boRoadName,
+		               'boPayment':boPayment,
+					   'boTime':boTime,
+		               'pname':pname,
+					   'pno':pno,
+		               'pphone':pphone,
+					   'boRoadName':boRoadName,
+		               'boRoadNameDetail':boRoadNameDetail,
+					   'boRemarks':boRemarks*/
+
                     }
                 }).done(function(data) {
                     //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
@@ -88,8 +119,8 @@ payment();
                 });
                 //성공시 이동할 페이지
                 location.href="http://localhost:8080/carelife/usermain/bookingcompletion";
-alert(pno);
-alert(name);
+
+
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
@@ -103,7 +134,7 @@ alert(name);
  
     };
 
-impootPay();
+importPay();
 
     
      

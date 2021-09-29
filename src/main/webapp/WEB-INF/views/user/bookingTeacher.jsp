@@ -3,8 +3,7 @@
     
         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-        
-    
+      <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,9 +47,11 @@
 
 	<form action="bookingpay" method="post">
 	
-	<input type="hidden" name="pno" value="${userParentsDTO.pno}">
-	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
-	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+	
+		<input type="hidden" name="pno" id="pno" value="${pno}">	
+		<input type="hidden" name="pname" value="${pname}">
+		<input type="hidden" name="pphone" value="${pphone}">
+
 
 		<h1> 담당선생님을 선택해주세요. </h1>
 	    <p> 사랑과 정성으로 아이와 함께하는 선생님 </p>
@@ -59,69 +60,63 @@
 	    <p> 여유와 인내심으로 아이를 기다려주고, 지지해 줍니다.</p>
 		
 		  <br>
-		  
-		  	<!-- 테스트 후 삭제예정  -->
-			<c:forEach var="item" items="${list }">
-			   <c:out value="${item.boAddr }"></c:out> <br>
-			   <fmt:formatDate var="boDate" value="${item.boDate}" pattern="yyyy-MM-dd" />
-			   <c:out value="${boDate }"/> <br>
-			   <c:out value="${item.boTime }"></c:out> <br>
-			   <c:out value="${item.tno }"></c:out> <br>
-			</c:forEach>
-		  
-		  <!-- forEach문 돌려서 사용예정 -->
-		  <div id="form">
-			  <div class="card" style="float:left; margin-right: 10px;">
-				  <img src="" alt="" /> 선생님사진
-				  <div class="card-body">
-				    <h5 class="card-title"> 선생님이름 ${tname }</h5>
-				    <p class="card-text">선생님소개 ${tinfo }</p>
-				    <input type="radio" name="tno" id="tno" value="${tno }"> 
-			  </div>
-			</div>
+		
+			     <div class="row">
 
-			  <div class="card">
-				  <img src="" alt="" /> 선생님사진
-				  <div class="card-body">
-				    <h5 class="card-title"> 선생님이름 ${tname }</h5>
-				    <p class="card-text">선생님소개 ${tinfo }</p>
-				    <input type="radio" name="tno" id="tno" value="${tno }"> 
-			  </div>
-			</div>
-			  
-			  <br>
-			  
-			  <!-- 테스트 후 삭제예정  -->
-			  <input type='radio' name='tname' value='이경실' id="tname"/>이경실
-			  <input type='radio' name='tname' value='조승우' id="tname" />조승우
+            <c:forEach var="item" items="${list }">
+
+               <div class="col-4" style="margin-bottom: 30px">
+                  <p></p>
+
+                  <div class="card">
+                     <div class="card-header" style="height: 300px">
+                        <div class="circle">
+                           <img src="<spring:url value='/images/${item.tphoto}' />"
+                              class="teacherimg" width="200px" height="200px" />
+                        </div>
+                     </div>
+
+                     <div class="card-body">
+                        <h5 class="card-title">
+                         <input type="radio" name="tno" id="tno" value="${item.tno}"> 
+                           <c:out value="${item.tname}" />
+                           &nbsp;선생님
+                        </h5>
+                        <p class="card-text">
+                           <c:out value="${item.tinfo}" />
+                            &nbsp;소개
+                        </p>
+                     </div>
+                  </div>
+
+               </div>
+
+            </c:forEach>
+
+      </div>
 			
+
+			  
 			  <br>
+			  
+
 			
 			<input type="submit" id="btn" name="btn" value="결제하기" >
 			
 			<!-- dto정보  -->
-			<div hidden="true">
-				<c:out value="${bookingDTO.boAddr }"></c:out> <br>
-				<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
-				<c:out value="${bookingDTO.boDate }"></c:out> <br>
-				<c:out value="${bookingDTO.boTime }"></c:out> <br>
-				<c:out value="${bookingDTO.boHour }"></c:out> <br>
-				<c:out value="${bookingDTO.boRoadName }"></c:out> <br>
-				<c:out value="${bookingDTO.boRoadNameDetail }"></c:out> <br>
-				<c:out value="${bookingDTO.boRemarks }"></c:out> <br>
 				
 				<div style="background-color: yellow;">
-					<input type="text" value="${bookingDTO.boAddr }" name="boAddr">
-					<input type="text" value="${bookingDTO.boDate }" name="boDate">
-					<input type="text" value="${bookingDTO.boTime }" name="boTime">
-					<input type="text" value="${bookingDTO.boHour }" name="boHour">
-					<input type="text" value="${bookingDTO.boRoadName }" name="boRoadName">
-					<input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail">
-					<input type="text" value="${bookingDTO.boRemarks }" name="boRemarks">
+					<input type="hidden" value="${bookingDTO.boAddr }" name="boAddr">
+					<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
+				    <input type="hidden" value="${boDate }" name="boDate">
+					<input type="hidden" value="${bookingDTO.boTime }" name="boTime">
+					<input type="hidden" value="${bookingDTO.boHour }" name="boHour">
+					<input type="hidden" value="${bookingDTO.boRoadName }" name="boRoadName">
+					<input type="hidden" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail">
+					<input type="hidden" value="${bookingDTO.boRemarks }" name="boRemarks">
+					<input type="hidden" name="pay" value="${bookingDTO.boPayment }"><br>
 				</div>
-				
-			</div>
-			
+	
 		</div>
    </form>
 </div>

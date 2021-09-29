@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
-import com.care.user.dto.TeacherDTO;
+import com.care.user.dto.BookingTeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.mapper.BookingMapper;
 
@@ -32,9 +32,9 @@ public class BookingServiceImple implements BookingService {
 	}
 
 	@Override
-	public List<BookingDTO> selectTeacher(BookingDTO bookingDTO) {
+	public List<BookingTeacherDTO> selectTeacher(BookingTeacherDTO bookingTeacherDTO) {
 
-		return mapper.selectTeacher(bookingDTO);
+		return mapper.selectTeacher(bookingTeacherDTO);
 	}
 
 
@@ -53,6 +53,8 @@ public class BookingServiceImple implements BookingService {
 		
 		return mapper.getMyTotalCount(bookingParentsDTO);
 	}
+
+
 
 
 	

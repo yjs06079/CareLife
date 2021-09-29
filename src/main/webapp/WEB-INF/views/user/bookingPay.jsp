@@ -3,6 +3,8 @@
     
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+   
+   
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +36,7 @@
    }
 </style>
 <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -47,10 +49,10 @@
 <div class="all">
 
 	<form action="bookingcompletion" method="post">
-	
-	<input type="hidden" name="pno" id="pno" value="${userDTO.pno}">	
-	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
-	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+	<input type="hidden" name="pno" id="pno" value="${pno}">	
+	<input type="hidden" name="pname" id="pname" value="${pname}">
+	<input type="hidden" name="pphone" id="pphone" value="${pphone}">
+		<input type="hidden" name="tno" id="tno" value="${tno}">
 
 	
 	
@@ -63,33 +65,20 @@
 			<button  type="submit" id="btn" name="btn" >찐 결제완료 후 예약  insert!!!!</button>
 			
 			<!-- dto정보  -->
-			<div hidden="true">
-				<c:out value="${bookingDTO.boAddr }"></c:out> <br>
-				<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
-				<c:out value="${bookingDTO.boDate }"></c:out> <br>
-				<c:out value="${bookingDTO.boTime }"></c:out> <br>
-				<c:out value="${bookingDTO.boHour }"></c:out> <br>
-				<c:out value="${bookingDTO.boRoadName }"></c:out> <br>
-				<c:out value="${bookingDTO.boRoadNameDetail }"></c:out> <br>
-				<c:out value="${bookingDTO.boRemarks }"></c:out> <br>
-				<c:out value="${bookingDTO.boPayment }"></c:out> <br>
-				<input type="hidden" name="pay" id="pay" value="${bookingDTO.boPayment }"><br>
 				
+            <div style="background-color: yellow;">
+               <input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
+			   <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
+			   <input type="hidden" value="${boDate }" name="boDate" id="boDate">
+               <input type="text" value="${bookingDTO.boTime }" name="boTime" id="boTime" >
+               <input type="text" value="${bookingDTO.boHour }" name="boHour" id="boHour">
+               <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
+               <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
+               <input type="text" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
+               <input type="hidden" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
+            </div>
 				
-				
-				
-				<div style="background-color: yellow;">
-					<input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="addr">
-					<input type="text" value="${boDate }" name="boDate" id="date">
-					<input type="text" value="${bookingDTO.boTime }" name="boTime" id="time" >
-					<input type="text" value="${bookingDTO.boHour }" name="boHour" id="hour">
-					<input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="">
-					<input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="roadNameDetail">
-					<input type="text" value="${bookingDTO.boRemarks }" name="boRemarks">
-				</div>
-				
-			</div>
-			
+
 		</div>
 	</form>
 </div>

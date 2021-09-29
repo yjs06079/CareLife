@@ -62,8 +62,8 @@ public class UserMapperTest {
 				.build();
 		
 		
-		List<BookingDTO> list = mapper.selectTeacher(dto);
-		log.info(list.size());
+		//List<BookingDTO> list = mapper.selectTeacher(dto);
+//		log.info(list.size());
 		log.info(time);
 		
 		
