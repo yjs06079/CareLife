@@ -40,7 +40,7 @@
       </div>
       <!-- end loader --> 
       <!-- header -->
-      <header>
+      <header style="height: 230px">
          <!-- header inner -->
          <div class="header">
             <div class="head_top">
@@ -62,7 +62,7 @@
                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
+                        <div class="logo"><a href="http://localhost:8080/carelife/adminmain"><img src="${pageContext.servletContext.contextPath}/resources/images/mainLogo.png" alt="logo" 
                         style="width: 225px; height: 100px; padding-bottom: 30px" /></a> </div>
                      </div>
                   </div>

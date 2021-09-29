@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>슬기로운 돌봄생활</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+	
+</style>
 </head>
 <body>
 	<%@ include file="../includes/adminHeader.jsp"%>

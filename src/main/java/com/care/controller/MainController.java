@@ -1,7 +1,12 @@
 package com.care.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.care.admin.dto.KeyDTO;
 
 
 @Controller
@@ -27,8 +32,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/adminmain")
-	public String adminMain() {
+	public String adminMain(HttpSession session) {
 		
-		return "main/adminMain";
+		if(session.getAttribute("key") == null) {
+			return "redirect:/hello";
+			
+		} else {
+			return "main/adminMain";
+		}
+		
 	}
 }
