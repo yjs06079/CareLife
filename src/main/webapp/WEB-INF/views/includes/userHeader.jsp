@@ -75,7 +75,7 @@
                              <li>
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 소개 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#"> 선생님 소개  </a></li>
+                              <li><a href="http://localhost:8080/carelife/usermain/teacherList"> 선생님 소개  </a></li>
                               <li><a href="#"> 이용요금 안내 </a></li>
                               <br>
                             </ul>
