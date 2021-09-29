@@ -19,7 +19,7 @@ import lombok.Setter;
 public class BookingDTO {
    
    private int boNo;
-   private int tNo;
+   private int tno;
    private String boAddr;
    @DateTimeFormat(pattern = "yyyy-MM-dd")
    private Date boDate;

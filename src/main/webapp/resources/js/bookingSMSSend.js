@@ -3,7 +3,7 @@
  */			let result;
 
         $('#sendPhoneNumber').click(function(){
-            let phoneNumber = $('#pPhone').val();
+            let phoneNumber = $('#pphone').val();
             alert('인증번호 발송');
 
 
@@ -35,12 +35,12 @@
         //다음버튼 
      $('#resultVal').click(function(){
             	 
-    	 let boPhone = $('#pPhone').val();
+    	 let boPhone = $('#pphone').val();
     	 
     	 
         	if(result == 0){
         		//인증번호 성공 
-        		location.href = 'http://localhost:8080/carelife/usermain/bookinginfo?boPhone=' + boPhone;
+        		location.href = 'http://localhost:8080/carelife/usermain/bookinginfo?pphone=' + pphone;
         	}else{
         		alert("인증번호 실패");
         	}

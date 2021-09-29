@@ -19,9 +19,9 @@ public class BookingServiceImple implements BookingService {
 	private BookingMapper mapper;
 	
 	@Override
-	public int parentsInsert(UserParentsDTO dto) {
+	public int parentsInsert(UserParentsDTO userDTO) {
 		
-		return mapper.parentsInsert(dto);
+		return mapper.parentsInsert(userDTO);
 		
 	}
 
@@ -32,28 +32,29 @@ public class BookingServiceImple implements BookingService {
 	}
 
 	@Override
-	public List<BookingDTO> selectTeacher(BookingDTO dto) {
+	public List<BookingDTO> selectTeacher(BookingDTO bookingDTO) {
 
-		return mapper.selectTeacher(dto);
+		return mapper.selectTeacher(bookingDTO);
 	}
 
 
 	@Override
-	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO) {
-		return mapper.bookingCheck(DTO);
+	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO) {
+		return mapper.bookingCheck(bookingParentsDTO);
 	}
 
 	@Override
-	public int bookingDelete(BookingParentsDTO DTO) {
-		return mapper.bookingDelete(DTO);
+	public int bookingDelete(BookingParentsDTO bookingParentsDTO) {
+		return mapper.bookingDelete(bookingParentsDTO);
 	}
 
 	@Override
-	public int getMyTotalCount(BookingParentsDTO DTO) {
-		return mapper.getMyTotalCount(DTO);
+	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO) {
+		
+		return mapper.getMyTotalCount(bookingParentsDTO);
 	}
 
-	
+
 	
 	
 	

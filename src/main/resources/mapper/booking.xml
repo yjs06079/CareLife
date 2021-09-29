@@ -6,20 +6,20 @@
 
 <mapper namespace="com.care.user.mapper.BookingMapper">
 
-<insert id="parentsInsert" parameterType="com.care.user.dto.BookingDTO">
+<insert id="parentsInsert" parameterType="com.care.user.dto.UserParentsDTO">
 
-    <selectKey resultType="int" keyProperty="pNo" order="AFTER">
+    <selectKey resultType="int" keyProperty="pno" order="AFTER">
        select max(p_no) from parents_g4
     </selectKey>
      
     	insert into parents_g4 (p_name, p_phone, p_sub_phone)
-	values(#{pName} , #{pPhone}, #{pSubPhone} )
+	values(#{pname} , #{pphone}, #{psubPhone} )
 
 	
 </insert>
 
  
- <select id="selectTeacher" resultType="com.care.user.dto.BookingDTO">
+ <select id="selectTeacher" resultType="com.care.user.dto.BookingDTO" parameterType="com.care.user.dto.BookingDTO">
  	select 
  	t_addr as  boAddr , bo_date as boDate , bo_time as boTime
     from teacher_g4 
@@ -91,5 +91,7 @@
 		p_name = #{pname}
 	and p_phone=#{pphone}
 </select>
+
+
 
 </mapper>

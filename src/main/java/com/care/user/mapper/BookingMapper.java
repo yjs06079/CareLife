@@ -12,16 +12,17 @@ import com.care.user.dto.UserParentsDTO;
 @Mapper
 public interface BookingMapper {
 
-	int parentsInsert(UserParentsDTO dto);
+	int parentsInsert(UserParentsDTO userDTO);
 
-	int bookingInsert(BookingDTO dto);
+	int bookingInsert(BookingDTO bookingDTO);
 
-	List<BookingDTO> selectTeacher(BookingDTO dto);
+	List<BookingDTO> selectTeacher(BookingDTO bookingDTO);
 
-	List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO);
+	List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO);
 
-	int bookingDelete(BookingParentsDTO DTO);
+	int bookingDelete(BookingParentsDTO bookingParentsDTO);
 
-	int getMyTotalCount(BookingParentsDTO DTO);
+	int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
+
 
 }

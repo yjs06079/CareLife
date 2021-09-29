@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,27 +30,29 @@ public class UserController {
 	  @Resource(name="BookingService")
 	  private BookingService service;
 	
-	
+	//예약자정보 입력
 	@GetMapping("usermain/bookingparents")
 	public String bookingParents(HttpServletRequest request) {
+		
+		System.out.println("=====bookingparents======");
 
 		return "user/bookingParents";
 	} 
 	
-//	@PostMapping("usermain/bookingparentsresult")
-	@RequestMapping(value="usermain/bookingparentsresult", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingParentsResult(HttpServletRequest request, UserParentsDTO dto,Model model ) {
+	//예약내용 입력
+	@RequestMapping(value="usermain/bookinginfo")
+	public String bookingParentsResult(HttpServletRequest request, @ModelAttribute("userDTO")  UserParentsDTO userDTO,Model model ) {
 		
-		String pPhone = request.getParameter("pPhone");
-			
+		System.out.println("=====bookinginfo  start======");
+		
 		HttpSession session =request.getSession();//세션정보를 가지고와서 id를 묶어주기
 		
-		session.setAttribute("pPhone", pPhone); 
+		session.setAttribute("pphone", userDTO.getPphone()); 
 		session.setMaxInactiveInterval(60*30); //로그인유지 시간 30분 
 		
 	
 
-		if(dto.getPName()==null || dto.getPName().equals("")) {
+		if(userDTO.getPname()==null || userDTO.getPname().equals("")) {
 
 			//세션 확인필요! 
 			session.invalidate();
@@ -57,79 +60,80 @@ public class UserController {
 			return "user/bookingParents";
 		}else {
 			
-			int result = service.parentsInsert(dto);
+			int result = service.parentsInsert(userDTO);
 			
-			model.addAttribute("pno", dto.getPNo());
-			model.addAttribute("pPhone", dto.getPPhone());
-			model.addAttribute("pName", dto.getPName());
-			
-			
-			System.out.println("bookingparentsresult page");
+			System.out.println("=====bookinginfo  end======");
 			
 			return "user/bookingInfo";
 			
-		}
+		}//else
 		
 	}
 	
-	@RequestMapping(value="usermain/bookinginfo", method = {RequestMethod.GET, RequestMethod.POST})
-	//@PostMapping("usermain/bookinginfo")
-	public String bookingInfo(HttpServletRequest request,  BookingDTO bDTO, Model model ){
-		
-		return "user/bookingInfo";
-	}
 
-	//@PostMapping("usermain/bookingteacher")
-	@RequestMapping(value="usermain/bookingteacher", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingTeacher(HttpServletRequest request,   BookingDTO bDTO, Model model ){
+	//예약 선생님 선택
+	@RequestMapping(value="usermain/bookingteacher")
+	public String bookingTeacher(HttpServletRequest request ,BookingDTO bookingDTO, Model model ){
 	
+		System.out.println("=====booking teacher  start======");
+		
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		String pName = request.getParameter("pName");
-		String pPhone = request.getParameter("pPhone");
-		String boAddr = request.getParameter("boAddr");
 		
-		bDTO.setPno(pno);
+		System.out.println("pno-->" + pno);
 		
-		model.addAttribute("bDTO", bDTO);
+	
+		
+		System.out.println("pno-->" + pno);
+		bookingDTO.setPno(pno);
+		
+		model.addAttribute("bookingDTO", bookingDTO);
 
-		List<BookingDTO> list  = service.selectTeacher(bDTO);
- 
+		 //10 10
+		List<BookingDTO> list  = service.selectTeacher(bookingDTO); //5
+ 		
 		model.addAttribute("list",list);
-		model.addAttribute("pName",pName);
-		model.addAttribute("pPhone",pPhone);
+		model.addAttribute("bookingDTO",bookingDTO);
+
 		
+		System.out.println("=====booking teacher  end======");
 
 		return "user/bookingTeacher";
 	}
 	
-	@RequestMapping(value="usermain/bookingteacherresult", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
+	//예약결제
+	@RequestMapping(value="usermain/bookingpay", method = {RequestMethod.GET, RequestMethod.POST})
+	public String bookingteacherresult(HttpServletRequest request,  BookingDTO bookingDTO, Model model ) {
 		
 		int pno = Integer.parseInt(request.getParameter("pno"));
-		String pName = request.getParameter("pName");
-		String pPhone = request.getParameter("pPhone");	
+		String pname = request.getParameter("pname");
+		String pphone = request.getParameter("pphone");	
 	   
-		model.addAttribute("bDTO", bDTO);
+		model.addAttribute("bookingDTO", bookingDTO);
+		
+		
+		System.out.println("======booking pay start========");
+		System.out.println("getBoAddr--->" + bookingDTO.getBoAddr());
+		System.out.println("getPno--->" + bookingDTO.getPno());
+		
+		System.out.println("=====booking pay  end======");
 				
 		
 		return "user/bookingPay";
 	}
 
-	@RequestMapping(value="usermain/bookingpay", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingpay(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
-			
-		model.addAttribute("bDTO", bDTO);
-			
-		
-		return "user/bookingPay";
-	}
+
 	
-	@RequestMapping(value="usermain/bookingpayresult", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingpayresult(HttpServletRequest request,  BookingDTO bDTO, Model model ) {
+	@RequestMapping(value="usermain/bookingcompletion", method = {RequestMethod.GET, RequestMethod.POST})
+	public String bookingpayresult(HttpServletRequest request,  BookingDTO bookingDTO, Model model ) {
 		
-		model.addAttribute("bDTO", bDTO);
+		model.addAttribute("bookingDTO", bookingDTO);
 		
-		int result = service.bookingInsert(bDTO);
+		System.out.println("======bookingcompletion ========");
+		System.out.println("getBoAddr--->" + bookingDTO.getBoAddr());
+		System.out.println("getPno--->" + bookingDTO.getPno());
+	
+		
+		int result = service.bookingInsert(bookingDTO);
 	
 		
 		return "user/bookingCompletion";

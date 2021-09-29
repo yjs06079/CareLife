@@ -46,11 +46,12 @@
    
 <div class="all">
 
-	<form action="bookingpayresult" method="post">
+	<form action="bookingcompletion" method="post">
 	
-		<input type="hidden" name="pno" value="${pno }" id="pno">
-		<input type="hidden" name="pName" value="${pName }" id="pName">
-		<input type="hidden" name="pPhone" value="${pPhone}" id="pPhone">
+	<input type="hidden" name="pno" id="pno" value="${userDTO.pno}">	
+	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
+	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+
 	
 	
 		<div id="form">
@@ -63,28 +64,28 @@
 			
 			<!-- dto정보  -->
 			<div hidden="true">
-				<c:out value="${bDTO.boAddr }"></c:out> <br>
-				<fmt:formatDate var="boDate" value="${bDTO.boDate}" pattern="yyyy-MM-dd" />
-				<c:out value="${boDate }"></c:out> <br>
-				<c:out value="${bDTO.boTime }"></c:out> <br>
-				<c:out value="${bDTO.boHour }"></c:out> <br>
-				<c:out value="${bDTO.boRoadName }"></c:out> <br>
-				<c:out value="${bDTO.boRoadNameDetail }"></c:out> <br>
-				<c:out value="${bDTO.boRemarks }"></c:out> <br>
-				<c:out value="${bDTO.boPayment }"></c:out> <br>
-				<input type="hidden" name="pay" id="pay" value="${bDTO.boPayment }"><br>
+				<c:out value="${bookingDTO.boAddr }"></c:out> <br>
+				<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
+				<c:out value="${bookingDTO.boDate }"></c:out> <br>
+				<c:out value="${bookingDTO.boTime }"></c:out> <br>
+				<c:out value="${bookingDTO.boHour }"></c:out> <br>
+				<c:out value="${bookingDTO.boRoadName }"></c:out> <br>
+				<c:out value="${bookingDTO.boRoadNameDetail }"></c:out> <br>
+				<c:out value="${bookingDTO.boRemarks }"></c:out> <br>
+				<c:out value="${bookingDTO.boPayment }"></c:out> <br>
+				<input type="hidden" name="pay" id="pay" value="${bookingDTO.boPayment }"><br>
 				
 				
 				
 				
 				<div style="background-color: yellow;">
-					<input type="text" value="${bDTO.boAddr }" name="boAddr" id="addr">
+					<input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="addr">
 					<input type="text" value="${boDate }" name="boDate" id="date">
-					<input type="text" value="${bDTO.boTime }" name="boTime" id="time" >
-					<input type="text" value="${bDTO.boHour }" name="boHour" id="hour">
-					<input type="text" value="${bDTO.boRoadName }" name="boRoadName" id="">
-					<input type="text" value="${bDTO.boRoadNameDetail }" name="boRoadNameDetail" id="roadNameDetail">
-					<input type="text" value="${bDTO.boRemarks }" name="boRemarks">
+					<input type="text" value="${bookingDTO.boTime }" name="boTime" id="time" >
+					<input type="text" value="${bookingDTO.boHour }" name="boHour" id="hour">
+					<input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="">
+					<input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="roadNameDetail">
+					<input type="text" value="${bookingDTO.boRemarks }" name="boRemarks">
 				</div>
 				
 			</div>

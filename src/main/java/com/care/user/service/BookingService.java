@@ -9,17 +9,18 @@ import com.care.user.dto.UserParentsDTO;
 
 public interface BookingService {
 
-	public int parentsInsert(UserParentsDTO dto);
+	public int parentsInsert(UserParentsDTO userDTO);
 
-	public int bookingInsert(BookingDTO dto);
+	public int bookingInsert(BookingDTO bookingDTO);
 
-	public List<BookingDTO> selectTeacher(BookingDTO dto);
+	public List<BookingDTO> selectTeacher(BookingDTO bookingDTO);
 
-	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO DTO);
+	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO);
 
-	public int bookingDelete(BookingParentsDTO DTO);
+	public int bookingDelete(BookingParentsDTO bookingParentsDTO);
 
-	public int getMyTotalCount(BookingParentsDTO DTO);
+	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
+
 
  
 	

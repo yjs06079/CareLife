@@ -13,8 +13,8 @@ import lombok.Setter;
 @Builder
 public class UserParentsDTO {
 
-	private int pNo;
-	private String pName;
-	private String pPhone;
-	private String pSubPhone;
+	private int pno;
+	private String pname;
+	private String pphone;
+	private String psubPhone;
 }

@@ -15,12 +15,12 @@ import lombok.Setter;
 @Builder
 public class TeacherDTO {
 
-	private int tNo;
-	private String tName;
-	private String tAddr;
-	private String tPhone;
-	private String tInfo;
-	private String tPhoto;
+	private int tno;
+	private String tname;
+	private String taddr;
+	private String tphone;
+	private String tinfo;
+	private String tphoto;
 	
 	
 }

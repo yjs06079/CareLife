@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,12 +66,13 @@ System.out.print(pPhone +"    여기!!!    ");
 
 	<form action="bookingteacher" method="post">
 	
-		<input type="hidden" name ="pno" id="pno" value="${pno}">
-	    <input type="hidden" name ="pName" id="pName" value="${pName}">
-	    <input type="hidden" name ="pPhone" id="pPhone" value="${pPhone}">
-		
+	<input type="hidden" name="pno" id="pno" value="${userDTO.pno}">	
+	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
+	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+		    
 		<!-- 테스트 후 삭제예정  -->
-		<span> SessionAttributes로 넘어온 pPhone값 : ${pPhone} pno : ${pno}</span>
+		<span> SessionAttributes로 넘어온 pPhone값 : ${userDTO.pphone} pno의 값  : ${userDTO.pno}</span>
+
 	
 		<br>
 		

@@ -46,12 +46,12 @@
    
 <div class="all">
 
-	<form action="bookingteacherresult" method="post">
+	<form action="bookingpay" method="post">
 	
-	<input type="hidden" name="pno" value="${bDTO.pno }">
-	<input type="hidden" name="pName" value="${pName }">
-	<input type="hidden" name="pPhone" value="${pPhone}">
-		
+	<input type="hidden" name="pno" value="${userParentsDTO.pno}">
+	<input type="hidden" name="pname" value="${userParentsDTO.pname}">
+	<input type="hidden" name="pphone" value="${userParentsDTO.phone}">
+
 		<h1> 담당선생님을 선택해주세요. </h1>
 	    <p> 사랑과 정성으로 아이와 함께하는 선생님 </p>
 	    <p> 슬기로운 돌봄생활과 함께하는 선생님들은 </p>
@@ -66,6 +66,7 @@
 			   <fmt:formatDate var="boDate" value="${item.boDate}" pattern="yyyy-MM-dd" />
 			   <c:out value="${boDate }"/> <br>
 			   <c:out value="${item.boTime }"></c:out> <br>
+			   <c:out value="${item.tno }"></c:out> <br>
 			</c:forEach>
 		  
 		  <!-- forEach문 돌려서 사용예정 -->
@@ -73,26 +74,26 @@
 			  <div class="card" style="float:left; margin-right: 10px;">
 				  <img src="" alt="" /> 선생님사진
 				  <div class="card-body">
-				    <h5 class="card-title"> 선생님이름 ${tName }</h5>
-				    <p class="card-text">선생님소개 ${tInfo }</p>
-				    <input type="radio" name="tNo" id="tNo" value="${tNo }"> 
+				    <h5 class="card-title"> 선생님이름 ${tname }</h5>
+				    <p class="card-text">선생님소개 ${tinfo }</p>
+				    <input type="radio" name="tno" id="tno" value="${tno }"> 
 			  </div>
 			</div>
 
 			  <div class="card">
 				  <img src="" alt="" /> 선생님사진
 				  <div class="card-body">
-				    <h5 class="card-title"> 선생님이름 ${tName }</h5>
-				    <p class="card-text">선생님소개 ${tInfo }</p>
-				    <input type="radio" name="tNo" id="tNo" value="${tNo }"> 
+				    <h5 class="card-title"> 선생님이름 ${tname }</h5>
+				    <p class="card-text">선생님소개 ${tinfo }</p>
+				    <input type="radio" name="tno" id="tno" value="${tno }"> 
 			  </div>
 			</div>
 			  
 			  <br>
 			  
 			  <!-- 테스트 후 삭제예정  -->
-			  <input type='radio' name='tName' value='이경실' id="tName"/>이경실
-			  <input type='radio' name='tName' value='조승우' id="tName" />조승우
+			  <input type='radio' name='tname' value='이경실' id="tname"/>이경실
+			  <input type='radio' name='tname' value='조승우' id="tname" />조승우
 			
 			  <br>
 			
@@ -100,23 +101,23 @@
 			
 			<!-- dto정보  -->
 			<div hidden="true">
-				<c:out value="${bDTO.boAddr }"></c:out> <br>
-				<fmt:formatDate var="boDate" value="${bDTO.boDate}" pattern="yyyy-MM-dd" />
-				<c:out value="${boDate }"></c:out> <br>
-				<c:out value="${bDTO.boTime }"></c:out> <br>
-				<c:out value="${bDTO.boHour }"></c:out> <br>
-				<c:out value="${bDTO.boRoadName }"></c:out> <br>
-				<c:out value="${bDTO.boRoadNameDetail }"></c:out> <br>
-				<c:out value="${bDTO.boRemarks }"></c:out> <br>
+				<c:out value="${bookingDTO.boAddr }"></c:out> <br>
+				<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
+				<c:out value="${bookingDTO.boDate }"></c:out> <br>
+				<c:out value="${bookingDTO.boTime }"></c:out> <br>
+				<c:out value="${bookingDTO.boHour }"></c:out> <br>
+				<c:out value="${bookingDTO.boRoadName }"></c:out> <br>
+				<c:out value="${bookingDTO.boRoadNameDetail }"></c:out> <br>
+				<c:out value="${bookingDTO.boRemarks }"></c:out> <br>
 				
 				<div style="background-color: yellow;">
-					<input type="text" value="${bDTO.boAddr }" name="boAddr">
-					<input type="text" value="${boDate }" name="boDate">
-					<input type="text" value="${bDTO.boTime }" name="boTime">
-					<input type="text" value="${bDTO.boHour }" name="boHour">
-					<input type="text" value="${bDTO.boRoadName }" name="boRoadName">
-					<input type="text" value="${bDTO.boRoadNameDetail }" name="boRoadNameDetail">
-					<input type="text" value="${bDTO.boRemarks }" name="boRemarks">
+					<input type="text" value="${bookingDTO.boAddr }" name="boAddr">
+					<input type="text" value="${bookingDTO.boDate }" name="boDate">
+					<input type="text" value="${bookingDTO.boTime }" name="boTime">
+					<input type="text" value="${bookingDTO.boHour }" name="boHour">
+					<input type="text" value="${bookingDTO.boRoadName }" name="boRoadName">
+					<input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail">
+					<input type="text" value="${bookingDTO.boRemarks }" name="boRemarks">
 				</div>
 				
 			</div>
@@ -124,7 +125,7 @@
 		</div>
    </form>
 </div>
-<script src="${pageContext.servletContext.contextPath}/resources/js/bookingSMSSend.js"></script>      
+      
 
 <%@ include file="../includes/footer.jsp"%>
 

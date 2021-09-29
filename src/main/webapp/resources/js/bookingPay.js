@@ -2,6 +2,8 @@
  * 
 */
 
+
+
     function payment(){
 
         let hour = document.getElementById('hour').value;
@@ -38,11 +40,11 @@ payment();
    function impootPay(){
 	
 	
-	let pay = document.getElementById('pay').value;
-	let name = document.getElementById('pName').value;
-	let pno = document.getElementById('pno').value;
-	let pPhone = document.getElementById('pPhone').value;
-	let roadNameDetail = document.getElementById('roadNameDetail').value;
+	var pay = document.getElementById('pay').value;
+	var name = document.getElementById('pname').value;
+	var pno = document.getElementById('pno').value;
+	var pPhone = document.getElementById('pphone').value;
+	var roadNameDetail = document.getElementById('roadNameDetail').value;
         IMP.init('imp13670706'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
         
@@ -54,7 +56,7 @@ payment();
             amount : pay,
             buyer_email : 'a@aa',
             buyer_name : name,
-            buyer_tel : pPhone,
+            buyer_tel : pphone,
             buyer_addr : roadNameDetail,
             buyer_postcode : '123-456',
             //m_redirect_url : 'http://www.naver.com'
@@ -85,12 +87,14 @@ payment();
                     }
                 });
                 //성공시 이동할 페이지
-                location.href="http://localhost:8080/carelife/usermain/bookingpayresult";
+                location.href="http://localhost:8080/carelife/usermain/bookingcompletion";
+alert(pno);
+alert(name);
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="http://localhost:8080/carelife/usermain/bookingteacherresult/order/payFail";
+                location.href="http://localhost:8080/carelife/usermain/bookingpay";
                 alert(msg);
             }
         });

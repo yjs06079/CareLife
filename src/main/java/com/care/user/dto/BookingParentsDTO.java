@@ -14,6 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookingParentsDTO {
+	
    private int pno;
    private String pname;
    private String pphone;

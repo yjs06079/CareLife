@@ -53,7 +53,7 @@
    
 <div class="all">
 
-   <form action="bookingparentsresult" method="post">
+   <form action="bookinginfo" method="post">
 		
 		<!-- 테스트 후 삭제예정  -->
       <span>SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
@@ -66,15 +66,15 @@
       
       <div id="form">
          <div id="namediv">
-            <label for="pName"> 보호자이름 </label>
-            <input type="text" id="pName" name="pName"style="width: 70%">
+            <label for="pname"> 보호자이름 </label>
+            <input type="text" id="pname" name="pname"style="width: 70%">
          </div>
          
          <br>
          
          <div id="namediv">
-            <label for="pPhone"> 핸드폰번호 </label>
-            <input type="text" id="pPhone" name="pPhone"  style="width: 40%">
+            <label for="pphone"> 핸드폰번호 </label>
+            <input type="text" id="pphone" name="pphone"  style="width: 40%">
             <button  type="button" id="sendPhoneNumber" name="sendPhoneNumber"  style="width: 28%">인증번호 발송</button>
          </div>
          
@@ -89,8 +89,8 @@
          <br>
          
          <div id="namediv">
-            <label for="pSubPhone"> 보조연락처 </label>
-            <input type="text" id="pSubPhone" name="pSubPhone"  style="width: 70%">
+            <label for="psubPhone"> 보조연락처 </label>
+            <input type="text" id="psubPhone" name="psubPhone"  style="width: 70%">
          </div>
          
          <br>
