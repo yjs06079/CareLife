@@ -1,4 +1,4 @@
-package com.care.teacher.dto;
+package com.care.util;
 
 import lombok.Getter;
 
