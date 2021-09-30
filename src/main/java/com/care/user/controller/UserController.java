@@ -180,8 +180,8 @@ public class UserController {
 		return "user/bookingCheck";
 	}
 
-	@RequestMapping(value="usermain/bookingCheckResult", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingCheckResult(HttpServletRequest request,  BookingParentsDTO DTO, Model model ){
+	@RequestMapping(value="usermain/bookingCheckResult")
+	public String bookingCheckResult(HttpServletRequest request,  BookingParentsDTO bookingParentsDTO, Model model){
 		
 		String curr=request.getParameter("curr");
 	
@@ -191,9 +191,11 @@ public class UserController {
 		   {
 			   currpage=Integer.parseInt(curr);
 		   }
+		   
+		   System.out.println("pn"+bookingParentsDTO.getPphone());
 			
 	    //전체 자료갯수
-		 int totalcount= service.getMyTotalCount(DTO);
+		 int totalcount= service.getMyTotalCount(bookingParentsDTO);
 		 int pagepercount= 10;  //1페이지에 보여줄 자료수
 		 
 		 System.out.println("total => " + totalcount);
@@ -217,10 +219,10 @@ public class UserController {
 			 endblock=totalpage;
 		 }
 
-		 DTO.setStartrow(startrow);
-		 DTO.setEndrow(endrow);
+		 bookingParentsDTO.setStartrow(startrow);
+		 bookingParentsDTO.setEndrow(endrow);
 		
-		List<BookingParentsDTO> list = service.bookingCheck(DTO);
+		List<BookingParentsDTO> list = service.bookingCheck(bookingParentsDTO);
 		model.addAttribute("list" , list);
 		model.addAttribute("currpage", currpage);
 		model.addAttribute("datacount", list.size());
@@ -238,13 +240,13 @@ public class UserController {
 		return "user/bookingCheckResult";
 	}
 
-	@RequestMapping(value="usermain/bookingDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="usermain/bookingDelete")
 	public String bookingDelete(HttpServletRequest request,  BookingParentsDTO DTO, Model model ){
 		
 		System.out.println(DTO.getPno());
 		
 		int result = service.bookingDelete(DTO);
-		return "user/bookingCheck";  //list로 돌아가야함..
+		return "user/bookingCheckResult";  //list로 돌아가야함..
 	}
 	
 	

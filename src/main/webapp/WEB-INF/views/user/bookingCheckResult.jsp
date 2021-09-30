@@ -98,8 +98,17 @@
 							<fmt:formatDate var="boDate" value="${item.boDate}" pattern="yyyy-MM-dd" />
 							<td>${boDate }</td>
 							<td>${item.boRoadName }</td>
-							<td>${item.boTime }</td>
-							<td>${item.boHour }</td>
+							<td>
+							  <c:if test="${item.boTime==0 }">
+			                    <c:out value="오전"></c:out>
+			                  </c:if>
+			                  
+			                  <c:if test="${item.boTime==1 }">
+			                    <c:out value="오후"></c:out>
+			                  </c:if>
+			                  
+							</td>
+							<td>${item.boHour }시간</td>
 							<td>${item.boRemarks }</td>
 							<td>
 								<input type="button" id="btndel" value="삭제" onclick="location='http://localhost:8080/carelife/usermain/bookingDelete?pno=${item.pno }'" >
@@ -110,11 +119,12 @@
 			</tbody>
 		</table>
 		
+
 		<!-- 페이징처리...확인해주세요... -->
 		<ul class="pagination justify-content-center">
 			<div class="page1">
 			 <c:if test="${startblock>1 }">
-			    <a href="usermain/bookingCheckResult?curr=${currpage-1}&pname=${pname }&pphone=${pphone }"><<</a>
+			    <a href="usermain/bookingCheckResult?curr=${currpage-1}&pname=${pname }&pphone=${pphone }">이전 </a>
 			 </c:if>
 			</div>
 			
@@ -124,14 +134,14 @@
 			     <c:out value="${index }"></c:out>
 			  </c:if>
 			  <c:if test="${currpage!=index }">
-			  		 <a href="usermain/bookingCheckResult?curr=${index}&pname=${pname }&pphone=${pphone }"><<</a>
+			  		 <a href="usermain/bookingCheckResult?curr=${index}&pname=${list.pname }&pphone=${list.pphone }">이후 </a>
 			  </c:if>
 			</c:forEach>
 			</div>
 			
 			<div class="page3">
 			<c:if test="${endblock<totalpage}">
-			  <a href="usermain/bookingCheckResult?curr=${currpage+1}&pname=${pname }&pphone=${pphone }"><<</a>
+			  <a href="usermain/bookingCheckResult?curr=${currpage+1}&pname=${pname }&pphone=${pphone }">이전 </a>
 			</c:if>
 			</div>
 		</ul>
@@ -146,6 +156,11 @@
 			</c:forEach>
          </div>
 </div>
+
+
+
+<script src="${pageContext.servletContext.contextPath}/resources/js/bookingCheckResult.js"></script>
+
 
 <%@ include file="../includes/footer.jsp"%>
 

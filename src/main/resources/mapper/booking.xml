@@ -77,7 +77,7 @@
 					order by pno
 	               )A, (select @rownum:=0) R  
 	       ) B                                
-	 where rnum>=1  and rnum<=5
+	 where rnum>= #{startrow}  and rnum<=#{endrow}
  ]]>
 	 
 </select>

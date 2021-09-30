@@ -11,9 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.care.teacher.dto.MakePage;
+
 import com.care.teacher.dto.TeacherDTO;
 import com.care.teacher.service.TeacherService;
+import com.care.util.MakePage;
 
 
 @Controller
