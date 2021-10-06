@@ -65,7 +65,7 @@
 	<input type="hidden" name="pname" id="pname" value="${pname}">
 	<input type="hidden" name="pphone" id="pphone" value="${pphone}">
  
-   <h1>${pname} 과 매칭이 완료되었습니다. </h1>
+   <h1>${tname} 과 매칭이 완료되었습니다. </h1>
    <h1> 슬기로운 돌봄생활과 함께해 주셔서 감사합니다. </h1>
   
 
@@ -84,7 +84,7 @@
                <input type="text" name="boCancel"  id="boCancel" value="${bookingDTO.boCancel }"><br>
 				</div>
  
-  <input type="button" id="resultVal" name="resultVal" value="예약조회하기" onclick="location.href='#'">
+  <input type="button" id="resultVal" name="resultVal" value="예약조회하기" onclick="location.href='http://localhost:8080/carelife/usermain/bookingcheck'">
  
 </div>
 

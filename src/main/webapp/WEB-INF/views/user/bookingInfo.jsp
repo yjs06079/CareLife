@@ -66,6 +66,7 @@ System.out.print(pPhone +"    여기!!!    ");
 
 	<form action="bookingteacher" method="post">
 	
+	
 	<input type="hidden" name="pno" id="pno" value="${userDTO.pno}">	
 	<input type="hidden" name="pname" value="${userDTO.pname}">
 	<input type="hidden" name="pphone" value="${userDTO.pphone}">

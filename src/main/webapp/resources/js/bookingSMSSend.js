@@ -1,6 +1,7 @@
 /**
  * 
- */			let result;
+ */			let result=0;
+			const infoForm = document.querySelector(".infoForm");
 
         $('#sendPhoneNumber').click(function(){
             let phoneNumber = $('#pphone').val();
@@ -9,7 +10,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/carelife/message/sendsms",
+                url: "http://localhost:8080/carelife/usermain/message/sendsms",
                 data: {
                     "phoneNumber" : phoneNumber
                 },
@@ -18,13 +19,12 @@
                    console.log('번호보냄')
                     $('#checkBtn').click(function(){
                         if($.trim(res) ==$('#confirm').val()){
-                        	
-                        	alert('성공');
-                        	result =0;
-                        	
-                        }else{
-                        	alert('실패');
+                        	result =res;
+                        	alert('인증번호 성공');           	                       	
+                        }else{   	                    	
                         	result =1;
+						alert('인증번호 실패'); 
+                          
                         }
                     })
                 }
@@ -32,17 +32,18 @@
         });
         
         
-        //다음버튼 
+        //인증번호 확인 
      $('#resultVal').click(function(){
             	 
     	 let boPhone = $('#pphone').val();
-    	 
-    	 
-        	if(result == 0){
-        		//인증번호 성공 
-        		location.href = 'http://localhost:8080/carelife/usermain/bookinginfo?pphone=' + pphone;
+
+        	if(result == 1 || result == 0 || result == null){
+        		//인증번호 실패
+			alert('인증번호를 다시 확인해주세요');
         	}else{
-        		alert("인증번호 실패");
+					infoForm.submit();
         	}
         })
-        
+
+
+

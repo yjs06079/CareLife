@@ -27,9 +27,13 @@ public interface BookingMapper {
 
 	int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 	
-	BookingDTO selectBooking(int pno);
+	BookingDTO selectBooking(int boNO);
 
 	List<BookingParentsDTO> checkUser(HashMap<String, Object> hashMap);
+
+	String checkTeacher(int tno);
+
+	int bookingCancel(int boNo);
 
 	
 

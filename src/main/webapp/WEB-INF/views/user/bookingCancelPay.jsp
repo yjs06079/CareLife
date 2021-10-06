@@ -26,7 +26,18 @@
 	      padding: 10px 50px;
 	      border: none;
 	      border-radius: 12px;
-	      width: 400px;
+	      width: 200px;
+	   }
+	   
+	   	  #list {
+	      background-color: #FFCD4A;
+	      font-weight: bold;
+	      margin-top: 20px;
+	      margin-bottom: 10px;
+	      padding: 10px 50px;
+	      border: none;
+	      border-radius: 12px;
+	      width: 200px;
 	   }
    
    #namediv {
@@ -92,8 +103,8 @@
          
          <br>
          
-         <input type="submit" value="조회하기" id="btn">
-         <input type="button" value="목록으로" id="list">
+
+         <input type="button" value="목록으로" id="list" name="list">
          <input type="button"  id="cancel" name="cancel" value="결제취소">
 	</form>
 </div>

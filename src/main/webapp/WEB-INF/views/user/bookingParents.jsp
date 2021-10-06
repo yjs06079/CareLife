@@ -51,12 +51,32 @@
 
    <%@ include file="../includes/userHeader.jsp"%>
    
+   
+<!-- Modal -->
+<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">hi</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <h3>인증번호를 다시 확인해주세요</h3> 
+      </div>
+      <div class="modal-footer">
+        <input type="button" value="확인" id="yes"  onClick="location.href = 'http://localhost:8080/carelife/usermain/bookingparents'">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+   
 <div class="all">
 
-   <form action="bookinginfo" method="post">
+   <form class="infoForm" action="bookinginfo" method="post">
 		
-		<!-- 테스트 후 삭제예정  -->
-      <span>SessionAttributes로 넘어온 pPhone값 : ${pPhone}</span>
       
       <h1> 보호자의 정보를 입력해주세요. </h1>
       <p> 보호자의 정보는 돌봄 예약 서비스 이용시 </p>
@@ -95,9 +115,11 @@
          
          <br>
          
-         <button  type="submit" id="resultVal" name="resultVal">다음</button>
+         <button  type="button" id="resultVal" name="resultVal">다음</button>
       </div>
    </form>
+   
+
 </div>
 <script src="${pageContext.servletContext.contextPath}/resources/js/bookingSMSSend.js"></script>      
 

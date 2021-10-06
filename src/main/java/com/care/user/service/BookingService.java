@@ -22,9 +22,13 @@ public interface BookingService {
 
 	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 
-	public BookingDTO selectBooking(int pno);
+	public BookingDTO selectBooking(int boNO);
 
 	public List<BookingParentsDTO> checkUser(String pname, String pphone,int startRow, int pageSize );
+
+	public String checkTeacher(int boNo);
+
+	public int bookingCancel(int boNo);
 	
 
  

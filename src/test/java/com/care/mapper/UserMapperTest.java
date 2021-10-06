@@ -70,4 +70,9 @@ public class UserMapperTest {
 				
 	}
 
+	@Test
+	public void test4() {
+		
+		mapper.selectBooking(137);
+	}
 }

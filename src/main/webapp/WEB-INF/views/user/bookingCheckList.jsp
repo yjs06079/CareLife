@@ -169,12 +169,6 @@ th, td {
 				</div>
 			</form>
 
-			
-
-
-
-
-
 			<div>
 				<c:forEach var="item" items="${list }" begin="0" end="0">
 					<input type="text" value="${item.pname }" name="pname">

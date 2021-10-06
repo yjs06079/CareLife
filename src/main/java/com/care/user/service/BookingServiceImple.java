@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
@@ -58,9 +59,9 @@ public class BookingServiceImple implements BookingService {
 	
 
 	@Override
-	public BookingDTO selectBooking(int pno) {
+	public BookingDTO selectBooking(int boNO) {
 		
-		return mapper.selectBooking(pno);
+		return mapper.selectBooking(boNO);
 	}
 
 	@Override
@@ -76,6 +77,22 @@ public class BookingServiceImple implements BookingService {
 		
 		return mapper.checkUser(hashMap);
 	}
+
+	@Transactional
+	@Override
+	public String checkTeacher(int boNo) {	
+	BookingDTO dto = mapper.selectBooking(boNo);
+	 String tname  = mapper.checkTeacher(dto.getTno());
+		return tname;
+	}
+
+	@Override
+	public int bookingCancel(int boNo) {
+		
+		return mapper.bookingCancel(boNo);
+	}
+
+
 
 
 

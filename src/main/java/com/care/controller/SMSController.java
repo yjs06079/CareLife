@@ -12,7 +12,7 @@ import com.care.util.Coolsms;
 @Controller
 public class SMSController {
 
-	@GetMapping("/message/sendsms")
+	@GetMapping("/usermain/message/sendsms")
 	public @ResponseBody String sendSMS(String phoneNumber) {
 		
 		

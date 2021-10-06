@@ -173,6 +173,15 @@ public class UserController {
 		bookingDTO.setPno(pno);
 		
 		int result = service.bookingInsert(bookingDTO);
+		System.out.println("no"+bookingDTO.getBoNo());
+		String tname = service.checkTeacher(bookingDTO.getBoNo());
+		System.out.println(tname);
+		model.addAttribute("tname",tname);
+
+
+		
+		
+		
 		System.out.println("insert"+result);
 		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());
 		
@@ -229,6 +238,10 @@ public class UserController {
 	    	System.out.println("pno"+bookingParentsDTO.getBoNo());
 		
 		System.out.println("size => " + list.size()); //사이즈이상함..
+		
+		//예약취소
+		int cancel = service.bookingCancel(bookingParentsDTO.getBoNo());
+
 
 		
 		return "user/bookingCheckList";
@@ -247,7 +260,7 @@ public class UserController {
 		System.out.println(bookingDTO.getPno());
 		
 		
-		bookingDTO = service.selectBooking(bookingDTO.getPno());
+		bookingDTO = service.selectBooking(bookingDTO.getBoNo());
 		System.out.println("c"+bookingDTO.getBoCancel());
 		model.addAttribute("bookingDTO",bookingDTO);
 	//	int result = service.bookingDelete(bookingDTO);
