@@ -4,4 +4,207 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.care.admin.mapper.AdminMapper">
+
+	<parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+
+	<resultMap type="com.care.admin.dto.AdminBookingDTO" id="dto">
+		<result column="bo_no" property="bono" />
+		<result column="p_no" property="pno" />
+		<result column="p_name" property="pname" />
+		<result column="t_no" property="tno" />
+		<result column="t_name" property="tname" />
+		<result column="bo_payment" property="bopayment" />
+		<result column="p_phone" property="pphone" />
+		<result column="p_sub_phone" property="psubphone" />
+		<result column="bo_date" property="bodate" />
+		<result column="bo_time" property="botime" />
+		<result column="bo_hour" property="bohour" />
+		<result column="bo_road_name" property="boroadname" />
+		<result column="bo_remarks" property="boremarks" />
+	</resultMap>
+
+	<!--예약 검색 + 페이징 -->
+	<select id="bookingTotalCount" parameterMap="hashmap" resultType="int">
+		select count(*)
+		from booking_g4 b1
+		join teacher_g4 t1
+		on b1.t_no = t1.t_no
+		<where>
+			<if
+				test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('')">
+				<choose>
+					<when test="search == 't_no'">
+						and b1.t_no = #{searchtxt}
+					</when>
+					<when test="search == 't_name'">
+						and t_name like '%' || upper(#{searchtxt}) || '%'
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+
+	<!--예약 리스트 -->
+	<select id="getList" parameterMap="hashmap" resultMap="dto">
+
+		select *
+		from (
+		select @rownum:=@rownum+1 as rnum, e.*
+		from (
+		select bo_no
+		, b1.p_no
+		, p_name
+		, b1.t_no
+		, t_name
+		, bo_payment
+
+		from booking_g4 b1
+		inner join teacher_g4 t1
+		on b1.t_no = t1.t_no
+		inner join parents_g4 p1
+		on p1.p_no = b1.p_no
+		<where>
+			<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='t_no'">
+						and b1.t_no = #{searchtxt}
+					</when>
+					<when test="search=='t_name'">
+						and upper(t_name) like '%' || upper(#{searchtxt}) || '%'
+					</when>
+				</choose>
+			</if>
+		</where>
+                  
+                  <![CDATA[
+                     order by bo_no
+                     )e, (select @rownum:=0) R
+                  ]]>
+		<where>
+               <![CDATA[
+                  @rownum < #{endrow}
+               ]]>
+		</where>
+		) B
+		<where>
+            <![CDATA[
+               rnum >= #{startrow}
+            ]]>
+		</where>
+	</select>
+
+	<!-- 총액 계산하기 -->
+	<select id="bototal" resultType="int">
+		select sum(bo_payment) as bototal
+		from booking_g4
+	</select>
+
+	<!-- 예약 상세 페이지 -->
+	<select id="adminBookingDetail" resultMap="dto"
+		parameterType="int">
+		select bo_no
+		, p_name
+		, p_phone
+		, p_sub_phone
+		, bo_date
+		, bo_time
+		, bo_hour
+		, bo_road_name
+		, bo_remarks
+		from parents_g4 join booking_g4
+		on parents_g4.p_no = booking_g4.p_no
+		where bo_no = #{bono}
+	</select>
+
+	<!-- 지원자 리스트 -->
+	<select id="employeeList" parameterMap="hashmap" resultType="com.care.employee.dto.EmployeeDTO">
+		select *
+		from (
+				select @rownum:=@rownum+1 as rnum, e.*
+				from (
+						select e_no as eno
+					  		 , e_name as ename
+					 		 , e_pass as epass
+						from employee_g4
+						
+						<![CDATA[
+							order by e_no
+							)e, (select @rownum:=0) R
+						]]>
+				<where>
+					<![CDATA[
+						@rownum < #{endrow}
+					]]>
+				</where>
+			) B
+			<where>
+				<![CDATA[
+					rnum >= #{startrow}
+				]]>
+			</where>
+	</select>
+	
+	<!-- 지원자 자료 총 개수 -->
+	<select id="emptotalCount" resultType="int">
+		select count(*)
+		from employee_g4
+	</select>
+
+	<!-- 지원자 상세 페이지 -->
+	<select id="employeeDetail" resultType="com.care.employee.dto.EmployeeDTO" parameterType="int">
+		select e_no as eno
+			 , e_name as ename
+			 , e_birth as ebirth
+			 , e_phone as ephone
+			 , e_addr as eaddr
+			 , e_edu as eedu
+			 , e_license as elicense
+			 , e_career as ecareer
+			 , e_info as einfo
+			 , e_pass as epass
+			 , e_photo as ephoto
+		from employee_g4
+		where e_no = #{eno}
+	</select>
+	
+	<!-- 지원자 불합격 -->
+	<update id="employeeNonPass" parameterType="int">
+		update employee_g4
+		set e_pass = 2
+		where e_no = #{eno}
+	</update>
+	
+	<!-- 지원자 합격 -->
+	<update id="employeePass" parameterType="int">
+		update employee_g4
+		set e_pass = 1
+		where e_no = #{eno}
+	</update>
+	
+	<!-- 지원자 -> 선생님 추가 -->
+	<insert id="employeeInsert" parameterType="com.care.employee.dto.EmployeeDTO">
+		insert into teacher_g4(t_name, t_addr, t_phone, t_info, t_photo)
+		select e_name as ename
+		 	 , right(e_addr, 3) as eaddr <!-- 오른쪽에서 세글자 자름 -->
+		 	 , e_phone as ephone
+			 , e_info as einfo
+			 , e_photo as ephoto
+		from employee_g4
+		where e_no = #{eno}
+	</insert>
+	
+	<!-- 지원자 전화번호 가져오기 -->
+	<select id="getEmployeePhone" resultType="String" parameterType="int">
+		select e_phone as ephone
+		from employee_g4
+		where e_no = #{eno}
+	</select>
+	
+	<!-- 선생님 번호 가져오기 -->
+	<select id="getTeacherNo" resultType="int" parameterType="String">
+		select t_no as tno
+		from teacher_g4
+		where t_phone = #{ephone}
+	</select>
+	
 </mapper>

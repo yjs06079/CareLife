@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeDTO {
+	private int eno;
 	private String ephoto;
 	private String ename;
 	private String ebirth;
@@ -18,4 +19,5 @@ public class EmployeeDTO {
 	private String ecareer;
 	private String elicense;
 	private String einfo;
+	private int epass;
 }

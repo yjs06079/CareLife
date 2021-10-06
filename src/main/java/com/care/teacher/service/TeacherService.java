@@ -1,8 +1,12 @@
 package com.care.teacher.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.care.teacher.dto.LoginDTO;
+import com.care.teacher.dto.TeacherBookingListDTO;
 import com.care.teacher.dto.TeacherDTO;
+import com.care.util.MakePage;
 
 public interface TeacherService {
 
@@ -10,4 +14,21 @@ public interface TeacherService {
 	public List<TeacherDTO> teacherList(String searchtxt, int startRow, int endRow);
 		
 	public int totalCount(String searchtxt);
+
+	//선생님 로그인
+	public ArrayList<LoginDTO> getBookingList(LoginDTO dto);
+
+	//선생님 예약 조회
+	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize);
+	
+	//예약 자료 개수
+	public int bookingTotalCount();
+
+	//예약 상세 페이지
+	public TeacherBookingListDTO teacherBookingDetail(int boNo);
+
+	//예약 취소
+	public TeacherBookingListDTO teacherBookingCancel(int boNo);
+
+
 }

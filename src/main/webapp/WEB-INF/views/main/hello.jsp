@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>슬기로운 돌봄생활</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 	body {
 		background-color: #FFF49C;
@@ -145,23 +146,7 @@
 			
 			<!-- 선생님 -->
 			<div class="link1">
-				<a id="teacherClick" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">선생님이신가요?</a>
-			</div>
-			<div id="id01" class="modal">
-				<form class="modal-content animate" action="teacherresult" method="post">
-				    <div class="container">
-				    	<label>사원명과 사원번호를 입력하세요.</label>
-				    	<br>
-				    	<p>사원명</p>
-				      	<input type="text" name="tname" id="tname" style="padding: 10px; width: 80%;" required>
-				      	<br>
-				      	<p>사원번호</p>
-				      	<input type="password" name="tno" id="tno" style="margin-bottom: 20px; padding: 10px; width: 80%;" required>
-				      	<br>
-				      	<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
-				      	<button type="submit">인증</button>
-				    </div>
-				</form>
+				<a id="teacherClick" onclick="location.href='http://localhost:8080/carelife/teachermain'" style="width:auto;">선생님이신가요?</a>
 			</div>
 			
 			<!-- 관리자 -->
@@ -183,17 +168,10 @@
 		</div>
 	</div>
 	<script>
-		var modal = document.getElementById('id01');
-	
-		window.onclick = function(event) {
-		    if (event.target == modal) {
-		        modal.style.display = "none";
-		    }
-		}
-		
 		var modal2 = document.getElementById('id02');
 		
-		window.onclick = function(event) {
+		window.onclick = function() {
+	    	console.log("admin");
 		    if (event.target == modal2) {
 		        modal2.style.display = "none";
 		    }
