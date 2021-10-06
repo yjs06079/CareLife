@@ -6,6 +6,7 @@ import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.BookingTeacherDTO;
 import com.care.user.dto.UserParentsDTO;
+import com.care.util.MakePage;
 
 public interface BookingService {
 
@@ -13,14 +14,17 @@ public interface BookingService {
 
 	public int bookingInsert(BookingDTO bookingDTO);
 
-	public List<BookingTeacherDTO> selectTeacher(BookingTeacherDTO bookingTeacherDTO);
+	public List<BookingTeacherDTO> selectTeacher(BookingDTO bookingTeacherDTO);
 
-	public List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO);
+	public List<BookingParentsDTO> bookingList(BookingParentsDTO bookingParentsDTO);
 
 	public int bookingDelete(BookingParentsDTO bookingParentsDTO);
 
 	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 
+	public BookingDTO selectBooking(int pno);
+
+	public List<BookingParentsDTO> checkUser(String pname, String pphone,int startRow, int pageSize );
 	
 
  

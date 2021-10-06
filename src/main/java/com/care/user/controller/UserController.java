@@ -1,6 +1,7 @@
 package com.care.user.controller;
 
 
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,8 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.care.teacher.dto.TeacherDTO;
@@ -22,6 +27,8 @@ import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.BookingTeacherDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.service.BookingService;
+import com.care.util.MakePage;
+import com.care.util.PageNation;
 
 @SessionAttributes("pPhone")
 @Controller
@@ -41,11 +48,9 @@ public class UserController {
 	
 	//예약내용 입력
 	@RequestMapping(value="usermain/bookinginfo")
-	public String bookingParentsResult(HttpServletRequest request, @ModelAttribute("userDTO")  UserParentsDTO userDTO,Model model ) {
+	public String bookingParentsResult(HttpSession session, @ModelAttribute("userDTO")  UserParentsDTO userDTO,Model model ) {
 		
 		System.out.println("=====bookinginfo  start======");
-		
-		HttpSession session =request.getSession();//세션정보를 가지고와서 id를 묶어주기
 		
 		session.setAttribute("pphone", userDTO.getPphone()); 
 		session.setMaxInactiveInterval(60*30); //로그인유지 시간 30분 
@@ -85,7 +90,7 @@ public class UserController {
 
 	//예약 선생님 선택
 	@RequestMapping(value="usermain/bookingteacher")
-	public String bookingTeacher(HttpServletRequest request ,BookingTeacherDTO bookingTeacherDTO,BookingDTO bookingDTO,TeacherDTO teacherDTO, Model model ){
+	public String bookingTeacher(HttpServletRequest request,BookingDTO bookingDTO, Model model ){
 
 		
 		System.out.println("=====booking teacher  start======");
@@ -98,10 +103,11 @@ public class UserController {
 		System.out.println("pno-->" + pno);
 		System.out.println("pname-->" + pname);
 		System.out.println("date-->" +bookingDTO.getBoDate());
-		
+		System.out.println("time-->" +bookingDTO.getBoTime());
+		System.out.println("addr-->" +bookingDTO.getBoAddr());
 		bookingDTO.setPno(pno);
 				 		
-		List<BookingTeacherDTO> list  = service.selectTeacher(bookingTeacherDTO);
+		List<BookingTeacherDTO> list  = service.selectTeacher(bookingDTO);
 		
 	
 		model.addAttribute("list",list);
@@ -109,6 +115,9 @@ public class UserController {
 		model.addAttribute("pno", pno);
 		model.addAttribute("pname", pname);
 		model.addAttribute("pphone", pphone);
+		
+		
+		System.out.println("list"+list.size());
 		
 		System.out.println("=====booking teacher  end======");
 		
@@ -126,127 +135,123 @@ public class UserController {
 		String pname = request.getParameter("pname");
 		String pphone = request.getParameter("pphone");	
 		int tno = Integer.parseInt(request.getParameter("tno"));	
+
 		
 		model.addAttribute("pno",pno);
 		model.addAttribute("pname",pname);
 		model.addAttribute("pphone",pphone);
 		model.addAttribute("tno",tno);
 		model.addAttribute("bookingDTO",bookingDTO);
+		
 	   
 		System.out.println("======booking pay start========");
 		System.out.println("getBoAddr--->" + bookingDTO.getBoAddr());
-		System.out.println("pname--->" + pname);
-		System.out.println("getPno--->" + bookingDTO.getPno());
 		System.out.println("getBoHour --->" + bookingDTO.getBoHour());
-		
+		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());	
 		System.out.println("=====booking pay  end======");
-				
+			
 		
 		return "user/bookingPay";
 	}
-
-
-	//예약확인
+	
+	
 	@RequestMapping(value="usermain/bookingcompletion")
 	public String bookingpayresult(HttpServletRequest request,@ModelAttribute("bookingDTO")  BookingDTO bookingDTO, Model model ) {
-	
+		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());
 		
-	//	int pno = Integer.parseInt(request.getParameter("pno"));
+		return "user/bookingCompletion";
+	}
+
+	//예약확인
+	@RequestMapping(value="usermain/bookingcompletionresult")
+	public String bookingcompletionResult(HttpServletRequest request,@ModelAttribute("bookingDTO")  BookingDTO bookingDTO, Model model ) {
+	
+		System.out.println("======bookingcompletion ========");
 		String pname = request.getParameter("pname");
 		
-	//	bookingDTO.setPno(pno);
-	//	model.addAttribute("pno",pno);
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		bookingDTO.setPno(pno);
+		
+		int result = service.bookingInsert(bookingDTO);
+		System.out.println("insert"+result);
+		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());
+		
 		model.addAttribute("pname",pname);
 		model.addAttribute("bookingDTO", bookingDTO);
-
-		//int pno = Integer.parseInt(request.getParameter("pno"));
-		//bookingDTO.setPno(pno);
-		
+		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());
 
 		
-		System.out.println("======bookingcompletion ========");
+
+		
+		
 		System.out.println("getBoAddr--->" + bookingDTO.getBoAddr());
 		System.out.println("getPno--->" + bookingDTO.getPno());
-
-		int result = service.bookingInsert(bookingDTO);
-	
+		System.out.println("getBoCancel--->" + bookingDTO.getBoCancel());
+		System.out.println("======bookingcompletion end========");
+		
+		
 		
 		return "user/bookingCompletion";
 	}
 	
-	@RequestMapping(value="usermain/bookingCheck", method = {RequestMethod.GET, RequestMethod.POST})
-	public String bookingCheck(HttpServletRequest request,  BookingDTO bDTO, Model model ){
+	@RequestMapping(value="usermain/bookingcheck")
+
+	public  String bookingCheck(){
+		
+
 		
 		return "user/bookingCheck";
 	}
-
-	@RequestMapping(value="usermain/bookingCheckResult")
-	public String bookingCheckResult(HttpServletRequest request,  BookingParentsDTO bookingParentsDTO, Model model){
-		
-		String curr=request.getParameter("curr");
 	
+	@RequestMapping(value="usermain/bookingchecklist")
+	public String bookingCheckList(@RequestParam(required = false, defaultValue = "1") int currPage,UserParentsDTO userParentsDTO,BookingParentsDTO bookingParentsDTO, Model model){
 		
-		   int currpage=1;
-		   if(curr!=null)
-		   {
-			   currpage=Integer.parseInt(curr);
-		   }
-		   
-		   System.out.println("pn"+bookingParentsDTO.getPphone());
-			
-	    //전체 자료갯수
-		 int totalcount= service.getMyTotalCount(bookingParentsDTO);
-		 int pagepercount= 10;  //1페이지에 보여줄 자료수
-		 
-		 System.out.println("total => " + totalcount);
-		 
-		 int totalpage=(int) Math.ceil((float)totalcount/pagepercount);
-				 
-		 int startrow=(currpage-1)*pagepercount+1;
-		 int endrow=startrow+pagepercount-1;
-		 
+	      int totalCount = service.getMyTotalCount(bookingParentsDTO); //전체 자료 수
+	      int pageSize = 10; //한페이지 게시글 수
+	      int blockSize = 5;//페이지네이션
+	      
+	      System.out.println("total >> "+totalCount);
+	      PageNation page = new PageNation(currPage, totalCount, pageSize, blockSize);
+	      
+	      System.out.println("page >> "+page.getStartRow());
 
-		 if(endrow>totalcount)
-			 endrow=totalcount;
-		 
-		 
-		 int blockcount=3;
-		 int startblock=(currpage-1)/blockcount*blockcount+1;
-		 int endblock=startblock+blockcount-1;
-		 
-		 if(endblock>totalpage)
-		 {
-			 endblock=totalpage;
-		 }
-
-		 bookingParentsDTO.setStartrow(startrow);
-		 bookingParentsDTO.setEndrow(endrow);
 		
-		List<BookingParentsDTO> list = service.bookingCheck(bookingParentsDTO);
+		List<BookingParentsDTO> list = service.checkUser(userParentsDTO.getPname(),userParentsDTO.getPphone(),page.getStartRow(), pageSize);
+
+	
 		model.addAttribute("list" , list);
-		model.addAttribute("currpage", currpage);
-		model.addAttribute("datacount", list.size());
-		model.addAttribute("startblock", startblock);
-		model.addAttribute("endblock", endblock);
-		model.addAttribute("totalpage", totalpage);
+		model.addAttribute("size" , list.size());
+    	model.addAttribute("dto", userParentsDTO);
+    	model.addAttribute("page", page); 
+    		System.out.println("page1>>"+page.getCurrPage());
+	    	System.out.println("page1>>"+page.getStartRow());
+	    	System.out.println("page1>>"+page.getStartBlock());
+	    	System.out.println("pno"+bookingParentsDTO.getBoNo());
 		
 		System.out.println("size => " + list.size()); //사이즈이상함..
-//		
-//		for(int i=0; i<=list.size(); i++) {
-//			System.out.println(list.get(i).getPname());
-//		}
 
 		
-		return "user/bookingCheckResult";
+		return "user/bookingCheckList";
+	}
+	
+	
+	@RequestMapping(value="usermain/bookingcancelpay")
+	public String bookingDelete(HttpServletRequest request, @ModelAttribute("bookingDTO")  BookingDTO bookingDTO, Model model ){
+		
+		return "user/bookingCancelPay";
 	}
 
-	@RequestMapping(value="usermain/bookingDelete")
-	public String bookingDelete(HttpServletRequest request,  BookingParentsDTO DTO, Model model ){
+	@RequestMapping(value="usermain/bookingcancelpayresult")
+	public String bookingDeleteResult(HttpServletRequest request,  BookingDTO bookingDTO, Model model ){
 		
-		System.out.println(DTO.getPno());
+		System.out.println(bookingDTO.getPno());
 		
-		int result = service.bookingDelete(DTO);
-		return "user/bookingCheckResult";  //list로 돌아가야함..
+		
+		bookingDTO = service.selectBooking(bookingDTO.getPno());
+		System.out.println("c"+bookingDTO.getBoCancel());
+		model.addAttribute("bookingDTO",bookingDTO);
+	//	int result = service.bookingDelete(bookingDTO);
+		return "user/bookingCancelPay";  //list로 돌아가야함..
 	}
 	
 	

@@ -84,7 +84,7 @@
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 예약 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                               <li><a href="http://localhost:8080/carelife/usermain/bookingparents"> 예약하기 </a></li>
-                              <li><a href="http://localhost:8080/carelife/usermain/bookingCheck"> 예약 조회 </a></li>
+                              <li><a href="http://localhost:8080/carelife/usermain/bookingcheck"> 예약 조회 </a></li>
                               <br>
                             </ul>
                               </li>

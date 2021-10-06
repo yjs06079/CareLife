@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BookingParentsDTO {
 	
    private int pno;
@@ -29,8 +31,8 @@ public class BookingParentsDTO {
    private String boRoadName;
    private String boRoadNameDetail;
    private String boRemarks;
-   private int boCancel;
+   private String boCancel;
    private int boPayment;
-   private int startrow;
-   private int endrow;
+   
+
 }

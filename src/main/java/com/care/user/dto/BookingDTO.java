@@ -28,7 +28,7 @@ public class BookingDTO {
    private String boRoadName;
    private String boRoadNameDetail;
    private String boRemarks;
-   private int boCancel;
+   private String boCancel;
    private int boPayment;
    private int pno;
    

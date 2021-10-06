@@ -54,18 +54,21 @@
 <body>
 
 	 <%@ include file="../includes/userHeader.jsp"%>
-   
+	 
+	 
+ <form action="bookingcompletionresult" method="post">  
 <div class="all">
 
 
-
+    <input type="hidden" name="tno" id="tno" value="${tno}">
 	<input type="hidden" name="pno" id="pno" value="${pno}">	
 	<input type="hidden" name="pname" id="pname" value="${pname}">
+	<input type="hidden" name="pphone" id="pphone" value="${pphone}">
  
    <h1>${pname} 과 매칭이 완료되었습니다. </h1>
    <h1> 슬기로운 돌봄생활과 함께해 주셔서 감사합니다. </h1>
   
-  	<input type="hidden" name="pno" id="pno" value="${pno}">
+
   
   
   		       <div style="background-color: yellow;">
@@ -77,12 +80,15 @@
                <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
                <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
                <input type="text" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
-               <input type="hidden" name="pay"  id="pay" value="${bookingDTO.boPayment }"><br>
+               <input type="text" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
+               <input type="text" name="boCancel"  id="boCancel" value="${bookingDTO.boCancel }"><br>
 				</div>
  
   <input type="button" id="resultVal" name="resultVal" value="예약조회하기" onclick="location.href='#'">
  
 </div>
+
+</form>
 <%@ include file="../includes/footer.jsp"%>
 
 </body>

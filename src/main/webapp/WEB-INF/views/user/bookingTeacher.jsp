@@ -43,11 +43,11 @@
 
  <%@ include file="../includes/userHeader.jsp"%>
    
-<div class="all">
+
 
 	<form action="bookingpay" method="post">
 	
-	
+	<div class="all">
 		<input type="hidden" name="pno" id="pno" value="${pno}">	
 		<input type="hidden" name="pname" value="${pname}">
 		<input type="hidden" name="pphone" value="${pphone}">
@@ -114,12 +114,13 @@
 					<input type="hidden" value="${bookingDTO.boRoadName }" name="boRoadName">
 					<input type="hidden" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail">
 					<input type="hidden" value="${bookingDTO.boRemarks }" name="boRemarks">
-					<input type="hidden" name="pay" value="${bookingDTO.boPayment }"><br>
+					<input type="hidden" name="boPayment" value="${bookingDTO.boPayment }"><br>
+					 <input type="text" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
 				</div>
 	
 		</div>
    </form>
-</div>
+
       
 
 <%@ include file="../includes/footer.jsp"%>

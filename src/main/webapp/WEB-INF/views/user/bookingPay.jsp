@@ -48,12 +48,13 @@
    
 <div class="all">
 
-	<form action="bookingcompletion" method="post">
+	<form action="bookingcompletionresult" method="post">
+	
 	<input type="hidden" name="pno" id="pno" value="${pno}">	
 	<input type="hidden" name="pname" id="pname" value="${pname}">
 	<input type="hidden" name="pphone" id="pphone" value="${pphone}">
 		<input type="hidden" name="tno" id="tno" value="${tno}">
-
+	
 	
 	
 		<div id="form">
@@ -75,7 +76,8 @@
                <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
                <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
                <input type="text" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
-               <input type="hidden" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
+               <input type="text" value="${bookingDTO.boPayment }" name="boPayment"  id="boPayment" ><br>
+               <input type="text" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
             </div>
 				
 

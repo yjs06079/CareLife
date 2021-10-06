@@ -1,13 +1,16 @@
 package com.care.user.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.BookingTeacherDTO;
 import com.care.user.dto.UserParentsDTO;
+import com.care.util.MakePage;
 
 @Mapper
 public interface BookingMapper {
@@ -16,13 +19,19 @@ public interface BookingMapper {
 
 	int bookingInsert(BookingDTO bookingDTO);
 
-	List<BookingTeacherDTO> selectTeacher(BookingTeacherDTO bookingTeacherDTO);
+	List<BookingTeacherDTO> selectTeacher(BookingDTO BookingDTO);
 
-	List<BookingParentsDTO> bookingCheck(BookingParentsDTO bookingParentsDTO);
+	List<BookingParentsDTO> bookingList(BookingParentsDTO bookingParentsDTO);
 
 	int bookingDelete(BookingParentsDTO bookingParentsDTO);
 
 	int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
+	
+	BookingDTO selectBooking(int pno);
+
+	List<BookingParentsDTO> checkUser(HashMap<String, Object> hashMap);
+
+	
 
 
 }

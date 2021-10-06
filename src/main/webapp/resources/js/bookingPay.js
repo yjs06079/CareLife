@@ -2,6 +2,8 @@
  * 
 */
 
+
+
   function payment(){
 
         let hour = document.getElementById('boHour').value;
@@ -37,18 +39,7 @@ payment();
 
    function importPay(){
 	
-
-
-	
-
-
-
-	
-	  console.log(pname)
- console.log(boAddr)
-
-	  console.log(pno)
-
+  
 	var boAddr = document.getElementById('boAddr').value;
 	var boDate = document.getElementById('boDate').value;
 	var boTime = document.getElementById('boTime').value;
@@ -60,6 +51,8 @@ payment();
 	var pphone = document.getElementById('pphone').value;
 	var boRoadNameDetail = document.getElementById('boRoadNameDetail').value;
 	var boRemarks = document.getElementById('boRemarks').value;
+	var boPayment = document.getElementById('boPayment').value;
+	var boCancel = document.getElementById('boCancel').value;
 	
 	
         IMP.init('imp13670706'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -70,7 +63,7 @@ payment();
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '슬기로운 돌봄생활',
-            amount : pay,
+            amount : boPayment,
             buyer_email : 'a@aa',
             buyer_name : pname,
             buyer_tel : pphone,
@@ -79,27 +72,32 @@ payment();
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if ( rsp.success ) {
+				
+				document.getElementById('boCancel').value = rsp.imp_uid;
+
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                 jQuery.ajax({
-                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    url: "/carelife/usermain/bookingcompletion", //cross-domain error가 발생하지 않도록 주의해주세요
                     type: 'POST',
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid,
+                        merchant_uid : rsp.merchant_uid,
                         //기타 필요한 데이터가 있으면 추가 전달
-/*					   'boAddr':boAddr,
-		               'boDate':boDate,
-					   'boTime':boTime,
-		               'boHour':boHour,
-					   'boRoadName':boRoadName,
-		               'boPayment':boPayment,
-					   'boTime':boTime,
-		               'pname':pname,
-					   'pno':pno,
-		               'pphone':pphone,
-					   'boRoadName':boRoadName,
-		               'boRoadNameDetail':boRoadNameDetail,
-					   'boRemarks':boRemarks*/
+                        boAddr:boAddr,
+						boDate:boDate,
+						boTime:boTime,
+						boHour:boHour,
+						boRoadName:boRoadName,
+						boPayment:boPayment,
+						pname:pname,
+						pno:pno,
+						pphone:pphone,
+						boRoadNameDetail:boRoadNameDetail,
+						boRemarks:boRemarks,
+						boCancel:rsp.imp_uid,
+						boPayment:boPayment
+						
 
                     }
                 }).done(function(data) {
@@ -110,16 +108,18 @@ payment();
                         msg += '\n상점 거래ID : ' + rsp.merchant_uid;
                         msg += '\결제 금액 : ' + rsp.paid_amount;
                         msg += '카드 승인번호 : ' + rsp.apply_num;
-                        
+
+
                         alert(msg);
                     } else {
                         //[3] 아직 제대로 결제가 되지 않았습니다.
                         //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
                     }
                 });
-                //성공시 이동할 페이지
-                location.href="http://localhost:8080/carelife/usermain/bookingcompletion";
-
+               
+               // location.href="http://localhost:8080/carelife/usermain/bookingcompletion";
+               
+               
 
             } else {
                 msg = '결제에 실패하였습니다.';

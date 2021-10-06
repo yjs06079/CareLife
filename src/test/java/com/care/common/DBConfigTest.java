@@ -26,7 +26,7 @@ public class DBConfigTest {
 	@Test
 	public void dsTest() {
 		assertNotNull(ds);
-		assertEquals("mydb", ds.getUsername());
+		assertEquals("adminmj", ds.getUsername());
 		assertNotNull(factory);
 	}
 }

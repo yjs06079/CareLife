@@ -19,9 +19,9 @@
 </insert>
 
  
- <select id="selectTeacher" resultType="com.care.user.dto.BookingTeacherDTO" parameterType="com.care.user.dto.BookingTeacherDTO">
+ <select id="selectTeacher" resultType="com.care.user.dto.BookingTeacherDTO" parameterType="com.care.user.dto.BookingDTO">
  	select 
-		 	bo_addr as  boAddr, 
+		 	t_addr as  boAddr, 
 		 	bo_date as boDate, 
 		 	bo_time as boTime, 
 		 	teacher_g4.t_no as tno,
@@ -34,7 +34,7 @@
 		on booking_g4.t_no = teacher_g4.t_no		
 	where teacher_g4.t_addr = #{boAddr}
 	and booking_g4.bo_date =#{boDate}
-	and booking_g4.bo_time not in (#{boTime});
+	and booking_g4.bo_time not in (#{boTime})
 	
 	
  </select>
@@ -43,41 +43,35 @@
 <insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
 	   
      insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
-   		values((select max(p_no) from parents_g4 ), 3 , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName} , #{boRoadNameDetail}),
-  		  	#{boRemarks}, 0 , 0)
+   		values((select max(p_no) from parents_g4 ), #{tno} , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName} , #{boRoadNameDetail}),
+  		  	#{boRemarks}, #{boCancel} , #{boPayment})
 
 </insert>
 
 
 
-<select id="bookingCheck" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="com.care.user.dto.BookingParentsDTO">
- <![CDATA[	select   *                              			
-			from (                                  			
-	       select @rownum:=@rownum+1 as rnum, A.*      
-		       from (                          			
-					select 
-					booking_g4.p_no as pno 
+<select id="bookingList" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="com.care.user.dto.BookingParentsDTO">
+ <![CDATA[	
+        
+      select          booking_g4.p_no as pno
 					, p_name as pname
 					, p_phone as pphone
-					, t_no as tNo 
-					, bo_addr as boAddr 
-					, bo_date as boDate 
-					, bo_time as boTime 
+					, t_no as tNo
+					, bo_addr as boAddr
+					, bo_date as boDate
+					, bo_time as boTime
 					, bo_hour as boHour
 					, bo_road_name as boRoadName
 					, bo_remarks as boRemarks
-					, bo_cancel as boCancel 
+					, bo_cancel as boCancel
 					, bo_payment as boPayment
 				from booking_g4
-				join parents_g4 
-				on booking_g4.p_no = parents_g4.p_no
-				where 
+				join parents_g4
+				on booking_g4.p_no = parents_g4.p_no 
+				where
 					p_name = #{pname}
 					and p_phone=#{pphone}
-					order by pno
-	               )A, (select @rownum:=0) R  
-	       ) B                                
-	 where rnum>= #{startrow}  and rnum<=#{endrow}
+	  order by pno desc limit #{skip},#{pageSize}
  ]]>
 	 
 </select>
@@ -102,5 +96,59 @@
 </select>
 
 
+<select id="checkParents" parameterType="java.lang.String"  resultType="int">
+	select p_name as pname 
+	      ,p_phone as pphone 
+    from parents_g4
+	where 
+		p_name = #{pname}
+	and p_phone=#{pphone}
+</select>
+
+
+<select id="selectBooking" resultType="com.care.user.dto.BookingDTO">
+
+select 
+
+					  bo_no as boNo
+					, p_no as pno
+					, t_no as tno
+					, bo_addr as boAddr
+					, bo_date as boDate
+					, bo_time as boTime
+					, bo_hour as boHour
+					, bo_road_name as boRoadName
+					, bo_remarks as boRemarks
+					, bo_cancel as boCancel
+					, bo_payment as boPayment
+					from  booking_g4 where p_no=#{pno}
+</select>
+
+
+
+
+<select id="checkUser" parameterType="java.util.HashMap" resultType="com.care.user.dto.BookingParentsDTO" >
+
+
+select 
+					 booking_g4.p_no as pno
+					, t_no as tno
+					, bo_addr as boAddr
+					, bo_date as boDate
+					, bo_time as boTime
+					, bo_hour as boHour
+					, bo_road_name as boRoadName
+					, bo_remarks as boRemarks
+					, bo_cancel as boCancel
+					, bo_payment as boPayment
+ 				from booking_g4
+				join parents_g4
+				on parents_g4.p_no = booking_g4.p_no
+ 				where p_name=#{pname} and p_phone=#{pphone}
+ 			    order by pno desc limit #{startRow},#{pageSize}
+ 			
+
+
+</select>
 
 </mapper>

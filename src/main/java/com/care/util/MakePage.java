@@ -1,11 +1,12 @@
 package com.care.util;
 
+import lombok.Builder;
 import lombok.Getter;
 
 public class MakePage {
 
 	@Getter
-	private int currPage;
+	private int currPage=1;
 	private int totalCount;
 	private int pageSize;
 	private int blockSize;
@@ -54,6 +55,9 @@ public class MakePage {
 		prev = (startBlock == 1)? false:true;
 		next = (endBlock < totalPage)? true:false;
 	}
+	
+
+	
 	
 }
 
