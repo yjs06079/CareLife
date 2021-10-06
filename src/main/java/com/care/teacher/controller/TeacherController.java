@@ -34,6 +34,7 @@ public class TeacherController {
 	
 	//////////////////////////// 선생님 전용 페이지 /////////////////////////////////
 	
+	//예약 리스트
 	@RequestMapping("teachermain/bookinglist")
 	public String teacherBookingList(@RequestParam(required = false, defaultValue = "1") int currPage, TeacherBookingListDTO dto, Model model) {
 		int totalCount = service.bookingTotalCount(); //전체 자료 수
@@ -44,9 +45,6 @@ public class TeacherController {
 		
 		ArrayList<TeacherBookingListDTO> list = service.teacherBookingList(dto, page.getStartRow(), pageSize);
 		
-		System.out.println("tno: " + dto.getTno());
-		System.out.println("tname: " + dto.getTname());
-		
 		model.addAttribute("list", list);
 		model.addAttribute("size", list.size());
 		model.addAttribute("page", page);
@@ -55,6 +53,7 @@ public class TeacherController {
 		return "teacher/teacherBookingList";
 	}
 	
+	//예약 상세 페이지
 	@GetMapping("teachermain/bookinglist/detail/{boNo}")
 	public String teacherBookingDetail(@PathVariable int boNo, Model model) {
 		TeacherBookingListDTO dto = service.teacherBookingDetail(boNo);
@@ -64,11 +63,12 @@ public class TeacherController {
 		return "teacher/teacherbookingDetail";
 	}
 	
-	@GetMapping("teachermain/bookinglist/detail/cancel/{boNo}")
+	//예약 취소
+	@PostMapping("teachermain/bookinglist/detail/cancel/{boNo}")
 	public String teacherBookingCancel(@PathVariable int boNo, Model model) {
-		TeacherBookingListDTO dto = service.teacherBookingCancel(boNo);
+		int bookingCancel = service.teacherBookingCancel(boNo);
 		
-		model.addAttribute("dto", dto);
+		model.addAttribute("bookingCancel", bookingCancel);
 		
 		return "teacher/teacherbookingCancel";
 	}

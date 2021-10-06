@@ -74,22 +74,44 @@
 			  	</thead>
 			  	<tbody>
 			  		<c:forEach var="item" items="${list }">
-				  		<tr>
-				  			<td><c:out value="${item.boNo }"></c:out></td>
-				  			<td><c:out value="${item.tname }"></c:out></td>
-				  			<td><a href="bookinglist/detail/${item.boNo }"><c:out value="${item.pname }"></c:out></a></td>
-					  		<td><c:out value="${item.boRoadName }"></c:out></td>
-							<td><c:out value="${item.boDate }"></c:out></td>
-							<c:choose>
-					      		<c:when test="${item.boTime eq 0 }">
-					      			<td>오전</td>
-					      		</c:when>
-					      		<c:when test="${item.boTime eq 1 }">
-					      			<td>오후</td>
-					      		</c:when>
-					      	</c:choose>
-							<td><c:out value="${item.boHour }시간"></c:out></td>
-						</tr>
+			  			<c:choose>
+			  				<c:when test="${item.boCancel eq 'x' }">
+			  					<tr>
+			  						<td><p style="text-decoration:line-through; color: red">${item.boNo }</p></td>
+			  						<td><p style="text-decoration:line-through; color: red">${item.tname }</p></td>
+			  						<td><a href="bookinglist/detail/${item.boNo }"><p style="text-decoration:line-through; color: red">${item.pname }</p></a></td>
+			  						<td><p style="text-decoration:line-through; color: red">${item.boRoadName }</p></td>
+			  						<td><p style="text-decoration:line-through; color: red">${item.boDate }</p></td>
+			  						<c:choose>
+						      		<c:when test="${item.boTime eq 0 }">
+						      			<td><p style="text-decoration:line-through; color: red">오전</p></td>
+						      		</c:when>
+						      		<c:when test="${item.boTime eq 1 }">
+						      			<td><p style="text-decoration:line-through; color: red">오후</p></td>
+						      		</c:when>
+						      	</c:choose>
+			  						<td><p style="text-decoration:line-through; color: red">${item.boHour }시간</p></td>
+			  					</tr>
+			  				</c:when>
+			  				<c:when test="${item.boCancel ne 'x' }">
+						  		<tr>
+						  			<td><c:out value="${item.boNo }"></c:out></td>
+						  			<td><c:out value="${item.tname }"></c:out></td>
+						  			<td><a href="bookinglist/detail/${item.boNo }"><c:out value="${item.pname }"></c:out></a></td>
+							  		<td><c:out value="${item.boRoadName }"></c:out></td>
+									<td><c:out value="${item.boDate }"></c:out></td>
+									<c:choose>
+							      		<c:when test="${item.boTime eq 0 }">
+							      			<td>오전</td>
+							      		</c:when>
+							      		<c:when test="${item.boTime eq 1 }">
+							      			<td>오후</td>
+							      		</c:when>
+							      	</c:choose>
+									<td><c:out value="${item.boHour }시간"></c:out></td>
+								</tr>
+							</c:when>
+						</c:choose>
 					</c:forEach>
 				</tbody>
 			</table>

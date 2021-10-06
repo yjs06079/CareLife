@@ -30,7 +30,7 @@ public interface TeacherMapper {
 	public TeacherBookingListDTO teacherBookingDetail(int boNo);
 
 	//예약 취소
-	public TeacherBookingListDTO teacherBookingCancel(int boNo);
+	public int teacherBookingCancel(int boNo);
 
 
 }

@@ -151,7 +151,6 @@ public class AdminController {
 		
 		model.addAttribute("result", result);
 		model.addAttribute("result2", result2);
-		model.addAttribute("eno", eno);
 		
 		return "admin/employeePass";
 	}

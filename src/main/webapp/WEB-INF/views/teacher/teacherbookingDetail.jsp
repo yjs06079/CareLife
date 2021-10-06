@@ -85,6 +85,9 @@
 	<div class="all">
 		<div id="info">
 			<h1>${dto.pname }님의 예약 내역입니다.</h1>
+			<c:if test="${dto.boCancel eq 'x'}">
+				<h5 style="color: red">※ 이미 취소된 예약입니다.</h5>
+			</c:if>
 		</div>
 		<div class="row">
 		  <div class="col-75">
@@ -125,7 +128,9 @@
 		        </div>
 		        <hr>
 		        
-		        <input type="submit" id="btn" value="예약 취소">
+		        <c:if test="${dto.boCancel ne 'x'}">
+		        	<input type="submit" id="btn" value="예약 취소">
+		        </c:if>
 		        </form>
 		    </div>
 		  </div>

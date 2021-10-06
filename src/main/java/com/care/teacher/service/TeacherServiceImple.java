@@ -77,7 +77,7 @@ public class TeacherServiceImple implements TeacherService{
 
 	//예약 취소
 	@Override
-	public TeacherBookingListDTO teacherBookingCancel(int boNo) {
+	public int teacherBookingCancel(int boNo) {
 		// TODO Auto-generated method stub
 		return mapper.teacherBookingCancel(boNo);
 	}

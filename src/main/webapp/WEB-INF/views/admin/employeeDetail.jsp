@@ -26,30 +26,25 @@
 		width: 100%;
 	}
 	
-/* 	#btn {
-		background-color: #FFF49C;
-		margin: 10px 0px;
-		padding: 10px 0px;
-		border: none;
-		border-radius: 12px;
-		width: 100%;
-	} */
-	
 	input[type=button] {
 		width: 500px;
 		padding: 10px;
 		margin: 8px 0;
 		border: none;
+		border-radius: 12px;
+		/* background-color: white; */
 	}
 	
 	#pass {
-	  background-color: #04AA6D;
 	  color: white;
+	  background-color: #04AA6D;
+	  /* border: 2px solid #04AA6D; */
 	}
 	
 	#nonpass {
 	  color: white;
 	  background-color: #f44336;
+	  /* border: 2px solid #f44336; */
 	}
 	
 	.row {
@@ -145,8 +140,10 @@
 		            <input type="text" id="eInfo" name="einfo" value="${dto.einfo }" readonly>
 		        </div>
 		        <hr>
-		        <input type="button" id="nonpass" value="불합격" onclick="location.href='http://localhost:8080/carelife/adminmain/nonpass/${dto.eno}'">
-		        <input type="button" id="pass" value="합격" onclick="location.href='http://localhost:8080/carelife/adminmain/pass/${dto.eno}'">
+		        <c:if test="${dto.epass eq 0 }">
+			        <input type="button" id="nonpass" value="불합격" onclick="location.href='http://localhost:8080/carelife/adminmain/nonpass/${dto.eno}'">
+			        <input type="button" id="pass" value="합격" onclick="location.href='http://localhost:8080/carelife/adminmain/pass/${dto.eno}'">
+			    </c:if>
 		      </form>
 		    </div>
 		  </div>

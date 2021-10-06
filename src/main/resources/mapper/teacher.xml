@@ -83,7 +83,8 @@
 		   bo_road_name as boRoadName, 
 		   bo_date as boDate, 
 		   bo_time as boTime, 
-		   bo_hour as boHour
+		   bo_hour as boHour, 
+		   bo_cancel as boCancel
 	from parents_g4 join booking_g4
 		on parents_g4.p_no = booking_g4.p_no
 			join teacher_g4
@@ -111,14 +112,19 @@
 		   bo_time as boTime, 
 		   bo_hour as boHour, 
 		   bo_road_name as boRoadName,
-		   bo_remarks as boRemarks
+		   bo_remarks as boRemarks,
+		   bo_cancel as boCancel
 	from parents_g4 join booking_g4
 		on parents_g4.p_no = booking_g4.p_no
 	where bo_no = #{boNo}
  </select>
  
  <!-- 예약 취소 -->
- <delete id="teacherBookingCancel" parameterType="int">
- 	
- </delete>
+ <update id="teacherBookingCancel" parameterType="int">
+ 	update booking_g4
+	set 
+		bo_cancel = 'x',
+		bo_payment = 0
+	where bo_no = #{boNo}
+ </update>
 </mapper>
