@@ -267,5 +267,13 @@ public class UserController {
 		return "user/bookingCancelPay";  //list로 돌아가야함..
 	}
 	
+	//이용요금 안내
+	@RequestMapping(value = "usermain/moneyinfo")
+	public String moneyInfo() {
+		return "user/moneyInfo";
+		}
+		
+	
+	
 	
 }
