@@ -21,10 +21,6 @@ public interface BookingMapper {
 
 	List<BookingTeacherDTO> selectTeacher(BookingDTO BookingDTO);
 
-	List<BookingParentsDTO> bookingList(BookingParentsDTO bookingParentsDTO);
-
-	int bookingDelete(BookingParentsDTO bookingParentsDTO);
-
 	int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 	
 	BookingDTO selectBooking(int boNO);
@@ -33,7 +29,7 @@ public interface BookingMapper {
 
 	String checkTeacher(int tno);
 
-	int bookingCancel(int boNo);
+
 
 	
 

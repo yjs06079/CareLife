@@ -56,9 +56,6 @@ th, td {
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- iamport.payment.js -->
-<script integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -122,8 +119,7 @@ th, td {
 								<td><input type="hidden" value="${item.boRemarks }"
 									id="boCancel" name="boCancel" readonly="readonly"></td>
 								<type>
-								<td><input type="button" id="btndel" value="삭제"
-									onclick="location='http://localhost:8080/carelife/usermain/bookingcancelpayresult?pno=${item.pno }'">
+								<td><input type="button" id="btndel" value="삭제">
 								</td>
 							</tr>
 						</c:forEach>
@@ -180,12 +176,28 @@ th, td {
 		
 	<script>
 
-
+alert(${size})
    if(${size } < 1) {
 	   console.log(${size})
 	   alert("조회 할 자료가 없습니다")
 	   location.href="${pageContext.servletContext.contextPath}/usermain/bookingcheck";
    } 
+   
+   
+   
+$('#resultVal').click(function(){
+    
+    let boPhone = $('#pPhone').val();
+    
+    
+       if(result == 0){
+          //인증번호 성공 
+          location.href = 'http://localhost:8080/carelife/usermain/bookinginfo?boPhone=' + boPhone;
+       }else{
+          alert("인증번호 실패");
+       }
+    });
+   
 </script>
 
 

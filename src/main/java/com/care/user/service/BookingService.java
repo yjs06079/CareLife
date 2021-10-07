@@ -16,10 +16,6 @@ public interface BookingService {
 
 	public List<BookingTeacherDTO> selectTeacher(BookingDTO bookingTeacherDTO);
 
-	public List<BookingParentsDTO> bookingList(BookingParentsDTO bookingParentsDTO);
-
-	public int bookingDelete(BookingParentsDTO bookingParentsDTO);
-
 	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
 
 	public BookingDTO selectBooking(int boNO);
@@ -28,10 +24,7 @@ public interface BookingService {
 
 	public String checkTeacher(int boNo);
 
-	public int bookingCancel(int boNo);
-	
 
- 
 	
 	
 	

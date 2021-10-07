@@ -53,41 +53,6 @@
 
 
 
-<select id="bookingList" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="com.care.user.dto.BookingParentsDTO">
- <![CDATA[	
-        
-      select          booking_g4.p_no as pno
-					, p_name as pname
-					, p_phone as pphone
-					, t_no as tNo
-					, bo_addr as boAddr
-					, bo_date as boDate
-					, bo_time as boTime
-					, bo_hour as boHour
-					, bo_road_name as boRoadName
-					, bo_remarks as boRemarks
-					, bo_cancel as boCancel
-					, bo_payment as boPayment
-				from booking_g4
-				join parents_g4
-				on booking_g4.p_no = parents_g4.p_no 
-				where
-					p_name = #{pname}
-					and p_phone=#{pphone}
-	  order by pno desc limit #{skip},#{pageSize}
- ]]>
-	 
-</select>
-
-<delete id="bookingDelete" parameterType="com.care.user.dto.BookingParentsDTO">
-	delete booking_g4
-	from booking_g4
-	join parents_g4 
-	on booking_g4.p_no = parents_g4.p_no
-	where booking_g4.p_no = #{pno}
-	 
-</delete>
-
 <select id="getMyTotalCount" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="int">
 	select count(*) 
 	from  booking_g4
@@ -135,6 +100,7 @@ select
 
 select 
 					 booking_g4.p_no as pno
+					, bo_no as boNo
 					, t_no as tno
 					, bo_addr as boAddr
 					, bo_date as boDate
@@ -162,8 +128,8 @@ select
 </select>
 
 
-<update id="">
 
 
-</update>
+
+
 </mapper>

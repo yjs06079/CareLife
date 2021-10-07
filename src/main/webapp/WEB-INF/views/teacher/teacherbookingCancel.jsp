@@ -18,6 +18,8 @@
 			alert("오류 발생 : 다시 시도해주세요.");
 			
 		}
+		
+
 	</script>
 	
 	<%@ include file="../includes/footer.jsp"%>

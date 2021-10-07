@@ -58,57 +58,21 @@
 
 <div class="all">
 
-	<form action="bookingcancelpayresult" method="post">
 	
-	
-	<input type="hidden" value="${bookingDTO.pno }" name="pno" id="pno">
-	<input type="hidden" value="${bookingDTO.boNo }" name="boNo" id="boNo">
-   <input type="hidden" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
-   <input type="hidden" value="${bookingDTO.tno }" name="tno" id="tno">
-   <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
-   <input type="hidden" value="${boDate }" name="boDate" id="boDate">
-   <input type="hidden" value="${bookingDTO.boTime }" name="boTime" id="boTime" >
-   <input type="hidden" value="${bookingDTO.boHour }" name="boHour" id="boHour">
-   <input type="hidden" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
-   <input type="hidden" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
-   <input type="hidden" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
-   <input type="hidden" value="${bookingDTO.boPayment }" name="boPayment"  id="boPayment"><br>
-   <input type="hidden" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
 
-		<h1> 보호자의 정보로 예약을 조회 할 수 있습니다. </h1>
-	    <p> 예약조회가 이루어지지 않을 시  </p>
-	    <p> 슬기로운 돌봄생활로 문의하시기 바랍니다.  </p>
-	    
-	    <br>
-	
-		 <div id="infoForm">
-            <label for="pname"> 환불계좌 예금주 </label>
-            <input type="text" id="cancleName" name="cancleName">
-	         
-	           <br>
-	         
-            <label for="pphone"> 환불계좌 은행 </label>
-            <input type="text" id="cancleBank" name="cancleBank">
-        
-           <br>
-        
-             <label for="pname"> 환불계좌 계좌번호 </label>
-             <input type="text" id="cancleAccount" name="cancleAccount">
-	         
-	         <br>
-	         
-            <label for="pphone"> 환불계좌 예금주 연락처 </label>
-            <input type="text" id="canclePhone" name="canclePhone">
-        
-         
-         <br>
-         
 
-         <input type="button" value="목록으로" id="list" name="list">
-         <input type="button"  id="cancel" name="cancel" value="결제취소">
-	</form>
-</div>
-<script src="${pageContext.servletContext.contextPath}/resources/js/bookingCheckResult.js"></script>
+
+<script>
+if(${bookingCancel } > 0) {
+	alert("예약 취소가 완료되었습니다.");
+	location.href="${pageContext.servletContext.contextPath}/usermain/bookingchecklist";
+} else {
+	alert("오류 발생 : 다시 시도해주세요.");
+	
+}
+</script>
+
+
 <%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

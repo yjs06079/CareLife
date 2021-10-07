@@ -97,19 +97,6 @@
 </div>
 
 
- <script>
-$(document).ready(function(){
-$('#tt').click(function(){
-	$('#exampleModal').modal('show');
-	
-
-
-	
-}) 
-});
-
-</script>  
-
 <%@ include file="../includes/footer.jsp"%>
 
 
