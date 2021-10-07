@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.care.teacher.dto.LoginDTO;
 import com.care.teacher.dto.TeacherBookingListDTO;
+import com.care.teacher.dto.TeacherCancelDTO;
 import com.care.teacher.dto.TeacherDTO;
 
 @Mapper
@@ -31,6 +32,9 @@ public interface TeacherMapper {
 
 	//예약 취소
 	public int teacherBookingCancel(int boNo);
+
+	//취소 문자
+	public TeacherCancelDTO bookingCancelSMS(int boNo);
 
 
 }

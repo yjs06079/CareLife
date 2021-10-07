@@ -89,14 +89,26 @@
 
          <tbody>
             <c:forEach var="item" items="${list}">
-               <tr>
-                  <td>${item.bono}</td>
-                  <td><a href="bookinglist/detail/${item.bono }"><c:out value="${item.pname }"></c:out></a></td>
-                  <td>${item.tno}</td>
-                  <td>${item.tname}</td>
-                  <td>${item.bopayment}</td>
-               </tr>
-               
+            	<c:choose>
+            		<c:when test="${item.bopayment eq 0}">
+		               <tr>
+		                  <td><p style="text-decoration:line-through; color: red">${item.bono}</p></td>
+		                  <td><a href="bookinglist/detail/${item.bono }"><p style="text-decoration:line-through; color: red">${item.pname }</p></a></td>
+		                  <td><p style="text-decoration:line-through; color: red">${item.tno}</p></td>
+		                  <td><p style="text-decoration:line-through; color: red">${item.tname}</p></td>
+		                  <td><p style="text-decoration:line-through; color: red">${item.bopayment}</p></td>
+		               </tr>
+               		</c:when>
+               		<c:when test="${item.bopayment ne 0}">
+               			<tr>
+               				<td>${item.bono}</td>
+               				<td><a href="bookinglist/detail/${item.bono }">${item.pname }</a></td>
+               				<td>${item.tno}</td>
+               				<td>${item.tname}</td>
+               				<td>${item.bopayment}</td>
+               			</tr>
+               		</c:when>
+               </c:choose>
             </c:forEach>
          </tbody>
 

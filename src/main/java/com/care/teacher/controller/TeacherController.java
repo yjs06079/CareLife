@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.care.teacher.dto.LoginDTO;
 import com.care.teacher.dto.TeacherBookingListDTO;
+import com.care.teacher.dto.TeacherCancelDTO;
 import com.care.teacher.dto.TeacherDTO;
 import com.care.teacher.service.TeacherService;
 import com.care.user.dto.BookingParentsDTO;
 import com.care.util.MakePage;
 import com.care.util.PageNation;
+import com.care.util.TeacherCoolSMS;
 
 
 @Controller
@@ -66,9 +68,15 @@ public class TeacherController {
 	//예약 취소
 	@PostMapping("teachermain/bookinglist/detail/cancel/{boNo}")
 	public String teacherBookingCancel(@PathVariable int boNo, Model model) {
+		//예약 취소
 		int bookingCancel = service.teacherBookingCancel(boNo);
 		
+		//취소 문자 전송
+		TeacherCancelDTO dto = service.bookingCancelSMS(boNo);
+		TeacherCoolSMS.sendSMS(dto);
+		
 		model.addAttribute("bookingCancel", bookingCancel);
+		model.addAttribute("boNo", boNo);
 		
 		return "teacher/teacherbookingCancel";
 	}

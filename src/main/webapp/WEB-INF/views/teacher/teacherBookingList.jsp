@@ -108,7 +108,20 @@
 							      			<td>오후</td>
 							      		</c:when>
 							      	</c:choose>
-									<td><c:out value="${item.boHour }시간"></c:out></td>
+							      	<c:choose>
+				    					<c:when test="${dto.boHour eq 0 }">
+											<td><c:out value="1시간"></c:out></td>
+										</c:when>
+										<c:when test="${dto.boHour eq 1 }">
+											<td><c:out value="2시간"></c:out></td>
+										</c:when>
+										<c:when test="${dto.boHour eq 2 }">
+											<td><c:out value="3시간"></c:out></td>
+										</c:when>
+										<c:when test="${dto.boHour eq 3 }">
+											<td><c:out value="4시간"></c:out></td>
+										</c:when>
+									</c:choose>
 								</tr>
 							</c:when>
 						</c:choose>

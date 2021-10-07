@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.care.teacher.dto.LoginDTO;
 import com.care.teacher.dto.TeacherBookingListDTO;
+import com.care.teacher.dto.TeacherCancelDTO;
 import com.care.teacher.dto.TeacherDTO;
 import com.care.util.MakePage;
 
@@ -29,6 +30,9 @@ public interface TeacherService {
 
 	//예약 취소
 	public int teacherBookingCancel(int boNo);
+
+	//취소 문자
+	public TeacherCancelDTO bookingCancelSMS(int boNo);
 
 
 }

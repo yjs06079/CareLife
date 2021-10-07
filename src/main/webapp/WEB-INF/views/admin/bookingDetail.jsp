@@ -85,6 +85,9 @@
    <div class="all">
       <div id="info">
          <h1>${dto.pname }님의 예약 내역입니다.</h1>
+         <c:if test="${dto.bopayment eq 0}">
+			  <h5 style="color: red">※ 이미 취소된 예약입니다.</h5>
+		 </c:if>
       </div>
       <div class="row">
         <div class="col-75">
@@ -118,7 +121,20 @@
                  </c:choose>
                  
                  <label for="bohour">시간</label>
-                 <input type="text" id="bohour" name="bohour" value="${dto.bohour }시간" readonly>
+                 <c:choose>
+					<c:when test="${dto.bohour eq 0 }">
+						<input type="text" value="1시간" readonly>
+					</c:when>
+					<c:when test="${dto.bohour eq 1 }">
+						 <input type="text" value="2시간" readonly>
+					</c:when>
+					<c:when test="${dto.bohour eq 2 }">
+						  <input type="text" value="3시간" readonly>
+					</c:when>
+					<c:when test="${dto.bohour eq 3 }">
+						 <input type="text" value="4시간" readonly>
+					</c:when>
+				</c:choose>
               
                  <label for="boremarks">요청사항</label>
                   <input type="text" id="boremarks" name="boremarks" value="${dto.boremarks }" readonly style="margin-bottom: 5px">

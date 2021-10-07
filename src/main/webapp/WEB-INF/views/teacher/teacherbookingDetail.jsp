@@ -112,16 +112,35 @@
 		        
 		        	<label for="boTime">오전/오후</label>
 		            <c:choose>
-				      		<c:when test="${dto.boTime eq 0 }">
-				      			<input type="text" id="boTime" name="boTime" value="오전" readonly>
-				      		</c:when>
-				      		<c:when test="${dto.boTime eq 1 }">
-				      			<input type="text" id="boTime" name="boTime" value="오후" readonly>
-				      		</c:when>
-				      	</c:choose>
+				    	<c:when test="${dto.boTime eq 0 }">
+				      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
+				      		<input type="text" value="오전" readonly>
+				      	</c:when>
+				      	<c:when test="${dto.boTime eq 1 }">
+				      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
+				      		<input type="text" value="오후" readonly>
+				      	</c:when>
+				    </c:choose>
 		        
 		        	<label for="boHour">시간</label>
-		            <input type="text" id="boHour" name="boHour" value="${dto.boHour }시간" readonly>
+		        	<c:choose>
+				    	<c:when test="${dto.boHour eq 0 }">
+		            		<input type="hidden" id="boHour" name="boHour" value="${dto.boHour }" readonly>
+		            		<input type="text" value="1시간" readonly>
+		           		</c:when>
+		           		<c:when test="${dto.boHour eq 1 }">
+		            		<input type="hidden" id="boHour" name="boHour" value="${dto.boHour }" readonly>
+		            		<input type="text" value="2시간" readonly>
+		           		</c:when>
+		           		<c:when test="${dto.boHour eq 2 }">
+		            		<input type="hidden" id="boHour" name="boHour" value="${dto.boHour }" readonly>
+		            		<input type="text" value="3시간" readonly>
+		           		</c:when>
+		           		<c:when test="${dto.boHour eq 3 }">
+		            		<input type="hidden" id="boHour" name="boHour" value="${dto.boHour }" readonly>
+		            		<input type="text" value="4시간" readonly>
+		           		</c:when>
+		           	</c:choose>
 		        
 		        	<label for="boRemarks">요청사항</label>
 		            <input type="text" id="boRemarks" name="boRemarks" value="${dto.boRemarks }" readonly style="margin-bottom: 5px">

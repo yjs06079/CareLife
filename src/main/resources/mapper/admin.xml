@@ -111,6 +111,7 @@
 		, bo_hour
 		, bo_road_name
 		, bo_remarks
+		, bo_payment
 		from parents_g4 join booking_g4
 		on parents_g4.p_no = booking_g4.p_no
 		where bo_no = #{bono}

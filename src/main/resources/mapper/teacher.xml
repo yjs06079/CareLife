@@ -73,7 +73,7 @@
 	 where t_no = #{tno}
 	 and t_name = #{tname}
  </select>
- 
+
   <!-- 선생님 예약 조회 -->
 <select id="teacherBookingList" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="java.util.HashMap">
  	select teacher_g4.t_no as tno,
@@ -127,4 +127,12 @@
 		bo_payment = 0
 	where bo_no = #{boNo}
  </update>
+ 
+ <!-- 취소 문자 -->
+ <select id="bookingCancelSMS" resultType="com.care.teacher.dto.TeacherCancelDTO" parameterType="int">
+ 	select bo_cancel as boCancel, p_phone as pphone
+	from booking_g4 join parents_g4
+		on booking_g4.p_no = parents_g4.p_no
+	where bo_no = #{boNo}
+ </select>
 </mapper>

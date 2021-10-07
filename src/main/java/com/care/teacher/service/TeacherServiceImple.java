@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.care.teacher.dto.LoginDTO;
 import com.care.teacher.dto.TeacherBookingListDTO;
+import com.care.teacher.dto.TeacherCancelDTO;
 import com.care.teacher.dto.TeacherDTO;
 import com.care.teacher.mapper.TeacherMapper;
 import com.care.util.MakePage;
@@ -80,6 +81,13 @@ public class TeacherServiceImple implements TeacherService{
 	public int teacherBookingCancel(int boNo) {
 		// TODO Auto-generated method stub
 		return mapper.teacherBookingCancel(boNo);
+	}
+
+	//취소 문자
+	@Override
+	public TeacherCancelDTO bookingCancelSMS(int boNo) {
+		// TODO Auto-generated method stub
+		return mapper.bookingCancelSMS(boNo);
 	}
 
 

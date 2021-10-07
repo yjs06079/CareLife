@@ -21,8 +21,8 @@ import com.care.admin.dto.KeyDTO;
 import com.care.admin.service.AdminService;
 import com.care.employee.dto.EmployeeDTO;
 import com.care.teacher.dto.TeacherDTO;
+import com.care.util.AdminCoolSMS;
 import com.care.util.MakePage;
-import com.care.util.TeacherCoolSMS;
 
 @Controller
 public class AdminController {
@@ -147,7 +147,7 @@ public class AdminController {
 		int teacherNo = service.getTeacherNo(employeePhone);
 		
 		//합격 문자 전송
-		TeacherCoolSMS.sendSMS(employeePhone, teacherNo);
+		AdminCoolSMS.sendSMS(employeePhone, teacherNo);
 		
 		model.addAttribute("result", result);
 		model.addAttribute("result2", result2);
