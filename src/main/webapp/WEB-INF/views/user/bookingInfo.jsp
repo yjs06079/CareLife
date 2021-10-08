@@ -9,17 +9,67 @@
 
 <style>
 	.all {
-      text-align: center;
-      margin-bottom: 50px;
-   }
-   
-   #form {
-      padding: 20px;
-      width: 500px;
-      margin: 0px auto;
-      text-align: center;
-   }
-   
+		text-align: center;
+	  	padding: 20px 0px;
+	}
+	
+	.info {
+		margin-bottom: 20px;
+	}
+	
+	#check {
+		background-color: #FFF49C;
+		margin-bottom: 10px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+ 	#btn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	.row {
+	  display: -ms-flexbox; /* IE10 */
+	  display: flex;
+	  -ms-flex-wrap: wrap; /* IE10 */
+	  flex-wrap: wrap;
+	  margin-bottom: 20px;
+	}
+	
+	.col-25 {
+	  -ms-flex: 50%; /* IE10 */
+	  flex: 50%;
+	}
+	
+	.col-75 {
+	  -ms-flex: 75%; /* IE10 */
+	  flex: 75%;
+	}
+	
+	.col-25,
+	.col-75 {
+	  padding: 0 16px;
+	}
+	
+
+	
+	label {
+	  margin-bottom: 10px;
+	  display: block;
+	  color: black;
+	}
+	
+	hr {
+		border: 1px solid #f1f1f1;
+		margin-bottom: 25px;
+	}
    #resultVal, #before {
       background-color: #FFCD4A;
       font-weight: bold;
@@ -31,15 +81,12 @@
       width: 400px;
    }
    
-   #namediv {
-		margin-bottom: 10px;
-	}
- 	
+  
  	#btn {
       background-color: #FFF49C;
       font-weight: bold;
       margin-bottom: 10px;
-      padding: 10px 15px;
+      padding: 10px 10px;
       border: none;
       border-radius: 12px;
    }
@@ -53,13 +100,7 @@
 </head>
 <body>
 
-<%-- <%
-// 세션값 가져오기
-String pPhone = (String) session.getAttribute("pPhone"); // Object 타입이므로 다운캐스팅
 
-System.out.print(pPhone +"    여기!!!    "); 
-
-%>   --%>
  <%@ include file="../includes/userHeader.jsp"%>
 
 <div class="all">
@@ -71,9 +112,6 @@ System.out.print(pPhone +"    여기!!!    ");
 	<input type="hidden" name="pname" value="${userDTO.pname}">
 	<input type="hidden" name="pphone" value="${userDTO.pphone}">
 		    
-		<!-- 테스트 후 삭제예정  -->
-		<span> SessionAttributes로 넘어온 pPhone값 : ${userDTO.pphone} pno의 값  : ${userDTO.pno}</span>
-		<span>  pname의 값  : ${userDTO.pname}</span>
 	
 		<br>
 		
@@ -123,12 +161,14 @@ System.out.print(pPhone +"    여기!!!    ");
 			<br>
 			
 			<div id="namediv">
-				<label> 예약시간대 </label>
-				<label for="boTime"style="width: 32%; text-align: right;"> 오전 </label>
+				<label style="margin-right: 20px"> 예약시간대 </label>
+				<label for="boTime"style="width: 27%; text-align: right;"> 오전 </label>
 				<input type="radio" id="boTime" name="boTime" value="0"> 
-				<label for="boTime"style="width: 30%; text-align: right;"> 오후 </label> 
+				<label for="boTime"style="width: 27%; text-align: right;"> 오후 </label> 
 				<input type="radio" id="boTime" name="boTime" value="1"> 
 			</div>
+			
+		
 			
 			<br>
 			
@@ -156,15 +196,23 @@ System.out.print(pPhone +"    여기!!!    ");
 			
 			<div id="namediv">                   
 				<label for="boRoadNameDetail"> 상세주소 </label>
-				<input type="text" id="boRoadNameDetail" name="boRoadNameDetail" style="width: 50%"> 
-				<input type="button" value="도로명주소검색"  id="btn" onclick="execPostCode();" style="width: 22%">
+				<input type="text" id="boRoadNameDetail" name="boRoadNameDetail" style="width: 54%"> 
+				<input type="button" value="도로명주소검색"  id="btn" onclick="execPostCode();" style="width: 15%">
 			</div>
 			
 			<br>
-			
-			<div id="namediv">
-				<label for="boRemarks" style="padding-right: 5px"> 요청사항 </label>
-				<textarea rows="1" cols="10" name="boRemarks" style="width: 70%; margin: -5px"></textarea> 
+			<div id="namediv">	
+			<label for="boRemarks"> 요청사항 </label> <br>
+			 <br>	<textarea rows="10" cols="5" name="boRemarks" style="width: 73%; margin: -10px"
+				placeholder="-아이의 이름을 입력해주세요
+
+-아이의 나이를 입력해주세요 
+
+-성별(남아,여아)을 입력해주세요
+
+-아이의 성향을 입력해주세요
+
+-아이의 주의사항을 입력해주세요"></textarea> 
 			</div>
 			
 			<input type="button"  value="이전" id="before" style="width: 40%" onclick="location='http://localhost:8080/carelife/usermain/bookingparentsresult'" />

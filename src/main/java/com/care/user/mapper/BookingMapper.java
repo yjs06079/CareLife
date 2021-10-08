@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.BookingTeacherDTO;
+import com.care.user.dto.SessionUserDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.util.MakePage;
 
@@ -21,13 +22,15 @@ public interface BookingMapper {
 
 	List<BookingTeacherDTO> selectTeacher(BookingDTO BookingDTO);
 
-	int getMyTotalCount(BookingParentsDTO bookingParentsDTO);
+	int getMyTotalCount(SessionUserDTO sessionUserDTO);
 	
 	BookingDTO selectBooking(int boNO);
 
 	List<BookingParentsDTO> checkUser(HashMap<String, Object> hashMap);
 
 	String checkTeacher(int tno);
+
+	int sessionCheck(HashMap<String, String> hashMap);
 
 
 

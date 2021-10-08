@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.care.user.dto.BookingDTO;
 import com.care.user.dto.BookingParentsDTO;
 import com.care.user.dto.BookingTeacherDTO;
+import com.care.user.dto.SessionUserDTO;
 import com.care.user.dto.UserParentsDTO;
 import com.care.user.mapper.BookingMapper;
 import com.care.util.MakePage;
@@ -41,9 +42,9 @@ public class BookingServiceImple implements BookingService {
 	}
 
 	@Override
-	public int getMyTotalCount(BookingParentsDTO bookingParentsDTO) {
+	public int getMyTotalCount(SessionUserDTO sessionUserDTO) {
 		
-		return mapper.getMyTotalCount(bookingParentsDTO);
+		return mapper.getMyTotalCount(sessionUserDTO);
 	}
 	
 
@@ -73,6 +74,19 @@ public class BookingServiceImple implements BookingService {
 	BookingDTO dto = mapper.selectBooking(boNo);
 	 String tname  = mapper.checkTeacher(dto.getTno());
 		return tname;
+	}
+
+	@Override
+	public int sessionCheck(String pname, String pphone) {
+		
+		//파라미터 2개는 hashMap
+		HashMap<String, String> hashMap = new HashMap<>();
+		
+		hashMap.put("pname", pname);
+		hashMap.put("pphone", pphone);
+
+		
+		return mapper.sessionCheck(hashMap);
 	}
 
 

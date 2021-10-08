@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-   
-   
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +27,15 @@
 	}
 	
  	#btn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	 	#listbtn {
 		background-color: #FFF49C;
 		margin: 10px 0px;
 		padding: 10px 0px;
@@ -83,42 +88,38 @@
 		margin-bottom: 25px;
 	}
 </style>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
-<script type="text/javascript">
- window.history.forward();
- function noBack(){window.history.forward();}
-</script>
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
-
-  <%@ include file="../includes/userHeader.jsp"%>
-   
-<div class="all">
-
-
-        <div class="row">
+<body>
+ <%@ include file="../includes/userHeader.jsp"%>
+	
+	<form action="http://localhost:8080/carelife/usermain/bookingchecklist" method="post">
+	<div class="all">
+		<div id="info">
+			<h1>예약번호${bookingDTO.boNo }입니다.</h1>
+			<c:if test="${bookingDTO.boCancel eq 'x'}">
+				<h5 style="color: red">※ 이미 취소된 예약입니다.</h5>
+			</c:if>
+		</div>
+		<div class="row">
 		  <div class="col-75">
 		    <div class="container">
-		      <form action="bookingcompletionresult" method="post">
-		      	<input type="hidden" name="pno" id="pno" value="${pno}">	
-				<input type="hidden" name="pname" id="pname" value="${pname}">
-				<input type="hidden" name="pphone" id="pphone" value="${pphone}">
-				<input type="hidden" name="tno" id="tno" value="${tno}">
-		      
 		      <hr>
 		        <div class="row">
+
+		        	<label for="tname">예약번호</label>
+		       		<input type="text" value="${bookingDTO.boNo }" id="boNo" nmae="boNo" readonly="readonly" >
+		        
+		            <label for="tname">예약선생님</label>
+		            <input type="text" id="tname" name="tname" value="${tname}선생님" readonly>
+		            
 		            <label for="boAddr">예약지역</label>
-		            <input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
+		           <input type="text" value="${bookingDTO.boAddr }" id="boAddr" name="boAddr" readonly="readonly">
 		            
 		            <label for="boDate">예약날짜</label>
 		            <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
 			   		<input type="text" value="${boDate }" name="boDate" id="boDate">
-		            
-		            <label for="boTime">예약시간대</label>
+		        
+		        	<label for="boTime">예약시간대</label>
 		            <c:choose>
 				    	<c:when test="${bookingDTO.boTime eq 0 }">
 				      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
@@ -129,9 +130,8 @@
 				      		<input type="text" value="오후" readonly>
 				      	</c:when>
 				    </c:choose>
-		            
-		            
-		            <label for="boHour">예약이용시간</label>
+		        
+		        	<label for="boHour">예약이용시간</label>
 		        	<c:choose>
 				    	<c:when test="${bookingDTO.boHour eq 0 }">
 		            		<input type="hidden" id="boHour" name="boHour" value="${bookingDTO.boHour }" readonly>
@@ -150,39 +150,62 @@
 		            		<input type="text" value="4시간" readonly>
 		           		</c:when>
 		           	</c:choose>
-		            
-		            <label for="boRoadNameDetail">상세주소</label>
-		            <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
-              	    <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
-              	  
-		            
-
-		            
-		            <label for="boPayment">예약요금</label>	           
-              		<input type="text" value="${bookingDTO.boPayment }" name="boPayment"  id="boPayment" ><br>
-              		<input type="hidden" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
+		           	
+		           	<label for="boRoadName">주소</label>
+		            <input type="text" id="boRoadName" name="boRoadName" value="${bookingDTO.boRoadName }" readonly>
 
 		        
 		        	<label for="boRemarks">요청사항</label>
 		            <input type="text" id="boRemarks" name="boRemarks" value="${bookingDTO.boRemarks }" readonly style="margin-bottom: 5px">
 		            
+		        <c:if test="${bookingDTO.boCancel ne 'x'}">
+		        	<input type="submit" id="btn" value="예약 취소">
+		        </c:if>
+		   
+		           <input type="submit" value="목록" id="listbtn" name="listbtn" >
 		        </div>
 		        <hr>
-		         <button  type="submit" id="btn" name="btn" >결제 완료</button>
-		       
-		        </form>
+		        
+
+		        
 		    </div>
 		  </div>
 		</div>
-				
+	</div>
+	</form>
+	<%@ include file="../includes/footer.jsp"%>
+	
+			
+	<script>
 
-		</div>
-		
-		 
-</div>
+   
+$('#btn').click(function(){
 
-<script src="${pageContext.servletContext.contextPath}/resources/js/bookingPay.js"></script>
-<%@ include file="../includes/footer.jsp"%>
+ //    console.log($(this).parent().siblings().eq(0).children().val());
+ //    내가찾는거(삭제버튼).부모(input의 부모 td).(td전체를 찾음).(td의 0번째 (class의 이름을 안써서).(td의 자식 input))
 
+ //	 let boNo = $(this).parent().siblings('.boNo').children().val();
+ 
+  let boNo = $('#boNo').val();
+
+ console.log(boNo);
+
+ 	    $.ajax({
+		url: "/carelife/usermain/bookingdetail/"+boNo,
+		contentType: 'application/json; charset=utf-8',
+		success: function(data){			
+			console.log(data);
+			 location.href="http://localhost:8080/carelife/usermain/bookingdetail/"+boNo;
+			alert('예약취소완료');
+		},
+		error: function (request, status, error){
+			alert('예약취소실패');
+		}
+
+    }) 
+});
+
+
+</script>
 </body>
 </html>

@@ -14,13 +14,7 @@
       text-align: center;
       margin-bottom: 50px;
    }
- 	#form {
-      padding: 20px;
-      width: 500px;
-      margin: 0px auto;
-      text-align: center;
-   }
-    
+
     #btn {
       background-color: #FFCD4A;
       font-weight: bold;
@@ -32,11 +26,57 @@
       width: 400px;
    }
    
-   .card{
-   	 width: 220px;
-   	 height: 250px;
-   	 border-radius: 15px;
-   }
+
+   
+   
+   p {
+	margin: 20px 0px;
+}
+
+.circle {
+	width: 250px;
+	height: 250px;
+	border-radius: 70%;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.teacherimg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	text-align: center;
+}
+
+.card-header {
+	width: 100%;
+	text-align: center;
+}
+
+.card-title {
+	font-weight: bold;
+}
+
+.info {
+	margin-bottom: 30px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.page {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.teacheraddr {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.checklist {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -61,39 +101,42 @@
 		
 		  <br>
 		
-			     <div class="row">
+      
+		<div class="row">
 
-            <c:forEach var="item" items="${list }">
+			<c:if test="${list!=null}">
+				<c:forEach var="item" items="${list }">
 
-               <div class="col-4" style="margin-bottom: 30px">
-                  <p></p>
+					<div class="col-4" style="margin-bottom: 30px; margin-top: 20px;">
+						<p></p>
 
-                  <div class="card">
-                     <div class="card-header" style="height: 300px">
-                        <div class="circle">
-                           <img src="<spring:url value='/images/${item.tphoto}' />"
-                              class="teacherimg" width="200px" height="200px" />
-                        </div>
-                     </div>
+						<div class="card">
+							<div class="card-header" style="height: 300px">
+								<div class="circle">
+									<img src="<spring:url value='/images/${item.tphoto}' />"
+										class="teacherimg" width="200px" height="200px" />
+								</div>
+							</div>
 
-                     <div class="card-body">
-                        <h5 class="card-title">
-                         <input type="radio" name="tno" id="tno" value="${item.tno}"> 
-                           <c:out value="${item.tname}" />
-                           &nbsp;선생님
-                        </h5>
-                        <p class="card-text">
-                           <c:out value="${item.tinfo}" />
-                            &nbsp;소개
-                        </p>
-                     </div>
-                  </div>
+							<div class="card-body">
+								<h5 class="card-title">
+								 <input type="radio" name="tno" id="tno" value="${item.tno}"> 
+									<c:out value="${item.tname}" />
+									&nbsp;선생님
+								</h5>
+								<p class="card-text">
+									<c:out value="${item.tinfo}" />
+								</p>
+							</div>
+						</div>
 
-               </div>
+					</div>
 
-            </c:forEach>
+				</c:forEach>
+			</c:if>
 
-      </div>
+
+		</div>
 			
 
 			  
@@ -105,7 +148,6 @@
 			
 			<!-- dto정보  -->
 				
-				<div style="background-color: yellow;">
 					<input type="hidden" value="${bookingDTO.boAddr }" name="boAddr">
 					<fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
 				    <input type="hidden" value="${boDate }" name="boDate">
@@ -115,7 +157,7 @@
 					<input type="hidden" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail">
 					<input type="hidden" value="${bookingDTO.boRemarks }" name="boRemarks">
 					<input type="hidden" name="boPayment" value="${bookingDTO.boPayment }"><br>
-					 <input type="text" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
+					 <input type="hidden" value="${bookingDTO.boCancel }" name="boCancel"  id="boCancel" ><br>
 				</div>
 	
 		</div>

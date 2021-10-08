@@ -71,18 +71,18 @@
 
   
   
-  		       <div style="background-color: yellow;">
-               <input type="text" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
+
+               <input type="hidden" value="${bookingDTO.boAddr }" name="boAddr" id="boAddr">
 			   <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
 			   <input type="hidden" value="${boDate }" name="boDate" id="boDate">
-               <input type="text" value="${bookingDTO.boTime }" name="boTime" id="boTime" >
-               <input type="text" value="${bookingDTO.boHour }" name="boHour" id="boHour">
-               <input type="text" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
-               <input type="text" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
-               <input type="text" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
-               <input type="text" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
-               <input type="text" name="boCancel"  id="boCancel" value="${bookingDTO.boCancel }"><br>
-				</div>
+               <input type="hidden" value="${bookingDTO.boTime }" name="boTime" id="boTime" >
+               <input type="hidden" value="${bookingDTO.boHour }" name="boHour" id="boHour">
+               <input type="hidden" value="${bookingDTO.boRoadName }" name="boRoadName" id="boRoadName">
+               <input type="hidden" value="${bookingDTO.boRoadNameDetail }" name="boRoadNameDetail" id="boRoadNameDetail">
+               <input type="hidden" value="${bookingDTO.boRemarks }" name="boRemarks" id="boRemarks">
+               <input type="hidden" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
+               <input type="hidden" name="boCancel"  id="boCancel" value="${bookingDTO.boCancel }"><br>
+			
  
   <input type="button" id="resultVal" name="resultVal" value="예약조회하기" onclick="location.href='http://localhost:8080/carelife/usermain/bookingcheck'">
  

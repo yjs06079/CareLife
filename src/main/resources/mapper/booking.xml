@@ -53,11 +53,9 @@
 
 
 
-<select id="getMyTotalCount" parameterType="com.care.user.dto.BookingParentsDTO"  resultType="int">
+<select id="getMyTotalCount" parameterType="com.care.user.dto.SessionUserDTO"  resultType="int">
 	select count(*) 
-	from  booking_g4
-	join parents_g4 
-	on booking_g4.p_no = parents_g4.p_no
+	from parents_g4
 	where 
 		p_name = #{pname}
 	and p_phone=#{pphone}
@@ -127,7 +125,13 @@ select
 
 </select>
 
+<select id="sessionCheck" parameterType="java.util.HashMap" resultType="int">
 
+			select count(*)
+			from parents_g4 where 
+			p_name=#{pname} and p_phone=#{pphone}
+
+</select>
 
 
 
