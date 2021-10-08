@@ -53,7 +53,6 @@
 	  -ms-flex-wrap: wrap; /* IE10 */
 	  flex-wrap: wrap;
 	  margin-bottom: 20px;
-	  margin-top: 20px;
 	}
 	
 	.col-25 {
@@ -106,7 +105,7 @@
 		    <div class="container">
 		      <form method="post">
 		      <hr>
-		      <h3>지원자 인적사항</h3>
+		      <h3 style="margin-top: 20px;">지원자 인적사항</h3>
 		        <div class="row">
 		            <label for="eName">이름</label>
 		            <input type="text" id="eName" name="ename" value="${dto.ename}" readonly>

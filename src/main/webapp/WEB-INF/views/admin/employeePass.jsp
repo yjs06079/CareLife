@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>슬기로운 돌봄생활</title>
 </head>
 <body>
 	<script>

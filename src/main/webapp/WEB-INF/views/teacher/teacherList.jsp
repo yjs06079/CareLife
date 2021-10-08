@@ -48,10 +48,6 @@ p {
 	margin-bottom: 50px;
 }
 
-.row {
-	margin-top: 20px;
-}
-
 .teacheraddr {
 	text-align: center;
 	font-size: 30px;
@@ -237,7 +233,7 @@ p {
 			<c:if test="${list!=null}">
 				<c:forEach var="item" items="${list }">
 
-					<div class="col-4" style="margin-bottom: 30px">
+					<div class="col-4" style="margin-bottom: 30px; margin-top: 20px;">
 						<p></p>
 
 						<div class="card">

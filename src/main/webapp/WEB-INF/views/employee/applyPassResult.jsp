@@ -15,10 +15,6 @@
 		text-align: center;
 	}
 	
-	.container {
-		padding: 16px;
-	}
-	
 	input[type=text] {
 		width: 100%;
 		padding: 15px;

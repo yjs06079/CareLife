@@ -40,7 +40,6 @@
 	  -ms-flex-wrap: wrap; /* IE10 */
 	  flex-wrap: wrap;
 	  margin-bottom: 20px;
-	  margin-top: 20px;
 	}
 	
 	.col-25 {
@@ -94,7 +93,7 @@
 		    <div class="container">
 		      <form action="cancel/${dto.boNo }" method="post">
 		      <hr>
-		        <div class="row">
+		        <div class="row" style="margin-top: 20px;">
 		            <label for="pname">보호자명</label>
 		            <input type="text" id="pname" name="pname" value="${dto.pname}" readonly>
 		            

@@ -14,10 +14,6 @@
 		text-align: center;
 	}
 	
-	.container {
-		padding: 16px;
-	}
-	
 	input[type=text] {
 		width: 100%;
 		padding: 15px;
@@ -34,7 +30,8 @@
 	
 	#btn {
 		background-color: #FFF49C;
-		margin: 10px 0px;
+		margin-top: 10px;
+		margin-bottom: 30px;
 		padding: 10px 0px;
 		border: none;
 		border-radius: 12px;

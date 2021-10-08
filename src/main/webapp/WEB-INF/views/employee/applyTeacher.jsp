@@ -39,7 +39,6 @@
 	  -ms-flex-wrap: wrap; /* IE10 */
 	  flex-wrap: wrap;
 	  margin-bottom: 20px;
-	  margin-top: 20px;
 	}
 	
 	.col-25 {
@@ -93,7 +92,7 @@
 		    <div class="container">
 		      <form action="applyresult" method="post">
 		      <hr>
-		      <h3>지원자 인적사항</h3>
+		      <h3 style="margin-top: 20px;">지원자 인적사항</h3>
 		        <div class="row">
 			        <label for="ePhoto">지원자 사진&nbsp;</label>
 			        <label style="color: gray">(이미지는 3x4 규격이며, 이미지 파일명은 이름.jpg/이름.png 형식으로 제출하세요.)</label>
