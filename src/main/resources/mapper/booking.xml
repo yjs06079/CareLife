@@ -30,7 +30,8 @@
             t_photo as tphoto       
             from teacher_g4 where 
                                 t_no not in
-            (select bo_addr from booking_g4	where booking_g4.bo_addr = #{boAddr}
+            (select booking_g4.t_no as tno from booking_g4	
+             where booking_g4.bo_addr = #{boAddr}
              and bo_date = #{boDate}
              and bo_time in (#{boTime})
              ) and t_addr= #{boAddr}
