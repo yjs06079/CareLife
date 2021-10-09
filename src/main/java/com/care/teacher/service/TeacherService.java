@@ -16,9 +16,6 @@ public interface TeacherService {
 		
 	public int totalCount(String searchtxt);
 
-	//선생님 로그인
-	public ArrayList<LoginDTO> getBookingList(LoginDTO dto);
-
 	//선생님 예약 조회
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize);
 	

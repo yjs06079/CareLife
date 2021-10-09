@@ -60,79 +60,66 @@
 				]]>
 			</where>
 	</select>
- 
- <!-- <select id="getList" resultMap="dto">
- 	select t_no, t_name, t_addr, t_phone, t_info, t_photo
- 	from teacher_g4
- </select> -->
- 
- <!-- 선생님 로그인 -->
- <select id="getBookingList" resultType="com.care.teacher.dto.LoginDTO" parameterType="com.care.teacher.dto.LoginDTO">
-	 select t_no as tno, t_name as tname
-	 from teacher_g4
-	 where t_no = #{tno}
-	 and t_name = #{tname}
- </select>
 
-  <!-- 선생님 예약 조회 -->
-<select id="teacherBookingList" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="java.util.HashMap">
- 	select teacher_g4.t_no as tno,
- 		   t_name as tname,
- 		   p_name as pname,
-		   bo_no as boNo,
-		   bo_road_name as boRoadName, 
-		   bo_date as boDate, 
-		   bo_time as boTime, 
-		   bo_hour as boHour, 
-		   bo_cancel as boCancel
-	from parents_g4 join booking_g4
-		on parents_g4.p_no = booking_g4.p_no
-			join teacher_g4
-				on booking_g4.t_no = teacher_g4.t_no
- 	where teacher_g4.t_no = #{dto.tno}
-	and t_name = #{dto.tname}
-	order by boDate limit #{startRow}, #{pageSize}
-</select>
- 
- <select id="bookingTotalCount" resultType="int">
- 	select count(*)
-	from parents_g4 join booking_g4
-		on parents_g4.p_no = booking_g4.p_no
-			join teacher_g4
-				on booking_g4.t_no = teacher_g4.t_no;
- </select>
- 
- <!-- 예약 상세 페이지 -->
- <select id="teacherBookingDetail" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="int">
- 	select bo_no as boNo,
- 		   p_name as pname, 
-		   p_phone as pphone, 
-		   p_sub_phone as psubphone,
-		   bo_date as boDate, 
-		   bo_time as boTime, 
-		   bo_hour as boHour, 
-		   bo_road_name as boRoadName,
-		   bo_remarks as boRemarks,
-		   bo_cancel as boCancel
-	from parents_g4 join booking_g4
-		on parents_g4.p_no = booking_g4.p_no
-	where bo_no = #{boNo}
- </select>
- 
- <!-- 예약 취소 -->
- <update id="teacherBookingCancel" parameterType="int">
- 	update booking_g4
-	set 
-		bo_cancel = 'x',
-		bo_payment = 0
-	where bo_no = #{boNo}
- </update>
- 
- <!-- 취소 문자 -->
- <select id="bookingCancelSMS" resultType="com.care.teacher.dto.TeacherCancelDTO" parameterType="int">
- 	select bo_cancel as boCancel, p_phone as pphone
-	from booking_g4 join parents_g4
-		on booking_g4.p_no = parents_g4.p_no
-	where bo_no = #{boNo}
- </select>
+	<!-- 선생님 예약 조회 -->
+	<select id="teacherBookingList" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="java.util.HashMap">
+	 	select teacher_g4.t_no as tno,
+	 		   t_name as tname,
+	 		   p_name as pname,
+			   bo_no as boNo,
+			   bo_road_name as boRoadName, 
+			   bo_date as boDate, 
+			   bo_time as boTime, 
+			   bo_hour as boHour, 
+			   bo_cancel as boCancel
+		from parents_g4 join booking_g4
+			on parents_g4.p_no = booking_g4.p_no
+				join teacher_g4
+					on booking_g4.t_no = teacher_g4.t_no
+	 	where teacher_g4.t_no = #{dto.tno}
+		and t_name = #{dto.tname}
+		order by boDate limit #{startRow}, #{pageSize}
+	</select>
+	 
+	 <select id="bookingTotalCount" resultType="int">
+	 	select count(*)
+		from parents_g4 join booking_g4
+			on parents_g4.p_no = booking_g4.p_no
+				join teacher_g4
+					on booking_g4.t_no = teacher_g4.t_no;
+	 </select>
+	 
+	 <!-- 예약 상세 페이지 -->
+	 <select id="teacherBookingDetail" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="int">
+	 	select bo_no as boNo,
+	 		   p_name as pname, 
+			   p_phone as pphone, 
+			   p_sub_phone as psubphone,
+			   bo_date as boDate, 
+			   bo_time as boTime, 
+			   bo_hour as boHour, 
+			   bo_road_name as boRoadName,
+			   bo_remarks as boRemarks,
+			   bo_cancel as boCancel
+		from parents_g4 join booking_g4
+			on parents_g4.p_no = booking_g4.p_no
+		where bo_no = #{boNo}
+	 </select>
+	 
+	 <!-- 예약 취소 -->
+	 <update id="teacherBookingCancel" parameterType="int">
+	 	update booking_g4
+		set 
+			bo_cancel = 'x',
+			bo_payment = 0
+		where bo_no = #{boNo}
+	 </update>
+	 
+	 <!-- 취소 문자 -->
+	 <select id="bookingCancelSMS" resultType="com.care.teacher.dto.TeacherCancelDTO" parameterType="int">
+	 	select bo_cancel as boCancel, p_phone as pphone
+		from booking_g4 join parents_g4
+			on booking_g4.p_no = parents_g4.p_no
+		where bo_no = #{boNo}
+	 </select>
 </mapper>

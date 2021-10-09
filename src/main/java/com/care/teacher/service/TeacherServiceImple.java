@@ -43,13 +43,6 @@ public class TeacherServiceImple implements TeacherService{
 		return result;
 	}
 
-	//선생님 로그인
-	@Override
-	public ArrayList<LoginDTO> getBookingList(LoginDTO dto) {
-		// TODO Auto-generated method stub
-		return mapper.getBookingList(dto);
-	}
-
 	//선생님 예약 조회
 	@Override
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize) {
