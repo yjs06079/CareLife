@@ -143,7 +143,6 @@
 			  <br>
 			  
 
-			
 			<input type="submit" id="btn" name="btn" value="결제하기" >
 			
 			<!-- dto정보  -->

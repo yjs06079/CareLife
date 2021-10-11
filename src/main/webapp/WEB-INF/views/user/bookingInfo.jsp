@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>슬기로운 돌봄생활</title>
-
 <style>
 	.all {
 		text-align: center;
@@ -58,6 +57,15 @@
 	  padding: 0 16px;
 	}
 	
+	input[type=text], input[type=file],select,input[type=date],input[type=radio] {
+	  width: 100%;
+	  margin-bottom: 20px;
+	  padding: 15px;
+	  border: 1px solid #ccc;
+	  border-radius: 3px;
+	  background: #f1f1f1;
+	}
+	
 
 	
 	label {
@@ -70,28 +78,16 @@
 		border: 1px solid #f1f1f1;
 		margin-bottom: 25px;
 	}
-   #resultVal, #before {
-      background-color: #FFCD4A;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      padding: 10px 50px;
-      border: none;
-      border-radius: 12px;
-      width: 400px;
-   }
-   
-  
- 	#btn {
-      background-color: #FFF49C;
-      font-weight: bold;
-      margin-bottom: 10px;
-      padding: 10px 10px;
-      border: none;
-      border-radius: 12px;
-   }
+	.timediv{
+	justify-content: flex-start;
+	
+	}
+	
+    .hourdiv{
+	justify-content: flex-start;
+	
+	}
 </style>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- 도로명주소 api -->
@@ -113,6 +109,9 @@
 	<input type="hidden" name="pphone" value="${userDTO.pphone}">
 		    
 	
+
+		<div class="all">
+		
 		<br>
 		
 		<h1> 돌봄 장소와 시간을 입력해주세요. </h1>
@@ -121,88 +120,78 @@
 
 		<br>
 		
-		<div class="form">
-			<div id="namediv">
+
+
+		<div class="row">
+		  <div class="col-75">
+		    <div class="container">
+		      <hr>
+		        <div class="row" style="margin-top: 20px;">
 				<label> 예약지역 </label>
-				<select name="boAddr"style="width: 70%; text-align: center;">
-				   <option value="강동구"> 강동구 </option>
-				   <option value="강북구"> 강북구 </option>
-				   <option value="강서구"> 강서구 </option>
-				   <option value="관악구"> 관악구 </option>
-				   <option value="광진구"> 광진구 </option>
-				   <option value="구로구"> 구로구 </option>
-				   <option value="금천구"> 금천구 </option>
-				   <option value="노원구"> 노원구 </option>
-				   <option value="도봉구"> 도봉구 </option>
-				   <option value="동대문구"> 동대문구 </option>
-				   <option value="동작구"> 동작구 </option>
-				   <option value="마포구"> 마포구 </option>
-				   <option value="서대문구"> 서대문구 </option>
-				   <option value="서초구"> 서초구 </option>
-				   <option value="성동구"> 성동구 </option>
-				   <option value="성북구"> 성북구 </option>
-				   <option value="송파구"> 송파구 </option>
-				   <option value="양천구"> 양천구 </option>
-				   <option value="영등포구"> 영등포구 </option>
-				   <option value="용산구"> 용산구 </option>
-				   <option value="은평구"> 은평구 </option>
-				   <option value="종로구"> 종로구 </option>
-				   <option value="중구"> 중구 </option>
-				   <option value="중랑구"> 중랑구 </option>
-				</select>
-			</div>
-			<br>
-			
-			<div id="namediv">
+				<select name="boAddr">
+				<option value="">&nbsp;&nbsp;&nbsp;지역을 선택하세요.</option>
+				<option value="강동구">강동구</option>
+				<option value="강북구">강북구</option>
+				<option value="강서구">강서구</option>
+				<option value="관악구">관악구</option>
+				<option value="광진구">광진구</option>
+				<option value="구로구">구로구</option>
+				<option value="금천구">금천구</option>
+				<option value="노원구">노원구</option>
+				<option value="도봉구">도봉구</option>
+				<option value="동대문구">동대문구</option>
+				<option value="동작구">동작구</option>
+				<option value="마포구">마포구</option>
+				<option value="서대문구">서대문구</option>
+				<option value="서초구">서초구</option>
+				<option value="성동구">성동구</option>
+				<option value="성북구">성북구</option>
+				<option value="송파구">송파구</option>
+				<option value="양천구">양천구</option>
+				<option value="영등포구">영등포구</option>
+				<option value="용산구">용산구</option>
+				<option value="은평구">은평구</option>
+				<option value="종로구">종로구</option>
+				<option value="중구">중구</option>
+				<option value="중랑구">중랑구</option>
+			</select>
+
 				<label> 예약일자 </label>
-				<input type="date" name="boDate" style="width: 70%; text-align: center;">
-			</div>
-			
-			<br>
-			
-			<div id="namediv">
-				<label style="margin-right: 20px"> 예약시간대 </label>
-				<label for="boTime"style="width: 27%; text-align: right;"> 오전 </label>
+				<input type="date" name="boDate" required="required">
+				
+
+				<label> 예약시간대 </label>
+				<div class="timediv">		
+				<label> 오전 </label>
 				<input type="radio" id="boTime" name="boTime" value="0"> 
-				<label for="boTime"style="width: 27%; text-align: right;"> 오후 </label> 
+				<label for="boTime"> 오후 </label> 
 				<input type="radio" id="boTime" name="boTime" value="1"> 
-			</div>
-			
-		
-			
-			<br>
-			
-			<div id="namediv">
+				</div>
+
 				<label> 예약이용시간 </label>
-				<label for="boHour" style="width: 13%; text-align: right;"> 1시간 </label>
+				<div class="hourdiv">
+				<label for="boHour" > 1시간 </label>
 				<input type="radio" id="boHour" name="boHour" value="0">
-				<label for="boHour" style="width: 13%; text-align: right;"> 2시간 </label>
+				<label for="boHour" > 2시간 </label>
 				<input type="radio" id="boHour" name="boHour" value="1">
-				<label for="boHour" style="width: 13%; text-align: right;"> 3시간 </label>
+				<label for="boHour" > 3시간 </label>
 				<input type="radio" id="boHour" name="boHour" value="2">
-				<label for="boHour" style="width: 13%; text-align: right;"> 4시간 </label>
+				<label for="boHour" > 4시간 </label>
 				<input type="radio" id="boHour" name="boHour" value="3"> 
-			</div>
-			
-			<br>
+				</div>
 			
 			
-			<div id="namediv">
 				<label for="boRoadName"> 도로명주소 </label>
-				<input type="text" id="boRoadName" name="boRoadName" readonly="readonly" style="width: 70%"> 
-			</div>
-						
-			<br>
-			
-			<div id="namediv">                   
+				<input type="text" id="boRoadName" name="boRoadName" readonly="readonly"  required="required"> 
+                
 				<label for="boRoadNameDetail"> 상세주소 </label>
-				<input type="text" id="boRoadNameDetail" name="boRoadNameDetail" style="width: 54%"> 
-				<input type="button" value="도로명주소검색"  id="btn" onclick="execPostCode();" style="width: 15%">
+				<input type="text" id="boRoadNameDetail" name="boRoadNameDetail" > 
+				<input type="button" value="도로명주소검색"  id="btn" onclick="execPostCode();"  required="required">
 			</div>
 			
 			<br>
-			<div id="namediv">	
-			<label for="boRemarks"> 요청사항 </label> <br>
+			
+			<label > 요청사항 </label> <br>
 			 <br>	<textarea rows="10" cols="5" name="boRemarks" style="width: 73%; margin: -10px"
 				placeholder="-아이의 이름을 입력해주세요
 
@@ -212,12 +201,13 @@
 
 -아이의 성향을 입력해주세요
 
--아이의 주의사항을 입력해주세요"></textarea> 
-			</div>
+-아이의 주의사항을 입력해주세요" required="required"></textarea> 
+			
 			
 			<input type="button"  value="이전" id="before" style="width: 40%" onclick="location='http://localhost:8080/carelife/usermain/bookingparentsresult'" />
 			<input type="submit"  value="다음" id="resultVal"style="width: 40%" />
 		
+		</div>
 		</div>
 	</form>
 </div>

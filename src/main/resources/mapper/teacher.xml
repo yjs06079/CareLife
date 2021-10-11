@@ -111,7 +111,8 @@
 	 	update booking_g4
 		set 
 			bo_cancel = 'x',
-			bo_payment = 0
+			bo_payment = 0,
+			bo_time = 3
 		where bo_no = #{boNo}
 	 </update>
 	 

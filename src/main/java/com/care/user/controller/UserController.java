@@ -254,6 +254,15 @@ public class UserController {
 		model.addAttribute("bookingDTO", bookingDTO);
 		model.addAttribute("tname", tname);
 
+
+		return "user/bookingDetail";
+	}
+	
+	
+	@RequestMapping(value = "usermain/bookingremove/{boNo}")
+	public String bookingRemove(@PathVariable int boNo, Model model) {
+
+
 		int bookingCancel = teacherService.teacherBookingCancel(boNo);
 		model.addAttribute("bookingCancel", bookingCancel);
 

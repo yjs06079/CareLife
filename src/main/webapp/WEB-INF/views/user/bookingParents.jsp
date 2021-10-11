@@ -7,42 +7,112 @@
 <meta charset="UTF-8">
 <title>슬기로운 돌봄생활</title>
 <style>
-   .all {
-      text-align: center;
-      margin-bottom: 50px;
-   }
-   
-   #form {
-      padding: 20px;
-      width: 500px;
-      margin: 0px auto;
-      text-align: center;
-   }
-   
-   #sendPhoneNumber, #checkBtn {
-      background-color: #FFF49C;
-      font-weight: bold;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 12px;
-   }
-   
-   #resultVal {
-      background-color: #FFCD4A;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      padding: 10px 50px;
-      border: none;
-      border-radius: 12px;
-      width: 400px;
-   }
-   
-   #namediv {
-		margin-bottom: 10px;
+	.all {
+		text-align: center;
+	  	padding: 20px 0px;
 	}
-   
+	
+	.info {
+		margin-bottom: 20px;
+	}
+	
+	#check {
+		background-color: #FFF49C;
+		margin-bottom: 10px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+ 	#btn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	 	#sendPhoneNumber {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	 	#checkBtn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	 	#resultVal {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	 	#listbtn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
+	.row {
+	  display: -ms-flexbox; /* IE10 */
+	  display: flex;
+	  -ms-flex-wrap: wrap; /* IE10 */
+	  flex-wrap: wrap;
+	  margin-bottom: 20px;
+	  margin-top: 20px;
+	}
+	
+	.col-25 {
+	  -ms-flex: 50%; /* IE10 */
+	  flex: 50%;
+	}
+	
+	.col-75 {
+	  -ms-flex: 75%; /* IE10 */
+	  flex: 75%;
+	}
+	
+	.col-25,
+	.col-75 {
+	  padding: 0 16px;
+	}
+	
+	input[type=text], input[type=file] {
+	  width: 100%;
+	  margin-bottom: 20px;
+	  padding: 15px;
+	  border: 1px solid #ccc;
+	  border-radius: 3px;
+	  background: #f1f1f1;
+	}
+	
+	label {
+	  margin-bottom: 10px;
+	  display: block;
+	  color: black;
+	}
+	
+	hr {
+		border: 1px solid #f1f1f1;
+		margin-bottom: 25px;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -51,74 +121,68 @@
 
    <%@ include file="../includes/userHeader.jsp"%>
    
-   
-<!-- Modal -->
-<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">hi</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <h3>인증번호를 다시 확인해주세요</h3> 
-      </div>
-      <div class="modal-footer">
-        <input type="button" value="확인" id="yes"  onClick="location.href = 'http://localhost:8080/carelife/usermain/bookingparents'">
-      </div>
-    </div>
-  </div>
-</div>
+
  
    
 <div class="all">
 
-   <form class="infoForm" action="bookinginfo" method="post">
-		
+  
+		      <form class="infoForm" action="bookinginfo" method="post">
       
       <h1> 보호자의 정보를 입력해주세요. </h1>
       <p> 보호자의 정보는 돌봄 예약 서비스 이용시 </p>
       <p> 돌봄 선생님에게 정보가 제공됩니다. </p>
       
       <br>
-      
-      <div id="form">
-         <div id="namediv">
-            <label for="pname"> 보호자이름 </label>
-            <input type="text" id="pname" name="pname"style="width: 70%">
-         </div>
-         
-         <br>
-         
-         <div id="namediv">
-            <label for="pphone"> 핸드폰번호 </label>
-            <input type="text" id="pphone" name="pphone"  style="width: 40%">
-            <button  type="button" id="sendPhoneNumber" name="sendPhoneNumber"  style="width: 28%">인증번호 발송</button>
-         </div>
-         
-         <br>
-         
-         <div id="namediv">
-            <label for="confirm"> 인증번호 </label>
-            <input type="text" id="confirm" name="confirm"  style="width: 40%">
-            <button type="button" id="checkBtn" name="checkBtn"  style="width: 28%">인증번호 확인</button>
-         </div>
-                   
-         <br>
-         
-         <div id="namediv">
-            <label for="psubPhone"> 보조연락처 </label>
-            <input type="text" id="psubPhone" name="psubPhone"  style="width: 70%">
-         </div>
-         
-         <br>
-         
-         <button  type="button" id="resultVal" name="resultVal">다음</button>
-      </div>
-   </form>
-   
+      <div class="all">
+     <div class="row">
+		  <div class="col-75">
+		    <div class="container">
+		      <hr>
+		     
+
+		
+		      <hr>
+		        <div class="row">
+		            <label for="pname"> 보호자이름 </label>
+		            <input type="text" id="pname" name="pname">
+		            
+				    <label for="pphone"> 핸드폰번호 </label>
+		            <input type="text" id="pphone" name="pphone">
+		            <br>
+		            <button  type="button" id="sendPhoneNumber" name="sendPhoneNumber" >인증번호 발송</button>
+		            <br>
+		            
+
+
+		           <label for="confirm"> 인증번호 </label>
+		           <br>
+		           <input type="text" id="confirm" name="confirm" >
+		           <br>
+		           <button type="button" id="checkBtn" name="checkBtn" >인증번호 확인</button>
+		            
+		            
+		           <label for="psubPhone"> 보조연락처 </label>
+           		   <input type="text" id="psubPhone" name="psubPhone">
+		            
+		           <button  type="button" id="resultVal" name="resultVal">다음</button>
+              	  
+		          
+		            
+		        </div>
+		        <hr>
+	
+		   
+		    </div>
+		  </div>
+		</div>
+				
+
+		</div>
+		
+		 
+</div>
+          </form>
 
 </div>
 <script src="${pageContext.servletContext.contextPath}/resources/js/bookingSMSSend.js"></script>      

@@ -159,7 +159,7 @@
 		            <input type="text" id="boRemarks" name="boRemarks" value="${bookingDTO.boRemarks }" readonly style="margin-bottom: 5px">
 		            
 		        <c:if test="${bookingDTO.boCancel ne 'x'}">
-		        	<input type="submit" id="btn" value="예약 취소">
+		        	<input type="button" id="btn" value="예약 취소">
 		        </c:if>
 		   
 		           <input type="submit" value="목록" id="listbtn" name="listbtn" >
@@ -191,12 +191,13 @@ $('#btn').click(function(){
  console.log(boNo);
 
  	    $.ajax({
-		url: "/carelife/usermain/bookingdetail/"+boNo,
+		url: "/carelife/usermain/bookingremove/"+boNo,
 		contentType: 'application/json; charset=utf-8',
-		success: function(data){			
+		success: function(data){
+			alert('예약취소완료');
 			console.log(data);
 			 location.href="http://localhost:8080/carelife/usermain/bookingdetail/"+boNo;
-			alert('예약취소완료');
+			
 		},
 		error: function (request, status, error){
 			alert('예약취소실패');
