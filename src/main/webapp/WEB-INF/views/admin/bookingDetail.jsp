@@ -57,7 +57,7 @@
      padding: 0 16px;
    }
    
-   input[type=text], input[type=file] {
+   input[type=text], input[type=file], textarea {
      width: 100%;
      margin-bottom: 20px;
      padding: 15px;
@@ -135,8 +135,9 @@
 					</c:when>
 				</c:choose>
               
-                 <label for="boremarks">요청사항</label>
-                  <input type="text" id="boremarks" name="boremarks" value="${dto.boremarks }" readonly style="margin-bottom: 5px">
+                <label for="boremarks">요청사항</label>
+                <textarea rows="10" cols="30" id="boremarks" name="boremarks" readonly style="margin-bottom: 5px">${dto.boremarks }</textarea>
+              
               </div>
               <hr>
           </div>

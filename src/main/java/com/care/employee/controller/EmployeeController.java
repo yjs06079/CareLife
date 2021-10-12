@@ -40,8 +40,6 @@ public class EmployeeController {
 		
 		int cnt = service.checkInfo(map);
 		
-		//System.out.println("cnt........" + cnt);
-		
 		if (cnt == 0) { //cnt가 0이라면 db에 없는 것 -> 지원 가능
 			int result = service.teacherApply(dto);
 			model.addAttribute("result", result);

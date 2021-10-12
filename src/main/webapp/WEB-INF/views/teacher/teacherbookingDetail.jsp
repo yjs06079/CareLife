@@ -57,7 +57,7 @@
 	  padding: 0 16px;
 	}
 	
-	input[type=text], input[type=file] {
+	input[type=text], input[type=file], textarea {
 	  width: 100%;
 	  margin-bottom: 20px;
 	  padding: 15px;
@@ -142,7 +142,7 @@
 		           	</c:choose>
 		        
 		        	<label for="boRemarks">요청사항</label>
-		            <input type="text" id="boRemarks" name="boRemarks" value="${dto.boRemarks }" readonly style="margin-bottom: 5px">
+		        	<textarea rows="10" cols="30" id="boRemarks" name="boRemarks" readonly style="margin-bottom: 5px">${dto.boRemarks }</textarea>
 		        </div>
 		        <hr>
 		        

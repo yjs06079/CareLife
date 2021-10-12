@@ -32,19 +32,16 @@
 		margin: 8px 0;
 		border: none;
 		border-radius: 12px;
-		/* background-color: white; */
 	}
 	
 	#pass {
 	  color: white;
 	  background-color: #04AA6D;
-	  /* border: 2px solid #04AA6D; */
 	}
 	
 	#nonpass {
 	  color: white;
 	  background-color: #f44336;
-	  /* border: 2px solid #f44336; */
 	}
 	
 	.row {
@@ -70,7 +67,7 @@
 	  padding: 0 16px;
 	}
 	
-	input[type=text], input[type=file] {
+	input[type=text], input[type=file], textarea {
 	  width: 100%;
 	  margin-bottom: 20px;
 	  padding: 15px;
@@ -136,7 +133,7 @@
 		        
 		        <h3>지원자 자기소개</h3>
 		        <div class="row">
-		            <input type="text" id="eInfo" name="einfo" value="${dto.einfo }" readonly>
+		            <textarea rows="10" cols="30" id="eInfo" name="einfo" readonly>${dto.einfo }</textarea>
 		        </div>
 		        <hr>
 		        <c:if test="${dto.epass eq 0 }">

@@ -26,7 +26,6 @@ public class BookingServiceImple implements BookingService {
 	public int parentsInsert(UserParentsDTO userDTO) {
 		
 		return mapper.parentsInsert(userDTO);
-		
 	}
 
 	@Override
@@ -64,15 +63,15 @@ public class BookingServiceImple implements BookingService {
 		hashMap.put("startRow", startRow);
 		hashMap.put("pageSize", pageSize);
 		
-		
 		return mapper.checkUser(hashMap);
 	}
 
 	@Transactional
 	@Override
 	public String checkTeacher(int boNo) {	
-	BookingDTO dto = mapper.selectBooking(boNo);
-	 String tname  = mapper.checkTeacher(dto.getTno());
+		BookingDTO dto = mapper.selectBooking(boNo);
+		String tname  = mapper.checkTeacher(dto.getTno());
+		
 		return tname;
 	}
 
@@ -84,13 +83,8 @@ public class BookingServiceImple implements BookingService {
 		
 		hashMap.put("pname", pname);
 		hashMap.put("pphone", pphone);
-
 		
 		return mapper.sessionCheck(hashMap);
 	}
 
-
-
-	
-	
 }

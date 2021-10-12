@@ -8,66 +8,60 @@
 <meta charset="UTF-8">
 <title>슬기로운 돌봄생활</title>
 <style>
-
-p {
-	margin: 20px 0px;
-}
-
-.circle {
-	width: 250px;
-	height: 250px;
-	border-radius: 70%;
-	overflow: hidden;
-	display: inline-block;
-}
-
-.teacherimg {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	text-align: center;
-}
-
-.card-header {
-	width: 100%;
-	text-align: center;
-}
-
-.card-title {
-	font-weight: bold;
-}
-
-.info {
-	margin-bottom: 30px;
-	font-size: 20px;
-	text-align: center;
-}
-
-.page {
-	text-align: center;
-	margin-bottom: 50px;
-}
-
-.teacheraddr {
-	text-align: center;
-	font-size: 30px;
-	font-weight: bold;
-}
-
-.checklist {
-	text-align: center;
-}
-<!--모달창 -->
-	input[type=password] {
-	  width: 100%;
-	  padding: 20px 40px;
-	  margin: 8px 0;
-	  display: inline-block;
-	  border: 1px solid #ccc;
-	  box-sizing: border-box;
+	p {
+		margin: 20px 0px;
 	}
 	
-	/* Set a style for all buttons */
+	.circle {
+		width: 250px;
+		height: 250px;
+		border-radius: 70%;
+		overflow: hidden;
+		display: inline-block;
+	}
+	
+	.teacherimg {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		text-align: center;
+	}
+	
+	.card-header {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.card-title {
+		font-weight: bold;
+	}
+	
+	.card-body {
+		height: 300px;
+	}
+	
+	.info {
+		margin-bottom: 30px;
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	.page {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	
+	.teacheraddr {
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.checklist {
+		text-align: center;
+	}
+	
+	<!--모달창 -->
 	button[type=submit] {
 	  background-color: #04AA6D;
 	  color: white;
@@ -152,12 +146,14 @@ p {
 	  from {transform: scale(0)} 
 	  to {transform: scale(1)}
 	}
+	
 	.teClick{
-		border: solid 2px transparent;
-		border-radius: 12px; 
 		width: 50%;
 		background-color: #FFF49C;
-		font-size: 15px;
+		margin-bottom: 10px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
 	}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
