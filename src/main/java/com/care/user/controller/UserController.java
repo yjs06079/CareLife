@@ -35,6 +35,8 @@ public class UserController {
 
 	@Autowired
 	private TeacherService teacherService;
+	
+	private String path = "resources/teacher";
 
 	// 예약자정보 입력
 	@GetMapping("usermain/bookingparents")
@@ -86,6 +88,7 @@ public class UserController {
 		model.addAttribute("pno", pno);
 		model.addAttribute("pname", pname);
 		model.addAttribute("pphone", pphone);
+		model.addAttribute("path",path);
 
 		return "user/bookingTeacher";
 	}
