@@ -40,7 +40,8 @@ public class EmployeeController {
 	public String applyResult(EmployeeDTO dto, HttpServletRequest request,Model model) {
 		
 		MultipartFile multi = dto.getEphotofile();
-		
+		String ephoto =multi.getOriginalFilename();	
+		dto.setEphoto(ephoto);
 		String uploadpath = request.getSession().getServletContext().getRealPath(path);
 		System.out.println(uploadpath);
 
@@ -54,6 +55,7 @@ public class EmployeeController {
 			System.out.println(e);
 		}
 
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ename", dto.getEname());
 		map.put("ebirth", dto.getEbirth());
