@@ -98,8 +98,9 @@
 				    <!-- DB에 저장되는 실제 ephoto -->
 	      			<input type="hidden" name="ephoto" id="ePhoto">
 	
-	      			<label for="ephotofile" > 파일 </label>
-	      			<input type="file" name="ephotofile" id="ephotofile">
+	      			<label for="ephotofile">지원자 사진&nbsp;</label>
+	      			<label style="color: gray">(이미지는 3x4 규격이며, 이미지 파일명은 이름.jpg 형식으로 제출하세요.)</label>
+	      			<input type="file" name="ephotofile" id="ephotofile" required="required">
 		        
 		            <label for="eName">이름</label>
 		            <input type="text" id="eName" name="ename" placeholder="홍길동" required="required">

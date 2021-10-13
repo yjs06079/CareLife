@@ -41,20 +41,19 @@ public class EmployeeController {
 		
 		MultipartFile multi = dto.getEphotofile();
 		
-		 String uploadpath = request.getSession().getServletContext().getRealPath(path);
-	       System.out.println(uploadpath);
-	       
-	      try {
-	         if(!multi.isEmpty())
-	         {
-	            File file = new File(uploadpath, multi.getOriginalFilename());
-	            multi.transferTo(file);
-	         }
-	         
-	      } catch (IOException e) {
-	         System.out.println(e);
-	      }
-		
+		String uploadpath = request.getSession().getServletContext().getRealPath(path);
+		System.out.println(uploadpath);
+
+		try {
+			if(!multi.isEmpty()) {
+				File file = new File(uploadpath, multi.getOriginalFilename());
+				multi.transferTo(file);
+			}
+
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ename", dto.getEname());
 		map.put("ebirth", dto.getEbirth());
