@@ -1,18 +1,19 @@
 package com.care.employee.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.care.employee.dto.ApplyCheckDTO;
 import com.care.employee.dto.EmployeeDTO;
@@ -26,14 +27,34 @@ public class EmployeeController {
 	
 	//////////////////////////////// 선생님 지원 /////////////////////////////////////////
 	
+	private String path = "teacher";
+	
 	@GetMapping("usermain/apply")
 	public String applyTeacher() {
 		
 		return "employee/applyTeacher";
 	}
 	
+	//파일 업로드
 	@PostMapping("usermain/applyresult")
-	public String applyResult(EmployeeDTO dto, Model model) {
+	public String applyResult(EmployeeDTO dto, HttpServletRequest request,Model model) {
+		
+		MultipartFile multi = dto.getEphotofile();
+		
+		 String uploadpath = request.getSession().getServletContext().getRealPath(path);
+	       System.out.println(uploadpath);
+	       
+	      try {
+	         if(!multi.isEmpty())
+	         {
+	            File file = new File(uploadpath, multi.getOriginalFilename());
+	            multi.transferTo(file);
+	         }
+	         
+	      } catch (IOException e) {
+	         System.out.println(e);
+	      }
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ename", dto.getEname());
 		map.put("ebirth", dto.getEbirth());

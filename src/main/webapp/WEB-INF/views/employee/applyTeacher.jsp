@@ -90,13 +90,16 @@
 		<div class="row">
 		  <div class="col-75">
 		    <div class="container">
-		      <form action="applyresult" method="post">
+		      <form action="applyresult" method="post" enctype="multipart/form-data">
 		      <hr>
 		      <h3 style="margin-top: 20px;">지원자 인적사항</h3>
 		        <div class="row">
-			        <label for="ePhoto">지원자 사진&nbsp;</label>
-			        <label style="color: gray">(이미지는 3x4 규격이며, 이미지 파일명은 이름.jpg/이름.png 형식으로 제출하세요.)</label>
-		            <input type="file" id="ePhoto" name="ephoto" required="required">
+			    
+				    <!-- DB에 저장되는 실제 ephoto -->
+	      			<input type="hidden" name="ephoto" id="ePhoto">
+	
+	      			<label for="ephotofile" > 파일 </label>
+	      			<input type="file" name="ephotofile" id="ephotofile">
 		        
 		            <label for="eName">이름</label>
 		            <input type="text" id="eName" name="ename" placeholder="홍길동" required="required">
@@ -133,6 +136,7 @@
 		        <hr>
 		        
 		        <input type="submit" value="지원하기" id="btn">
+		        
 		      </form>
 		    </div>
 		  </div>

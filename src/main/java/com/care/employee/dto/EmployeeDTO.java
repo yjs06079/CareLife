@@ -1,5 +1,7 @@
 package com.care.employee.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +22,7 @@ public class EmployeeDTO {
 	private String elicense;
 	private String einfo;
 	private int epass;
+	
+	//파일 업로드
+	private MultipartFile ephotofile;
 }
