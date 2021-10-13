@@ -235,7 +235,7 @@
 						<div class="card">
 							<div class="card-header" style="height: 300px">
 								<div class="circle">
-									<img src="<spring:url value='/images/${item.tphoto}' />"
+									<img src="/carelife/${path }/${item.tphoto}"
 										class="teacherimg" width="200px" height="200px" />
 								</div>
 							</div>

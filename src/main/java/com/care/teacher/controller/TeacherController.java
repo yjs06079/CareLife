@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ import com.care.util.TeacherCoolSMS;
 @Controller
 public class TeacherController {
 
+	private String path = "resources/teacher";
+	
 	@Resource(name="teacherservice")
 	private TeacherService service;
 	
@@ -84,7 +87,7 @@ public class TeacherController {
 	////////////////////////////사용자 전용 페이지 /////////////////////////////////
 	
 	@RequestMapping("usermain/teacherList")
-	public String list(@RequestParam(required = false, defaultValue = "1") int currPage
+	public String list(HttpServletRequest request,@RequestParam(required = false, defaultValue = "1") int currPage
 			 , @RequestParam(required = false, defaultValue = "") String searchtxt
 			 , Model model){
 		
@@ -107,6 +110,8 @@ public class TeacherController {
 		model.addAttribute("list",list);
 		model.addAttribute("page", page);
 		model.addAttribute("searchtxt", searchtxt);
+		
+		model.addAttribute("path", path);
 		
 		return "teacher/teacherList";
 	}
