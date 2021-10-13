@@ -51,7 +51,4 @@
 		</interceptor>
 	</interceptors>
 	
-	<!-- 선생님 이미지 경로  -->
-	<resources mapping="/images/**" location="file:///C:\msa\teacher/" />
-	
 </beans:beans>

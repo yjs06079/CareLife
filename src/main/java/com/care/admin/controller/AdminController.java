@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ import com.care.util.MakePage;
 @Controller
 public class AdminController {
 
+	private String path = "resources/teacher";
+	
 	@Autowired
 	private AdminService service;
 	
@@ -113,10 +116,11 @@ public class AdminController {
 	
 	//지원자 상세보기
 	@GetMapping("adminmain/employeelist/detail/{eno}")
-	public String employeeDetail(@PathVariable int eno, Model model) {
+	public String employeeDetail(HttpServletRequest request, @PathVariable int eno, Model model) {
 		EmployeeDTO dto = service.employeeDetail(eno);
 		
 		model.addAttribute("dto", dto);
+		model.addAttribute("path", path);
 		
 		return "admin/employeeDetail";
 	}

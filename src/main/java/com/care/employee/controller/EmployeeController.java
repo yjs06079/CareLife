@@ -27,7 +27,7 @@ public class EmployeeController {
 	
 	//////////////////////////////// 선생님 지원 /////////////////////////////////////////
 	
-	private String path = "teacher";
+	private String path = "resources/teacher";
 	
 	@GetMapping("usermain/apply")
 	public String applyTeacher() {

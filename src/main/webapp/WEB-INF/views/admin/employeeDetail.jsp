@@ -95,7 +95,7 @@
 		<div id="info">
 			<h1>${dto.ename }님의 이력서입니다.</h1>
 			<input type="hidden" value="${dto.eno }">
-			<img src="<spring:url value='/images/${dto.ephoto}' />" class="employeeimg" width="200px" height="200px" />
+			<img src="/carelife/${path }/${dto.ephoto}" class="employeeimg" width="200px" height="200px" />
 		</div>
 		<div class="row">
 		  <div class="col-75">
