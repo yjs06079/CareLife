@@ -42,12 +42,11 @@ public class EmployeeController {
 		MultipartFile multi = dto.getEphotofile();
 		String ephoto =multi.getOriginalFilename();	
 		dto.setEphoto(ephoto);
-		String uploadpath = request.getSession().getServletContext().getRealPath(path);
-		System.out.println(uploadpath);
+
 
 		try {
 			if(!multi.isEmpty()) {
-				File file = new File(uploadpath, multi.getOriginalFilename());
+				File file = new File(path, multi.getOriginalFilename());
 				multi.transferTo(file);
 			}
 
