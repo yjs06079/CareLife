@@ -70,8 +70,8 @@ public class AdminController {
 			}
 		}
 		int totalCount = service.bookingTotalCount(search,searchtxt); //전체 자료 수
-		int pageSize = 5;
-		int blockSize = 3;
+		int pageSize = 10;
+		int blockSize = 5;
 
 		MakePage page = new MakePage(currPage, totalCount, pageSize, blockSize);
 

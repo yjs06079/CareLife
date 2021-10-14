@@ -43,8 +43,8 @@ public class TeacherController {
 	@RequestMapping("teachermain/bookinglist")
 	public String teacherBookingList(@RequestParam(required = false, defaultValue = "1") int currPage, TeacherBookingListDTO dto, Model model) {
 		int totalCount = service.bookingTotalCount(); //전체 자료 수
-		int pageSize = 5;
-		int blockSize = 3;
+		int pageSize = 10;
+		int blockSize = 5;
 		
 		PageNation page = new PageNation(currPage, totalCount, pageSize, blockSize);
 		

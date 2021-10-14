@@ -35,46 +35,40 @@
 		background-color: #FFF49C;
 	}
 	
-	#table {
-		margin-bottom: 20px;
-	}
-	
 	.page{
 		text-align: center;
 		margin-bottom: 50px;
+		margin-top: 20px;
 	}
 	
 	.info {
 	   margin-bottom: 20px;
 	}
 
-#btndel {
-	background-color: #FFF49C;
-	font-weight: bold;
-	margin-bottom: 10px;
-	padding: 10px 15px;
-	border: none;
-	border-radius: 12px;
-}
-
-#btn {
-	background-color: #FFCD4A;
-	font-weight: bold;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	padding: 10px 50px;
-	border: none;
-	border-radius: 12px;
-	width: 400px;
-}
-
-
-
-
-input {
-border:none;
-text-align: center;
-}
+	#btndel {
+		background-color: #FFF49C;
+		font-weight: bold;
+		margin-bottom: 10px;
+		padding: 10px 15px;
+		border: none;
+		border-radius: 12px;
+	}
+	
+	#btn {
+		background-color: #FFCD4A;
+		font-weight: bold;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		padding: 10px 50px;
+		border: none;
+		border-radius: 12px;
+		width: 400px;
+	}
+	
+	input {
+	border:none;
+	text-align: center;
+	}
 
 </style>
 
@@ -130,10 +124,10 @@ text-align: center;
 								<td>
 									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
 								</td>		
-			                         </c:when>
-			                         
-			                        <c:when test="${item.boCancel ne 'x' }"> 
-			                        <td class="boNo">
+			                </c:when>
+			                
+			                <c:when test="${item.boCancel ne 'x' }"> 
+			                	<td class="boNo">
 								   <input type="text" value="${item.boNo }" id="boNo" readonly="readonly">
 								</td>
 								
@@ -149,27 +143,17 @@ text-align: center;
 								<td>
 									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
 								</td>	
-			                       
-			                         </c:when>
-			                    </c:choose>
-			                  
-							
-												
-							</tr>
+			                </c:when>
+			            </c:choose>
+			            </tr>
 						</c:forEach>
 					</c:if>
 				</tbody>
 			</table>
 
-
-
-
 			<form action="/carelife/usermain/bookingchecklist" method="post">
 				<input type="hidden" name="pname" value="${sessionUserDTO.pname }">
 				<input type="hidden" name="pphone" value="${sessionUserDTO.pphone}">
-
-
-
 
 				<!-- 페이징 -->
 				<div class="page">
