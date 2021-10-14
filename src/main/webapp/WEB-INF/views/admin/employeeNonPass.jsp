@@ -15,7 +15,7 @@
 		} else {
 			alert("오류 발생 : 다시 시도해주세요.")
 			location.href = "http://52.78.34.244:8080/carelife/adminmain/employeelist/detail/${eno}";
-		}
+		} 
 	</script>
 </body>
 </html>
