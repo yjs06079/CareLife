@@ -128,7 +128,7 @@ text-align: center;
 							
 			                       									
 								<td>
-									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://localhost:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
+									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
 								</td>		
 			                         </c:when>
 			                         
@@ -147,7 +147,7 @@ text-align: center;
 								</td>
 		
 								<td>
-									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://localhost:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
+									<input type="button" id="btndel" class="btndel" value="상세보기"  onclick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingdetail/'+${item.boNo}">
 								</td>	
 			                       
 			                         </c:when>
