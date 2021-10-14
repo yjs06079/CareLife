@@ -32,7 +32,7 @@ import com.care.util.TeacherCoolSMS;
 @Controller
 public class TeacherController {
 
-	private String path = "resources/teacher";
+	private String path = "/carelife/resources/teacher";
 	
 	@Resource(name="teacherservice")
 	private TeacherService service;
