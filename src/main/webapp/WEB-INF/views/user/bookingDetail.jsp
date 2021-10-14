@@ -92,7 +92,7 @@
 <body>
  <%@ include file="../includes/userHeader.jsp"%>
 	
-	<form action="http://localhost:8080/carelife/usermain/bookingchecklist" method="post">
+	<form action="http://52.78.34.244:8080/carelife/usermain/bookingchecklist" method="post">
 	<div class="all">
 		<div id="info">
 			<h1>예약번호${bookingDTO.boNo }입니다.</h1>
@@ -196,7 +196,7 @@ $('#btn').click(function(){
 		success: function(data){
 			alert('예약취소완료');
 			console.log(data);
-			 location.href="http://localhost:8080/carelife/usermain/bookingdetail/"+boNo;
+			 location.href="http://52.78.34.244:8080/carelife/usermain/bookingdetail/"+boNo;
 			
 		},
 		error: function (request, status, error){

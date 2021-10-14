@@ -60,7 +60,7 @@
             <input type="hidden" name="boPayment"  id="boPayment" value="${bookingDTO.boPayment }"><br>
             <input type="hidden" name="boCancel"  id="boCancel" value="${bookingDTO.boCancel }"><br>
 			
-			<input type="button" id="resultVal" name="resultVal" value="예약 조회하기" onclick="location.href='http://localhost:8080/carelife/usermain/bookingcheck'">
+			<input type="button" id="resultVal" name="resultVal" value="예약 조회하기" onclick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingcheck'">
  
 		</div>
 	</form>
