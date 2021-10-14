@@ -80,7 +80,7 @@ table {
          </tbody>
 </table>
 <div class="go">
-	<input type="button" class="gobtn" value="돌봄  서비스 예약하러 가기"  onClick="location.href='http://localhost:8080/carelife/usermain/bookingparents'"/>
+	<input type="button" class="gobtn" value="돌봄  서비스 예약하러 가기"  onClick="location.href='http://52.78.34.244:8080/carelife/usermain/bookingparents'"/>
 </div>
 <%@ include file="../includes/footer.jsp"%>
 </body>
