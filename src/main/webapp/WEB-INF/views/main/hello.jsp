@@ -146,7 +146,7 @@
 			
 			<!-- 선생님 -->
 			<div class="link1">
-				<a id="teacherClick" onclick="location.href='http://localhost:8080/carelife/teachermain'" style="width:auto;">선생님이신가요?</a>
+				<a id="teacherClick" onclick="location.href='http://52.78.34.244:8080/carelife/teachermain'" style="width:auto;">선생님이신가요?</a>
 			</div>
 			
 			<!-- 관리자 -->
