@@ -37,7 +37,7 @@
 	}
 	
 	.card-body {
-		height: 300px;
+		height: 180px;
 	}
 	
 	.info {

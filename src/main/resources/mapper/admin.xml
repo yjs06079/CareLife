@@ -77,7 +77,7 @@
 		</where>
                   
                   <![CDATA[
-                     order by bo_no
+                     order by bo_no desc
                      )e, (select @rownum:=0) R
                   ]]>
 		<where>
@@ -129,7 +129,7 @@
 						from employee_g4
 						
 						<![CDATA[
-							order by e_no
+							order by e_no desc
 							)e, (select @rownum:=0) R
 						]]>
 				<where>
