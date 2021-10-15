@@ -76,6 +76,14 @@
       border: 1px solid #f1f1f1;
       margin-bottom: 25px;
    }
+   .gobtn{
+   background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+   }
 </style>
 </head>
 <body>
@@ -140,6 +148,9 @@
               
               </div>
               <hr>
+              
+              <input type="button" class="gobtn" value="목록"  onClick="location.href='/carelife/adminmain/bookinglist'"/>
+              
           </div>
         </div>
       </div>
