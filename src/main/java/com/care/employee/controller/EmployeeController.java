@@ -27,7 +27,7 @@ public class EmployeeController {
 	
 	//////////////////////////////// 선생님 지원 /////////////////////////////////////////
 	
-	private String path = "/carelife/resources/teacher";
+	private String path = "/resources/teacher";
 	
 	@GetMapping("usermain/apply")
 	public String applyTeacher() {
@@ -43,10 +43,12 @@ public class EmployeeController {
 		String ephoto =multi.getOriginalFilename();	
 		dto.setEphoto(ephoto);
 
-
+		String uploadpath = request.getSession().getServletContext().getRealPath(path);
+		System.out.println(uploadpath);
+		
 		try {
 			if(!multi.isEmpty()) {
-				File file = new File(path, multi.getOriginalFilename());
+				File file = new File(uploadpath, multi.getOriginalFilename());
 				multi.transferTo(file);
 			}
 

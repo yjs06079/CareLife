@@ -36,7 +36,7 @@ public class UserController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	private String path = "/carelife/resources/teacher";
+	private String path = "/resources/teacher";
 
 	// 예약자정보 입력
 	@GetMapping("usermain/bookingparents")
