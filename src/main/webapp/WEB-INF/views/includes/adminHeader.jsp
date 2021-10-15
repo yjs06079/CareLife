@@ -72,8 +72,8 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main" style="float: left">
-                              <li><a href="http://52.78.34.244:8080/carelife/adminmain/bookinglist" style="font-size: 20px; font-weight: bolder">예약 조회</a></li>
-                              <li><a href="http://52.78.34.244:8080/carelife/adminmain/employeelist" style="font-size: 20px; font-weight: bolder">구인 관리</a></li>
+                              <li><a href="/carelife/adminmain/bookinglist" style="font-size: 20px; font-weight: bolder">예약 조회</a></li>
+                              <li><a href="/carelife/adminmain/employeelist" style="font-size: 20px; font-weight: bolder">구인 관리</a></li>
                               <li><a href="https://center-pf.kakao.com/_Edjps/dashboard" style="font-size: 20px; font-weight: bolder">챗봇 관리</a></li>
                            </ul>
                         </nav>

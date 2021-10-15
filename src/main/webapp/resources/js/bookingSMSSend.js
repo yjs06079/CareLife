@@ -10,7 +10,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "http://52.78.34.244:8080/carelife/usermain/message/sendsms",
+                url: "/carelife/usermain/message/sendsms",
                 data: {
                     "phoneNumber" : phoneNumber
                 },

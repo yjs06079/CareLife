@@ -10,11 +10,11 @@
 	<script>
 		if(${result} > 0 && ${result2} > 0) {
 			alert("합격 처리 되었습니다.");
-			location.href = "http://52.78.34.244:8080/carelife/adminmain/employeelist";
+			location.href = "/carelife/adminmain/employeelist";
 		
 		} else {
 			alert("오류 발생 : 다시 시도해주세요.")
-			location.href = "http://52.78.34.244:8080/carelife/adminmain/employeelist/detail/${eno}";
+			location.href = "/carelife/adminmain/employeelist/detail/${eno}";
 		}
 	</script>
 </body>

@@ -137,8 +137,8 @@
 		        </div>
 		        <hr>
 		        <c:if test="${dto.epass eq 0 }">
-			        <input type="button" id="nonpass" value="불합격" onclick="location.href='http://52.78.34.244:8080/carelife/adminmain/nonpass/${dto.eno}'">
-			        <input type="button" id="pass" value="합격" onclick="location.href='http://52.78.34.244:8080/carelife/adminmain/pass/${dto.eno}'">
+			        <input type="button" id="nonpass" value="불합격" onclick="location.href='/carelife/adminmain/nonpass/${dto.eno}'">
+			        <input type="button" id="pass" value="합격" onclick="location.href='/carelife/adminmain/pass/${dto.eno}'">
 			    </c:if> 
 		      </form>
 		    </div>

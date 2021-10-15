@@ -9,7 +9,7 @@
     
        if(result == 0){
           //인증번호 성공 
-          location.href = 'http://52.78.34.244:8080/carelife/usermain/bookinginfo?boPhone=' + boPhone;
+          location.href = '/carelife/usermain/bookinginfo?boPhone=' + boPhone;
        }else{
           alert("인증번호 실패");
        }

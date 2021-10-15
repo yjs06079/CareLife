@@ -177,7 +177,7 @@
 			</div>
 			
 			<div class="center">
-				<input type="button" value="이전" id="before" onclick="http://52.78.34.244:8080/carelife/usermain/bookingparentsresult'" />
+				<input type="button" value="이전" id="before" onclick="/carelife/usermain/bookingparentsresult'" />
 				<input type="submit" value="다음" id="resultVal"/>
 			</div>
 		</div>
