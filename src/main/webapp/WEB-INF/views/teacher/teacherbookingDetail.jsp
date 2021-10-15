@@ -34,6 +34,15 @@
 		width: 100%;
 	}
 	
+	#listbtn {
+		background-color: #FFF49C;
+		margin: 10px 0px;
+		padding: 10px 0px;
+		border: none;
+		border-radius: 12px;
+		width: 100%;
+	}
+	
 	.row {
 	  display: -ms-flexbox; /* IE10 */
 	  display: flex;
@@ -146,6 +155,7 @@
 		        </div>
 		        <hr>
 		        
+		        <button type="button" id="listbtn" onclick="location.href='/carelife/teachermain/bookinglist?currPage=1&tno=${dto.tno }&tname=${dto.tname }'">목록</button>
 		        <c:if test="${dto.boCancel ne 'x'}">
 		        	<input type="submit" id="btn" value="예약 취소">
 		        </c:if>

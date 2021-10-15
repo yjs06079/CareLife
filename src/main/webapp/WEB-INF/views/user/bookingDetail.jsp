@@ -35,7 +35,7 @@
 		width: 100%;
 	}
 	
-	 	#listbtn {
+	#listbtn {
 		background-color: #FFF49C;
 		margin: 10px 0px;
 		padding: 10px 0px;
@@ -95,7 +95,7 @@
 	<form action="/carelife/usermain/bookingchecklist" method="post">
 	<div class="all">
 		<div id="info">
-			<h1>예약번호${bookingDTO.boNo }입니다.</h1>
+			<h1>${bookingDTO.boNo }번 예약입니다.</h1>
 			<c:if test="${bookingDTO.boCancel eq 'x'}">
 				<h5 style="color: red">※ 이미 취소된 예약입니다.</h5>
 			</c:if>
@@ -106,20 +106,20 @@
 		      <hr>
 		        <div class="row">
 
-		        	<label for="tname">예약번호</label>
+		        	<label for="tname">예약 번호</label>
 		       		<input type="text" value="${bookingDTO.boNo }" id="boNo" nmae="boNo" readonly="readonly" >
 		        
-		            <label for="tname">예약선생님</label>
-		            <input type="text" id="tname" name="tname" value="${tname}선생님" readonly>
+		            <label for="tname">예약 선생님</label>
+		            <input type="text" id="tname" name="tname" value="${tname} 선생님" readonly>
 		            
-		            <label for="boAddr">예약지역</label>
+		            <label for="boAddr">예약 지역</label>
 		           <input type="text" value="${bookingDTO.boAddr }" id="boAddr" name="boAddr" readonly="readonly">
 		            
-		            <label for="boDate">예약날짜</label>
+		            <label for="boDate">예약 날짜</label>
 		            <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
 			   		<input type="text" value="${boDate }" name="boDate" id="boDate">
 		        
-		        	<label for="boTime">예약시간대</label>
+		        	<label for="boTime">오전/오후</label>
 		            <c:choose>
 				    	<c:when test="${bookingDTO.boTime eq 0 }">
 				      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
@@ -131,7 +131,7 @@
 				      	</c:when>
 				    </c:choose>
 		        
-		        	<label for="boHour">예약이용시간</label>
+		        	<label for="boHour">예약 이용시간</label>
 		        	<c:choose>
 				    	<c:when test="${bookingDTO.boHour eq 0 }">
 		            		<input type="hidden" id="boHour" name="boHour" value="${bookingDTO.boHour }" readonly>
@@ -157,19 +157,14 @@
 		        
 		        	<label for="boRemarks">요청사항</label>
 		            <input type="text" id="boRemarks" name="boRemarks" value="${bookingDTO.boRemarks }" readonly style="margin-bottom: 5px">
-		            
+		        </div>
+		        <hr>
+		        <input type="submit" value="목록" id="listbtn" name="listbtn" >
 		        <c:if test="${bookingDTO.boCancel ne 'x'}">
 		        	<input type="button" id="btn" value="예약 취소">
 		        </c:if>
-		   
-		           <input type="submit" value="목록" id="listbtn" name="listbtn" >
-		        </div>
-		        <hr>
-		        
-
-		        
-		    </div>
-		  </div>
+		      </div>
+		   </div>
 		</div>
 	</div>
 	</form>
@@ -194,13 +189,13 @@ $('#btn').click(function(){
 		url: "/carelife/usermain/bookingremove/"+boNo,
 		contentType: 'application/json; charset=utf-8',
 		success: function(data){
-			alert('예약취소완료');
+			alert('예약 취소가 완료되었습니다.');
 			console.log(data);
 			 location.href="/carelife/usermain/bookingdetail/"+boNo;
 			
 		},
 		error: function (request, status, error){
-			alert('예약취소실패');
+			alert('오류 발생 : 다시 시도해주세요.');
 		}
 
     }) 
