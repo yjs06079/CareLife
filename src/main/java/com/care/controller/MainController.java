@@ -1,17 +1,10 @@
 package com.care.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import com.care.teacher.dto.LoginDTO;
 import com.care.teacher.service.TeacherService;
 
 @Controller
