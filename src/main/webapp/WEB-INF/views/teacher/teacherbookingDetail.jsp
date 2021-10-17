@@ -118,17 +118,19 @@
 		            <label for="boDate">날짜</label>
 		            <input type="text" id="boDate" name="boDate" value="${dto.boDate }" readonly>
 		        
-		        	<label for="boTime">오전/오후</label>
-		            <c:choose>
-				    	<c:when test="${dto.boTime eq 0 }">
-				      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
-				      		<input type="text" value="오전" readonly>
-				      	</c:when>
-				      	<c:when test="${dto.boTime eq 1 }">
-				      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
-				      		<input type="text" value="오후" readonly>
-				      	</c:when>
-				    </c:choose>
+		        	<c:if test="${dto.boTime ne 2 }">
+			        	<label for="boTime">오전/오후</label>
+			            <c:choose>
+					    	<c:when test="${dto.boTime eq 0 }">
+					      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
+					      		<input type="text" value="오전" readonly>
+					      	</c:when>
+					      	<c:when test="${dto.boTime eq 1 }">
+					      		<input type="hidden" id="boTime" name="boTime" value="${dto.boTime }" readonly>
+					      		<input type="text" value="오후" readonly>
+					      	</c:when>
+					    </c:choose>
+					</c:if>
 		        
 		        	<label for="boHour">시간</label>
 		        	<c:choose>

@@ -117,15 +117,17 @@
                   <label for="bodate">날짜</label>
                   <input type="text" id="bodate" name="bodate" value="${dto.bodate }" readonly>
               
-                 <label for="botime">오전/오후</label>
-                 <c:choose>
-                 	<c:when test="${dto.botime eq 0 }">
-                 		<input type="text" id="botime" name="botime" value="오전" readonly>
-                    </c:when>
-                    <c:when test="${dto.botime eq 1 }">
-                        <input type="text" id="botime" name="botime" value="오후" readonly>
-                    </c:when>
-                 </c:choose>
+              	<c:if test="${dto.botime ne 2 }">
+	                 <label for="botime">오전/오후</label>
+	                 <c:choose>
+	                 	<c:when test="${dto.botime eq 0 }">
+	                 		<input type="text" id="botime" name="botime" value="오전" readonly>
+	                    </c:when>
+	                    <c:when test="${dto.botime eq 1 }">
+	                        <input type="text" id="botime" name="botime" value="오후" readonly>
+	                    </c:when>
+	                 </c:choose>
+                 </c:if>
                  
                  <label for="bohour">시간</label>
                  <c:choose>

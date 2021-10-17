@@ -68,7 +68,6 @@
 			    		<th>보호자명</th>
 			    		<th>주소</th>
 			      		<th>일자</th>
-			      		<th>오전/오후</th>
 			      		<th>시간</th>
 			    	</tr>
 			  	</thead>
@@ -82,14 +81,6 @@
 			  						<td><a href="bookinglist/detail/${item.boNo }"><p style="text-decoration:line-through; color: red">${item.pname }</p></a></td>
 			  						<td><p style="text-decoration:line-through; color: red">${item.boRoadName }</p></td>
 			  						<td><p style="text-decoration:line-through; color: red">${item.boDate }</p></td>
-			  						<c:choose>
-						      		<c:when test="${item.boTime eq 0 }">
-						      			<td><p style="text-decoration:line-through; color: red">오전</p></td>
-						      		</c:when>
-						      		<c:when test="${item.boTime eq 1 }">
-						      			<td><p style="text-decoration:line-through; color: red">오후</p></td>
-						      		</c:when>
-						      	</c:choose>
 			  						<td><p style="text-decoration:line-through; color: red">${item.boHour }시간</p></td>
 			  					</tr>
 			  				</c:when>
@@ -101,14 +92,6 @@
 							  		<td><c:out value="${item.boRoadName }"></c:out></td>
 									<td><c:out value="${item.boDate }"></c:out></td>
 									<c:choose>
-							      		<c:when test="${item.boTime eq 0 }">
-							      			<td>오전</td>
-							      		</c:when>
-							      		<c:when test="${item.boTime eq 1 }">
-							      			<td>오후</td>
-							      		</c:when>
-							      	</c:choose>
-							      	<c:choose>
 				    					<c:when test="${dto.boHour eq 0 }">
 											<td><c:out value="1시간"></c:out></td>
 										</c:when>

@@ -68,7 +68,7 @@
 	  padding: 0 16px;
 	}
 	
-	input[type=text], input[type=file] {
+	input[type=text], input[type=file], textarea {
 	  width: 100%;
 	  margin-bottom: 20px;
 	  padding: 15px;
@@ -119,17 +119,19 @@
 		            <fmt:formatDate var="boDate" value="${bookingDTO.boDate}" pattern="yyyy-MM-dd" />
 			   		<input type="text" value="${boDate }" name="boDate" id="boDate">
 		        
-		        	<label for="boTime">오전/오후</label>
-		            <c:choose>
-				    	<c:when test="${bookingDTO.boTime eq 0 }">
-				      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
-				      		<input type="text" value="오전" readonly>
-				      	</c:when>
-				      	<c:when test="${bookingDTO.boTime eq 1 }">
-				      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
-				      		<input type="text" value="오후" readonly>
-				      	</c:when>
-				    </c:choose>
+		        	<c:if test="${bookingDTO.boTime ne 2 }">
+			        	<label for="boTime">오전/오후</label>
+			            <c:choose>
+					    	<c:when test="${bookingDTO.boTime eq 0 }">
+					      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
+					      		<input type="text" value="오전" readonly>
+					      	</c:when>
+					      	<c:when test="${bookingDTO.boTime eq 1 }">
+					      		<input type="hidden" id="boTime" name="boTime" value="${bookingDTO.boTime }" readonly>
+					      		<input type="text" value="오후" readonly>
+					      	</c:when>
+					    </c:choose>
+				    </c:if>
 		        
 		        	<label for="boHour">예약 이용시간</label>
 		        	<c:choose>
@@ -156,7 +158,7 @@
 
 		        
 		        	<label for="boRemarks">요청사항</label>
-		            <input type="text" id="boRemarks" name="boRemarks" value="${bookingDTO.boRemarks }" readonly style="margin-bottom: 5px">
+		            <textarea rows="10" cols="30" id="boRemarks" name="boRemarks" readonly style="margin-bottom: 5px">${bookingDTO.boRemarks }</textarea>
 		        </div>
 		        <hr>
 		        <input type="submit" value="목록" id="listbtn" name="listbtn" >
