@@ -44,7 +44,6 @@ public class EmployeeController {
 		dto.setEphoto(ephoto);
 
 		String uploadpath = request.getSession().getServletContext().getRealPath(path);
-		System.out.println(uploadpath);
 		
 		try {
 			if(!multi.isEmpty()) {

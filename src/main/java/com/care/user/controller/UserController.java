@@ -183,12 +183,12 @@ public class UserController {
        	 
           int totalCount = service.getMyTotalCount(sessionUserDTO); // 전체 자료 수 int
 		  int pageSize = 10; // 한페이지 게시글 수 int blockSize = 5;// 페이지네이션
-		  int blockSize=5;
+		  int blockSize = 5;
 		  
 		  PageNation page = new PageNation(currPage, totalCount, pageSize, blockSize);
 		  
 		  List<BookingParentsDTO> list = service.checkUser(sessionUserDTO.getPname(),
-		  sessionUserDTO.getPphone(), page.getStartRow(), pageSize);
+				  sessionUserDTO.getPphone(), page.getStartRow(), pageSize);
 		  
 		  model.addAttribute("list", list);
 		  model.addAttribute("size", list.size()); 

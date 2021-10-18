@@ -48,12 +48,17 @@ public class TeacherController {
 		
 		PageNation page = new PageNation(currPage, totalCount, pageSize, blockSize);
 		
+		int count = service.teacherCount(dto.getTno(), dto.getTname());
 		ArrayList<TeacherBookingListDTO> list = service.teacherBookingList(dto, page.getStartRow(), pageSize);
 		
-		model.addAttribute("list", list);
-		model.addAttribute("size", list.size());
-		model.addAttribute("page", page);
-		model.addAttribute("dto", dto);
+		if(count == 0) {
+			model.addAttribute("count", count);
+		} else {
+			model.addAttribute("list", list);
+			model.addAttribute("size", list.size());
+			model.addAttribute("page", page);
+			model.addAttribute("dto", dto);
+		}
 		
 		return "teacher/teacherBookingList";
 	}
@@ -86,7 +91,7 @@ public class TeacherController {
 	
 	////////////////////////////사용자 전용 페이지 /////////////////////////////////
 	
-	@RequestMapping("usermain/teacherList")
+	@RequestMapping("usermain/teacherlist")
 	public String list(HttpServletRequest request,@RequestParam(required = false, defaultValue = "1") int currPage
 			 , @RequestParam(required = false, defaultValue = "") String searchtxt
 			 , Model model){

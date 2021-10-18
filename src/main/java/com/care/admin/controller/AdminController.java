@@ -81,6 +81,7 @@ public class AdminController {
 
 		List<AdminBookingDTO> list = service.bookingList(search,searchtxt, page.getStartRow(), page.getEndRow());
 		model.addAttribute("list",list);
+		model.addAttribute("size", list.size());
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("searchtxt", searchtxt);
@@ -109,6 +110,7 @@ public class AdminController {
 		ArrayList<EmployeeDTO> list = service.employeeList(page.getStartRow(), page.getEndRow());
 		
 		model.addAttribute("list", list);
+		model.addAttribute("size", list.size());
 		model.addAttribute("page", page);
 		
 		return "admin/employeeList";

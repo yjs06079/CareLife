@@ -23,25 +23,12 @@
 		<result column="bo_remarks" property="boremarks" />
 	</resultMap>
 
-	<!--예약 검색 + 페이징 -->
+	<!-- 예약 개수 -->
 	<select id="bookingTotalCount" parameterMap="hashmap" resultType="int">
 		select count(*)
 		from booking_g4 b1
 		join teacher_g4 t1
 		on b1.t_no = t1.t_no
-		<where>
-			<if
-				test="searchtxt!=null and searchtxt!='' and !searchtxt.equals('')">
-				<choose>
-					<when test="search == 't_no'">
-						and b1.t_no = #{searchtxt}
-					</when>
-					<when test="search == 't_name'">
-						and t_name like '%' || upper(#{searchtxt}) || '%'
-					</when>
-				</choose>
-			</if>
-		</where>
 	</select>
 
 	<!--예약 리스트 -->
@@ -70,7 +57,7 @@
 						and b1.t_no = #{searchtxt}
 					</when>
 					<when test="search=='t_name'">
-						and upper(t_name) like '%' || upper(#{searchtxt}) || '%'
+						and t_name = #{searchtxt}
 					</when>
 				</choose>
 			</if>
@@ -95,8 +82,8 @@
 
 	<!-- 총액 계산하기 -->
 	<select id="bototal" resultType="int">
-		select sum(bo_payment) as bototal
-		from booking_g4
+		select ifnull(sum(bo_payment), 0) as bototal
+		from booking_g4;
 	</select>
 
 	<!-- 예약 상세 페이지 -->

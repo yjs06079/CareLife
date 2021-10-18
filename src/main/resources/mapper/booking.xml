@@ -1,140 +1,120 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.care.user.mapper.BookingMapper">
 
-<insert id="parentsInsert" parameterType="com.care.user.dto.UserParentsDTO">
-
-    <selectKey resultType="int" keyProperty="pno" order="AFTER">
-       select max(p_no) from parents_g4
-    </selectKey>
-     
-    	insert into parents_g4 (p_name, p_phone, p_sub_phone)
-	values(#{pname} , #{pphone}, #{psubPhone} )
-
+	<insert id="parentsInsert" parameterType="com.care.user.dto.UserParentsDTO">
 	
-</insert>
-
- 
- <select id="selectTeacher" resultType="com.care.user.dto.BookingTeacherDTO" parameterType="com.care.user.dto.BookingDTO">
-
+	    <selectKey resultType="int" keyProperty="pno" order="AFTER">
+	       select max(p_no) from parents_g4
+	    </selectKey>
+	     
+	    insert into parents_g4 (p_name, p_phone, p_sub_phone)
+		values(#{pname} , #{pphone}, #{psubPhone} )
 	
-	select 
-		 	t_no as tno,
-            t_name as tname,
-            t_addr as taddr,
-            t_info as tinfo,
-            t_photo as tphoto       
-            from teacher_g4 where 
-                                t_no not in
-            (select booking_g4.t_no as tno from booking_g4	
-             where booking_g4.bo_addr = #{boAddr}
-             and bo_date = #{boDate}
-             and bo_time in (#{boTime})
-             ) and t_addr= #{boAddr}
+	</insert>
+	
+	 
+	 <select id="selectTeacher" resultType="com.care.user.dto.BookingTeacherDTO" parameterType="com.care.user.dto.BookingDTO">
+	    select 
+			 	t_no as tno,
+	            t_name as tname,
+	            t_addr as taddr,
+	            t_info as tinfo,
+	            t_photo as tphoto       
+	    from teacher_g4 
+	    where 
+	            t_no not in
+	            	(select booking_g4.t_no as tno
+	            	 from booking_g4	
+	             	 where booking_g4.bo_addr = #{boAddr}
+	             	 and bo_date = #{boDate}
+	             	 and bo_time in (#{boTime})
+	             	)
+	    and t_addr= #{boAddr}	
+	 </select>
 	
 	
- </select>
-
-
-<insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
-
-    <selectKey resultType="int" keyProperty="boNo" order="AFTER">
-       select max(bo_no) from booking_g4
-    </selectKey>
-	   
-     insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
-   		values((select max(p_no) from parents_g4 ), #{tno} , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName} , #{boRoadNameDetail}),
-  		  	#{boRemarks}, #{boCancel} , #{boPayment})
-
-</insert>
-
-
-
-<select id="getMyTotalCount" parameterType="com.care.user.dto.SessionUserDTO"  resultType="int">
-	select count(*) 
-	from parents_g4
-	where 
-		p_name = #{pname}
-	and p_phone=#{pphone}
-</select>
-
-
-<select id="checkParents" parameterType="java.lang.String"  resultType="int">
-	select p_name as pname 
-	      ,p_phone as pphone 
-    from parents_g4
-	where 
-		p_name = #{pname}
-	and p_phone=#{pphone}
-</select>
-
-
-<select id="selectBooking" resultType="com.care.user.dto.BookingDTO">
-
-select 
-
-					  bo_no as boNo
-					, p_no as pno
-					, t_no as tno
-					, bo_addr as boAddr
-					, bo_date as boDate
-					, bo_time as boTime
-					, bo_hour as boHour
-					, bo_road_name as boRoadName
-					, bo_remarks as boRemarks
-					, bo_cancel as boCancel
-					, bo_payment as boPayment
-					from  booking_g4 where bo_no=#{boNo}
-</select>
-
-
-
-
-<select id="checkUser" parameterType="java.util.HashMap" resultType="com.care.user.dto.BookingParentsDTO" >
-
-
-select 
-					 booking_g4.p_no as pno
-					, bo_no as boNo
-					, t_no as tno
-					, bo_addr as boAddr
-					, bo_date as boDate
-					, bo_time as boTime
-					, bo_hour as boHour
-					, bo_road_name as boRoadName
-					, bo_remarks as boRemarks
-					, bo_cancel as boCancel
-					, bo_payment as boPayment
- 				from booking_g4
-				join parents_g4
+	<insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
+	
+	    <selectKey resultType="int" keyProperty="boNo" order="AFTER">
+	       select max(bo_no) from booking_g4
+	    </selectKey>
+		   
+	     insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
+	   	 values((select max(p_no) from parents_g4 ), #{tno} , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName}, 
+	   	 		#{boRoadNameDetail}), #{boRemarks}, #{boCancel} , #{boPayment})
+	</insert>
+	
+	<select id="getMyTotalCount" parameterType="com.care.user.dto.SessionUserDTO"  resultType="int">
+		select count(*) 
+		from booking_g4
+			join parents_g4
 				on parents_g4.p_no = booking_g4.p_no
- 				where p_name=#{pname} and p_phone=#{pphone}
- 			    order by pno desc limit #{startRow},#{pageSize}
- 			
-
-
-</select>
-
-<select id="checkTeacher" parameterType="int" resultType="string" >
-
-			select t_name from teacher_g4 where t_no = #{tno}
-
-
-</select>
-
-<select id="sessionCheck" parameterType="java.util.HashMap" resultType="int">
-
-			select count(*)
-			from parents_g4 where 
-			p_name=#{pname} and p_phone=#{pphone}
-
-</select>
-
-
-
-
+		where p_name = #{pname}
+		and p_phone = #{pphone}
+	</select>
+	
+	
+	<select id="checkParents" parameterType="java.lang.String"  resultType="int">
+		select p_name as pname 
+		      ,p_phone as pphone 
+	    from parents_g4
+		where 
+			p_name = #{pname}
+		and p_phone=#{pphone}
+	</select>
+	
+	<select id="selectBooking" resultType="com.care.user.dto.BookingDTO">
+		select 
+				bo_no as boNo
+				, p_no as pno
+				, t_no as tno
+				, bo_addr as boAddr
+				, bo_date as boDate
+				, bo_time as boTime
+				, bo_hour as boHour
+				, bo_road_name as boRoadName
+				, bo_remarks as boRemarks
+				, bo_cancel as boCancel
+				, bo_payment as boPayment
+		from  booking_g4 
+		where bo_no=#{boNo}
+	</select>
+	
+	<select id="checkUser" parameterType="java.util.HashMap" resultType="com.care.user.dto.BookingParentsDTO" >
+		select 
+				booking_g4.p_no as pno
+				, bo_no as boNo
+				, t_no as tno
+				, bo_addr as boAddr
+				, bo_date as boDate
+				, bo_time as boTime
+				, bo_hour as boHour
+				, bo_road_name as boRoadName
+				, bo_remarks as boRemarks
+				, bo_cancel as boCancel
+				, bo_payment as boPayment
+		from booking_g4
+			join parents_g4
+				on parents_g4.p_no = booking_g4.p_no
+		where p_name=#{pname} 
+		and p_phone=#{pphone}
+		order by bo_no desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="checkTeacher" parameterType="int" resultType="string" >
+		select t_name 
+		from teacher_g4 
+		where t_no = #{tno}
+	</select>
+	
+	<select id="sessionCheck" parameterType="java.util.HashMap" resultType="int">
+		select count(*)
+		from parents_g4 
+		where p_name=#{pname} 
+		and p_phone=#{pphone}
+	</select>
 </mapper>

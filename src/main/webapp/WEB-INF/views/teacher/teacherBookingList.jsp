@@ -45,7 +45,7 @@
 	}
 </style>
 <script>
-	if(${size } <= 0) {
+	if(${count } == 0) {
 		alert("잘못된 사원 정보입니다.\n다시 입력해주세요.");
 		location.href="${pageContext.servletContext.contextPath}/teachermain";
 	} 
@@ -72,6 +72,9 @@
 			    	</tr>
 			  	</thead>
 			  	<tbody>
+				  	<c:if test="${size eq 0 }">
+	            		<td colspan="6">조회할 자료가 없습니다.</td>
+	            	</c:if>
 			  		<c:forEach var="item" items="${list }">
 			  			<c:choose>
 			  				<c:when test="${item.boCancel eq 'x' }">

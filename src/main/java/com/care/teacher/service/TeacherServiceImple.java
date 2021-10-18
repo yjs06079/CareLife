@@ -43,6 +43,17 @@ public class TeacherServiceImple implements TeacherService{
 		return result;
 	}
 
+	//선생님 개수
+	@Override
+	public int teacherCount(int tno, String tname) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("tno", tno);
+		hm.put("tname", tname);
+		
+		return mapper.teacherCount(hm);
+	}
+		
 	//선생님 예약 조회
 	@Override
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize) {
@@ -82,6 +93,5 @@ public class TeacherServiceImple implements TeacherService{
 		// TODO Auto-generated method stub
 		return mapper.bookingCancelSMS(boNo);
 	}
-
 
 }

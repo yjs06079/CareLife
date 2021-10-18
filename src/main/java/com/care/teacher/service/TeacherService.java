@@ -16,6 +16,9 @@ public interface TeacherService {
 		
 	public int totalCount(String searchtxt);
 
+	//선생님 개수
+	public int teacherCount(int tno, String tname);
+		
 	//선생님 예약 조회
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize);
 	
@@ -30,6 +33,5 @@ public interface TeacherService {
 
 	//취소 문자
 	public TeacherCancelDTO bookingCancelSMS(int boNo);
-
 
 }

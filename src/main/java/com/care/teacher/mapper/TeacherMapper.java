@@ -18,6 +18,9 @@ public interface TeacherMapper {
 	
 	public int totalCount(HashMap<String, Object> hm);
 
+	//선생님 개수
+	public int teacherCount(HashMap<String, Object> hm);
+	
 	//선생님 예약조회
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(HashMap<String, Object> hm);
 
@@ -32,6 +35,5 @@ public interface TeacherMapper {
 
 	//취소 문자
 	public TeacherCancelDTO bookingCancelSMS(int boNo);
-
 
 }

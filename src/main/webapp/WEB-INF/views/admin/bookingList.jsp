@@ -88,6 +88,9 @@
          </thead>
 
          <tbody>
+         	<c:if test="${size eq 0 }">
+            	<td colspan="5">조회할 자료가 없습니다.</td>
+            </c:if>
             <c:forEach var="item" items="${list}">
             	<c:choose>
             		<c:when test="${item.bopayment eq 0}">
@@ -118,8 +121,7 @@
       <div class="page">
          <!-- 검색 + 페이징 -->
          <c:if test="${page.prev }">
-            <a
-               href="bookinglist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
+            <a href="bookinglist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
                <c:out value="이전" />
             </a>
          </c:if>
@@ -130,16 +132,14 @@
                <c:out value="${index }"></c:out>
             </c:if>
             <c:if test="${index != page.currPage }">
-               <a
-                  href="bookinglist?currPage=${index }&search=${search }&searchtxt=${searchtxt}">
+               <a href="bookinglist?currPage=${index }&search=${search }&searchtxt=${searchtxt}">
                   <c:out value="${index }"></c:out>
                </a>
             </c:if>
          </c:forEach>
 
          <c:if test="${page.next}">
-            <a
-               href="bookinglist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
+            <a href="bookinglist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
                <c:out value="다음"></c:out>
             </a>
          </c:if>

@@ -53,8 +53,6 @@
 	
 	.teacheraddr {
 		text-align: center;
-		font-size: 30px;
-		font-weight: bold;
 	}
 	
 	.checklist {
@@ -187,10 +185,10 @@
 		</div>
 
 		<div class="teacheraddr">
-			<c:out value="${searchtxt}"></c:out>
+			<h3>${searchtxt } 지역 선생님입니다.</h3>
 		</div>
 		
-		<form method="get" action="teacherList" class="checklist">
+		<form method="get" action="teacherlist" class="checklist">
 			<select name="searchtxt"
 				style="width: 800px; margin-left: 20px; margin-right: 20px; padding: 10px 0px; border: 1px solid;">
 				<option value="">&nbsp;&nbsp;&nbsp;지역을 선택하세요.</option>
@@ -263,7 +261,7 @@
 			<!-- 검색 + 페이징 -->
 			<c:if test="${page.prev }">
 				<a
-					href="teacherList?currPage=${page.startBlock-1}&searchtxt=${searchtxt}">
+					href="teacherlist?currPage=${page.startBlock-1}&searchtxt=${searchtxt}">
 					<c:out value="이전" />
 				</a>
 			</c:if>
@@ -274,7 +272,7 @@
 					<c:out value="${index }"></c:out>
 				</c:if>
 				<c:if test="${index != page.currPage }">
-					<a href="teacherList?currPage=${index }&searchtxt=${searchtxt}">
+					<a href="teacherlist?currPage=${index }&searchtxt=${searchtxt}">
 						<c:out value="${index }"></c:out>
 					</a>
 				</c:if>
@@ -282,7 +280,7 @@
 
 			<c:if test="${page.next}">
 				<a
-					href="teacherList?currPage=${page.endBlock+1}&searchtxt=${searchtxt}">
+					href="teacherlist?currPage=${page.endBlock+1}&searchtxt=${searchtxt}">
 					<c:out value="다음"></c:out>
 				</a>
 			</c:if>

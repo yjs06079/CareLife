@@ -63,6 +63,9 @@
 			    	</tr>
 			  	</thead>
 			  	<tbody>
+			  		<c:if test="${size eq 0 }">
+			  			<td colspan="3">조회할 자료가 없습니다.</td>
+			  		</c:if>
 			  		<c:forEach var="item" items="${list }">
 					    <tr>
 					    	<td><c:out value="${item.eno }"/></td>

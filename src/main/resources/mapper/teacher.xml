@@ -61,6 +61,13 @@
 			</where>
 	</select>
 
+	<select id="teacherCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*)
+		from teacher_g4
+		where t_no = #{tno}
+		and t_name = #{tname}
+	</select>
+
 	<!-- 선생님 예약 조회 -->
 	<select id="teacherBookingList" resultType="com.care.teacher.dto.TeacherBookingListDTO" parameterType="java.util.HashMap">
 	 	select teacher_g4.t_no as tno,
