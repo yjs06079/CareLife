@@ -38,14 +38,14 @@
 	
 	
 	<insert id="bookingInsert" parameterType="com.care.user.dto.BookingDTO">
-	
 	    <selectKey resultType="int" keyProperty="boNo" order="AFTER">
 	       select max(bo_no) from booking_g4
 	    </selectKey>
 		   
-	     insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour, bo_road_name, bo_remarks, bo_cancel, bo_payment)
-	   	 values((select max(p_no) from parents_g4 ), #{tno} , #{boAddr}, #{boDate}, #{boTime}, #{boHour}, concat(#{boRoadName}, 
-	   	 		#{boRoadNameDetail}), #{boRemarks}, #{boCancel} , #{boPayment})
+	     insert into booking_g4(p_no, t_no, bo_addr, bo_date, bo_time, bo_hour
+	     			, bo_road_name, bo_remarks, bo_cancel, bo_payment)
+	   	 values((select max(p_no) from parents_g4 ), #{tno} , #{boAddr}, #{boDate}, #{boTime}, #{boHour}
+	   	 			, concat(#{boRoadName}, #{boRoadNameDetail}), #{boRemarks}, #{boCancel} , #{boPayment})
 	</insert>
 	
 	<select id="getMyTotalCount" parameterType="com.care.user.dto.SessionUserDTO"  resultType="int">

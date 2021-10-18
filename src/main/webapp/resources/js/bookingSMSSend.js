@@ -7,7 +7,6 @@
             let phoneNumber = $('#pphone').val();
             alert('인증번호 발송');
 
-
             $.ajax({
                 type: "GET",
                 url: "/carelife/usermain/message/sendsms",
@@ -16,14 +15,14 @@
                 },
                 success: function(res){
                    console.log(res)
-                   console.log('번호보냄')
+                   console.log('인증번호 발송')
                     $('#checkBtn').click(function(){
                         if($.trim(res) ==$('#confirm').val()){
                         	result =res;
-                        	alert('인증번호 성공');           	                       	
+                        	alert('인증 성공');           	                       	
                         }else{   	                    	
                         	result =1;
-						alert('인증번호 실패'); 
+						alert('인증 실패'); 
                           
                         }
                     })
