@@ -68,7 +68,6 @@
 			    		<th>보호자명</th>
 			    		<th>주소</th>
 			      		<th>일자</th>
-			      		<th>시간</th>
 			    	</tr>
 			  	</thead>
 			  	<tbody>
@@ -84,7 +83,6 @@
 			  						<td><a href="bookinglist/detail/${item.boNo }"><p style="text-decoration:line-through; color: red">${item.pname }</p></a></td>
 			  						<td><p style="text-decoration:line-through; color: red">${item.boRoadName }</p></td>
 			  						<td><p style="text-decoration:line-through; color: red">${item.boDate }</p></td>
-			  						<td><p style="text-decoration:line-through; color: red">${item.boHour }시간</p></td>
 			  					</tr>
 			  				</c:when>
 			  				<c:when test="${item.boCancel ne 'x' }">
@@ -94,20 +92,6 @@
 						  			<td><a href="bookinglist/detail/${item.boNo }"><c:out value="${item.pname }"></c:out></a></td>
 							  		<td><c:out value="${item.boRoadName }"></c:out></td>
 									<td><c:out value="${item.boDate }"></c:out></td>
-									<c:choose>
-				    					<c:when test="${dto.boHour eq 0 }">
-											<td><c:out value="1시간"></c:out></td>
-										</c:when>
-										<c:when test="${dto.boHour eq 1 }">
-											<td><c:out value="2시간"></c:out></td>
-										</c:when>
-										<c:when test="${dto.boHour eq 2 }">
-											<td><c:out value="3시간"></c:out></td>
-										</c:when>
-										<c:when test="${dto.boHour eq 3 }">
-											<td><c:out value="4시간"></c:out></td>
-										</c:when>
-									</c:choose>
 								</tr>
 							</c:when>
 						</c:choose>

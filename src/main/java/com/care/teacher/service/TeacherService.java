@@ -23,7 +23,7 @@ public interface TeacherService {
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(TeacherBookingListDTO dto, int startRow, int pageSize);
 	
 	//예약 자료 개수
-	public int bookingTotalCount();
+	public int bookingTotalCount(int tno, String tname);
 
 	//예약 상세 페이지
 	public TeacherBookingListDTO teacherBookingDetail(int boNo);

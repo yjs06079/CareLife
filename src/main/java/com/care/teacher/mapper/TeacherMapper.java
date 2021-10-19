@@ -25,7 +25,7 @@ public interface TeacherMapper {
 	public ArrayList<TeacherBookingListDTO> teacherBookingList(HashMap<String, Object> hm);
 
 	//예약 자료 개수
-	public int bookingTotalCount();
+	public int bookingTotalCount(HashMap<String, Object> hm);
 	
 	//예약 상세 페이지
 	public TeacherBookingListDTO teacherBookingDetail(int boNo);

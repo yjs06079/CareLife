@@ -68,9 +68,13 @@ public class TeacherServiceImple implements TeacherService{
 
 	//예약 자료 개수
 	@Override
-	public int bookingTotalCount() {
+	public int bookingTotalCount(int tno, String tname) {
 		// TODO Auto-generated method stub
-		return mapper.bookingTotalCount();
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("tno", tno);
+		hm.put("tname", tname);
+		
+		return mapper.bookingTotalCount(hm);
 	}
 		
 	//예약 상세 페이지

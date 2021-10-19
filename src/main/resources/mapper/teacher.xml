@@ -85,15 +85,17 @@
 					on booking_g4.t_no = teacher_g4.t_no
 	 	where teacher_g4.t_no = #{dto.tno}
 		and t_name = #{dto.tname}
-		order by boDate limit #{startRow}, #{pageSize}
+		order by bo_no desc limit #{startRow}, #{pageSize}
 	</select>
 	 
-	 <select id="bookingTotalCount" resultType="int">
+	 <select id="bookingTotalCount" resultType="int" parameterType="java.util.HashMap">
 	 	select count(*)
 		from parents_g4 join booking_g4
 			on parents_g4.p_no = booking_g4.p_no
 				join teacher_g4
-					on booking_g4.t_no = teacher_g4.t_no;
+					on booking_g4.t_no = teacher_g4.t_no
+		where booking_g4.t_no = #{tno}
+		and t_name = #{tname}
 	 </select>
 	 
 	 <!-- 예약 상세 페이지 -->

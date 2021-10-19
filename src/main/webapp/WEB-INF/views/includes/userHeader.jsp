@@ -44,6 +44,9 @@
          <!-- header inner -->
          <div class="header">
             <div class="head_top">
+               <div style="text-align: right; position: relative; top: 25px;">
+                   <a href="/carelife/hello" style="margin-right: 20px;">메인 화면으로 돌아가기</a>
+               </div>
                <div class="container">
                   <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
