@@ -20,7 +20,7 @@
 	               </div>
 	            </div>
 	            <div class="copyright" style="">
-	               <p>Rework by 원조쓰리김 | 조예영 김명진 김진경</p>
+	               <p>Create by 원조쓰리김 | 조예영 김명진 김진경</p>
 	            </div>
 	        </div>
       	</div>
