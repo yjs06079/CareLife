@@ -7,14 +7,71 @@
 
 
 <h3>Languages & Tool</h3>
-Languages&nbsp;&nbsp; | &nbsp;Java, JSP, JavaScript, JQuery, HTML5, CSS3<br>
-Database&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;MySQL<br>
-Server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;Apache Tomcat<br>
-Framework&nbsp; | &nbsp;Spring<br>
-Library&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;MyBatis, HikariCP<br>
-API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;CoolSMS, 도로명주소, Kakao i Open Builder, i'm port<br>
-Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;Eclipse, GitHub<br>
-<br><br>
+  <table>
+      <tr>
+        <th>Languages</th>
+        <th>Database</th>
+        <th>Server</th>
+        <th>Framework</th>
+        <th>Library</th>
+        <th>API</th>
+        <th>Tools</th>
+      </tr>
+      <tr>
+        <td>Java</td>
+        <td>MySQL</td>
+        <td>Apache Tomcat</td>
+        <td>Spring</td>
+        <td>MyBatis</td>
+        <td>CoolSMS</td>
+        <td>Eclipse</td>
+      </tr>
+      <tr>
+        <td>JSP</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>HikariCP</td>
+        <td>도로명주소</td>
+        <td>GitHub</td>
+      </tr>
+      <tr>
+        <td>JavaSript</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Kakao i Open Builder</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>JQuery</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>i'm port</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>HTML5</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>CSS3</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </table>
 
 
 <h3>시연 영상</h3>
