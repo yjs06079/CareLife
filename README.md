@@ -18,23 +18,14 @@ Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;
 
 
 <h3>시연 영상</h3>
-
-https://user-images.githubusercontent.com/63994001/138012238-ba03e483-956d-4db3-ad88-66bf7fcfcd6a.mp4
-
-
-https://user-images.githubusercontent.com/63994001/138012254-e404bfb0-5988-4344-ab56-6a27ff1fff83.mp4
+<h4>1. 사용자 페이지</h4>
 
 
-https://user-images.githubusercontent.com/63994001/138012274-f13e84b6-31f2-4b1e-9024-7e21582fd18e.mp4
+https://user-images.githubusercontent.com/63994001/138023685-88eb0747-6d98-4e28-8864-c10766648ed4.mp4
 
 
-https://user-images.githubusercontent.com/63994001/138012287-3d90d94f-b323-451a-83db-cfc788bf574f.mp4
+<h4>2. 선생님 페이지 & 관리자 페이지</h4>
 
 
-https://user-images.githubusercontent.com/63994001/138012314-9250f0a0-242a-4d09-8138-9cabc3b4d885.mp4
+https://user-images.githubusercontent.com/63994001/138023699-e2526e26-df05-4b5e-8f31-916658dc1a38.mp4
 
-
-https://user-images.githubusercontent.com/63994001/138012335-14177177-e70c-484e-a527-049e84224210.mp4
-
-
-https://user-images.githubusercontent.com/63994001/138012353-f27a0747-a665-4c73-a06b-ca5eb3a52306.mp4
